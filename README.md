@@ -1,8 +1,11 @@
 # 雪華（sekka）
-漢字を主要パーツで分類し、送り仮名への連接も考慮した漢字直接入力
-
-## 目的
-IMEがなくてもLinuxで日本語を打てるようにする（防災用のキャンプ道具的な位置付け）
+LinuxでIMEがなくても日本語を打てるようにするための漢字直接配列
+- IMEがなくても十分な収録字数「4000字」
+- 頭で覚えやすい「漢字の主要構成パーツ」による分類
+- 手で覚えやすい「左2連＋右1打/2連」の同時打鍵
+- 覚えてなくても打てる？「熟語・省打鍵入力」
+- 記憶負担を軽減「異体字同置」
+- 送り仮名に無理なくつながる「薙刀式」専用漢直
 
 ## 背景
 これまで「libkcc」というIMEに「G-Code」という漢直と「四角号碼」という漢字検字コードを載せて使っていたが、libkccが使えなくなってしまった。
@@ -41,10 +44,6 @@ IMEがなくてもLinuxで日本語を打てるようにする（防災用のキ
 
 頻度表は「Wiki-40B/ja」から生成。
 
-- 同時3打、または4打で漢字1字を入力
-- 異体字同置
-- 頻出熟語は省打鍵入力も可
-
 ## 必要なもの
 - KMonad 4.2以上
 
@@ -54,3 +53,10 @@ IMEがなくてもLinuxで日本語を打てるようにする（防災用のキ
 - 漢字出現頻度数調査（4）令和4年2月 文化庁国語課
 - Wiki-40B/ja by Google Research
 - 900連接調査 by 大岡俊彦
+- 青蛙亭漢語塾 https://www.seiwatei.net/index.htm
+- 漢字情報一覧 https://www2q.biglobe.ne.jp/~bonichi/kj.HTM
+- Unicode Character Database https://www.unicode.org/Public/UCD/latest/ucd/
+- JISX0213 InfoCenter https://www.jca.apc.org/~earthian/aozora/0213.html
+- JIS X 0213のコード対応表 https://x0213.org/codetable/
+- 漢字辞典オンライン https://kanji.jitenon.jp/
+- コトバンク https://kotobank.jp/
