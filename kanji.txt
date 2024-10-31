@@ -2736,13 +2736,6 @@ c s l u 褌
 c s h 厄
 c s p 両
 c s p j 輛
-c s u   ㌘
-c s ; ㍉
-c s n   ㌔
-c s m   ㍍
-c s ,  ㌧
-c s . ㍑
-c s /  ㌢
 e f j 兵
 e f j k 析
 e f j o 斬
