@@ -16,7 +16,7 @@
 - Wiki-40B/ja by Google Research
 - 900連接調査 by 大岡俊彦
 - 青蛙亭漢語塾 https://www.seiwatei.net/index.htm
-- 漢字情報一覧 https://www2q.biglobe.ne.jp/~bonichi/kj.HTM
+- 漢字情報一覧 https://www2q.biglobe.ne.jp/~bonichi/k-joho.zip
 - Unicode Character Database https://www.unicode.org/Public/UCD/latest/ucd/
 - JISX0213 InfoCenter https://www.jca.apc.org/~earthian/aozora/0213.html
 - JIS X 0213のコード対応表 https://x0213.org/codetable/
