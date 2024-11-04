@@ -1,0 +1,1708 @@
+(defcfg
+;;  input  (device-file "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd")
+  output (uinput-sink "My KMonad output")
+  fallthrough true
+)
+
+(defsrc
+           1        2        3        4        5        6        7        8        9        0
+  tab      q        w        e        r        t        y        u        i        o        p	     [
+  caps     a        s        d        f        g        h        j        k        l        ;        '        ret
+  lsft     z        x        c        v        b        n        m        ,        .        /        rsft
+  lctl                                         spc			  ralt
+)
+
+(defalias
+  roma (layer-switch roma1)
+  s&s  (tap-hold-next 200 spc lsft)
+  ret  #(lsft P5 ret)
+  kana (layer-switch kana1)
+  s&ks (tap-hold-next 200 spc (layer-toggle shift))
+
+  q  (tap-next-release (around ralt #(- q XX)) (around ralt #(= q (layer-toggle kana0))))
+  w  (tap-next-release (around ralt #(- w XX)) (around ralt #(= w (layer-toggle kana0))))
+  e  (tap-next-release (around ralt #(- e XX)) (around ralt #(= e (layer-toggle kana0))))
+  r  (tap-next-release (around ralt #(- r XX)) (around ralt #(= r (layer-toggle kana0))))
+  t  (tap-next-release (around ralt #(- t XX)) (around ralt #(= t (layer-toggle kana0))))
+  a  (tap-next-release (around ralt #(- a XX)) (around ralt #(= a (layer-toggle kana0))))
+  s  (tap-next-release (around ralt #(- s XX)) (around ralt #(= s (layer-toggle kana0))))
+  d  (tap-next-release (around ralt #(- d XX)) (around ralt #(= d (layer-toggle kana0))))
+  f  (tap-next-release (around ralt #(- f XX)) (around ralt #(= f (layer-toggle kana0))))
+  g  (tap-next-release (around ralt #(- g XX)) (around ralt #(= g (layer-toggle kana0))))
+  z  (tap-next-release (around ralt #(- z XX)) (around ralt #(= z (layer-toggle kana0))))
+  x  (tap-next-release (around ralt #(- x XX)) (around ralt #(= x (layer-toggle kana0))))
+  c  (tap-next-release (around ralt #(- c XX)) (around ralt #(= c (layer-toggle kana0))))
+  v  (tap-next-release (around ralt #(- v XX)) (around ralt #(= v (layer-toggle kana0))))
+  b  (tap-next-release (around ralt #(- b XX)) (around ralt #(= b (layer-toggle kana0))))
+  y  (tap-next-release (around ralt #(- y XX)) (around ralt #(= y (layer-toggle kana0))))
+  u  (tap-next-release (around ralt #(- u XX)) (around ralt #(= u (layer-toggle kana0))))
+  i  (tap-next-release (around ralt #(- i XX)) (around ralt #(= i (layer-toggle kana0))))
+  o  (tap-next-release (around ralt #(- o XX)) (around ralt #(= o (layer-toggle kana0))))
+  p  (tap-next-release (around ralt #(- p XX)) (around ralt #(= p (layer-toggle kana0))))
+  h  (tap-next-release (around ralt #(- h XX)) (around ralt #(= h (layer-toggle kana0))))
+  j  (tap-next-release (around ralt #(- j XX)) (around ralt #(= j (layer-toggle kana0))))
+  k  (tap-next-release (around ralt #(- k XX)) (around ralt #(= k (layer-toggle kana0))))
+  l  (tap-next-release (around ralt #(- l XX)) (around ralt #(= l (layer-toggle kana0))))
+  ;  (tap-next-release (around ralt #(- ; XX)) (around ralt #(= ; (layer-toggle kana0))))
+  n  (tap-next-release (around ralt #(- n XX)) (around ralt #(= n (layer-toggle kana0))))
+  m  (tap-next-release (around ralt #(- m XX)) (around ralt #(= m (layer-toggle kana0))))
+  ,  (around ralt #(- , XX))
+  .  (tap-next-release (around ralt #(- . XX)) (around ralt #(= . (layer-toggle kana0))))
+  /  (tap-next-release (around ralt #(- / XX)) (around ralt #(= / (layer-toggle kana0))))
+
+  rt  (tap-next-press left (around ralt #(= r = t (layer-toggle kanji))))
+  ri  (tap-next-release (around ralt #(= r - i XX)) (around ralt #(= r = i (layer-toggle kana0))))
+  ro  (tap-next-release (around ralt #(= r - o XX)) (around ralt #(= r = o (layer-toggle kana0))))
+  rp  (tap-next-release (around ralt #(= r - p XX)) (around ralt #(= r = p (layer-toggle kana0))))
+  rh  (tap-next-release (around ralt #(= r - h XX)) (around ralt #(= r = h (layer-toggle kana0))))
+  rj  (tap-next-release (around ralt #(= r - j XX)) (around ralt #(= r = j (layer-toggle kana0))))
+  rk  #(ralt - r ralt - k XX)
+  rl  #(ralt - r ralt - l XX)
+  r;  #(ralt - r ralt - ; XX)
+  rn  #(ralt - r ralt - n XX)
+  rm  #(ralt - r ralt - m XX)
+  r,  #(ralt - r ralt - , XX)
+  r.  #(ralt - r ralt - . XX)
+  r/  #(ralt - r ralt - / XX)
+
+  eb  (tap-next-release (around ralt #(= e - b XX)) (around ralt #(= e = b (layer-toggle kana0))))
+  ei  (tap-next-release (around ralt #(= e - i XX)) (around ralt #(= e = i (layer-toggle kana0))))
+  eo  #(ralt - e ralt - o XX)
+  ep  (tap-next-release (around ralt #(= e - p XX)) (around ralt #(= e = p (layer-toggle kana0))))
+  eh  (tap-next-release (around ralt #(= e - h XX)) (around ralt #(= e = h (layer-toggle kana0))))
+  ej  (tap-next-release (around ralt #(= e - j XX)) (around ralt #(= e = j (layer-toggle kana0))))
+  ek  (tap-next-release (around ralt #(= e - k XX)) (around ralt #(= e = k (layer-toggle kana0))))
+  el  #(ralt - e ralt - l XX)
+  e;  #(ralt - e ralt - ; XX)
+  en  #(ralt - e ralt - n XX)
+  em  (tap-next-release (around ralt #(= e - m XX)) (around ralt #(= e = m (layer-toggle kana0))))
+  e,  #(ralt - e ralt - , XX)
+  e.  #(ralt - e ralt - . XX)
+  e/  #(ralt - e ralt - / XX)
+
+  wi  (tap-next-release (around ralt #(= w - i XX)) (around ralt #(= w = i (layer-toggle kana0))))
+  wo  #(ralt - w ralt - o XX)
+  wp  (tap-next-release (around ralt #(= w - p XX)) (around ralt #(= w = p (layer-toggle kana0))))
+  wh  (tap-next-release (around ralt #(= w - h XX)) (around ralt #(= w = h (layer-toggle kana0))))
+  wj  (tap-next-release (around ralt #(= w - j XX)) (around ralt #(= w = j (layer-toggle kana0))))
+  wk  #(ralt - w ralt - k XX)
+  wl  #(ralt - w ralt - l XX)
+  w;  #(ralt - w ralt - ; XX)
+  wn  #(ralt - w ralt - n XX)
+  wm  #(ralt - w ralt - m XX)
+  w,  #(ralt - w ralt - , XX)
+  w.  #(ralt - w ralt - . XX)
+  w/  #(ralt - w ralt - / XX)
+
+  sq  (tap-next-release (around ralt #(= s - q XX)) (around ralt #(= s = q (layer-toggle kana0))))
+  si  (tap-next-release (around ralt #(= s - i XX)) (around ralt #(= s = i (layer-toggle kana0))))
+  so  #(ralt - s ralt - o XX)
+  sp  (tap-next-release (around ralt #(= s - p XX)) (around ralt #(= s = p (layer-toggle kana0))))
+  sh  (tap-next-release (around ralt #(= s - h XX)) (around ralt #(= s = h (layer-toggle kana0))))
+  sj  (tap-next-release (around ralt #(= s - j XX)) (around ralt #(= s = j (layer-toggle kana0))))
+  sk  #(ralt - s ralt - k XX)
+  sl  #(ralt - s ralt - l XX)
+  s;  #(ralt - s ralt - ; XX)
+  sn  #(ralt - s ralt - n XX)
+  sm  #(ralt - s ralt - m XX)
+  s,  #(ralt - s ralt - , XX)
+  s.  #(ralt - s ralt - . XX)
+  s/  #(ralt - s ralt - / XX)
+
+  di  (tap-next-release (around ralt #(= d - i XX)) (around ralt #(= d = i (layer-toggle kana0))))
+  do  #(ralt - d ralt - o XX)
+  dp  (tap-next-release (around ralt #(= d - p XX)) (around ralt #(= d = p (layer-toggle kana0))))
+  dh  (tap-next-release (around ralt #(= d - h XX)) (around ralt #(= d = h (layer-toggle kana0))))
+  dj  (tap-next-release (around ralt #(= d - j XX)) (around ralt #(= d = j (layer-toggle kana0))))
+  dk  #(ralt - d ralt - k XX)
+  dl  (tap-next-release (around ralt #(= d - l XX)) (around ralt #(= d = l (layer-toggle kana0))))
+  d;  #(ralt - d ralt - ; XX)
+  dn  #(ralt - d ralt - n XX)
+  dm  #(ralt - d ralt - m XX)
+  d,  #(ralt - d ralt - , XX)
+  d.  #(ralt - d ralt - . XX)
+  d/  #(ralt - d ralt - / XX)
+
+  fq  (tap-next-release (around ralt #(= f - q XX)) (around ralt #(= f = q (layer-toggle kana0))))
+  fu  (tap-next-release (around ralt #(= f - u XX)) (around ralt #(= f = u (layer-toggle kana0))))
+  fi  #(ralt - f ralt - i XX)
+  fo  (tap-next-release (around ralt #(= f - o XX)) (around ralt #(= f = o (layer-toggle kana0))))
+  fp  (tap-next-release (around ralt #(= f - p XX)) (around ralt #(= f = p (layer-toggle kana0))))
+  fh  (tap-next-release (around ralt #(= f - h XX)) (around ralt #(= f = h (layer-toggle kana0))))
+  fj  (tap-next-release (around ralt #(= f - j XX)) (around ralt #(= f = j (layer-toggle kana0))))
+  fk  #(ralt - f ralt - k XX)
+  fl  (tap-next-release (around ralt #(= f - l XX)) (around ralt #(= f = l (layer-toggle kana0))))
+  f;  (tap-next-release (around ralt #(= f - ; XX)) (around ralt #(= f = ; (layer-toggle kana0))))
+  fn  (tap-next-release (around ralt #(= f - n XX)) (around ralt #(= f = n (layer-toggle kana0))))
+  fm  #(ralt - f ralt - m XX)
+  f,  #(ralt - f ralt - , XX)
+  f.  #(ralt - f ralt - . XX)
+  f/  #(ralt - f ralt - / XX)
+
+  go  #(ralt - g ralt - o XX)
+  gk  #(ralt - g ralt - k XX)
+  gl  #(ralt - g ralt - l XX)
+  g;  #(ralt - g ralt - ; XX)
+  gn  #(ralt - g ralt - n XX)
+  gm  #(ralt - g ralt - m XX)
+  g,  #(ralt - g ralt - , XX)
+  g.  #(ralt - g ralt - . XX)
+  g/  #(ralt - g ralt - / XX)
+
+  xi  (tap-next-release (around ralt #(= x - i XX)) (around ralt #(= x = i (layer-toggle kana0))))
+  xo  #(ralt - x ralt - o XX)
+  xp  (tap-next-release (around ralt #(= x - p XX)) (around ralt #(= x = p (layer-toggle kana0))))
+  xh  (tap-next-release (around ralt #(= x - h XX)) (around ralt #(= x = h (layer-toggle kana0))))
+  xj  (tap-next-release (around ralt #(= x - j XX)) (around ralt #(= x = j (layer-toggle kana0))))
+  xk  #(ralt - x ralt - k XX)
+  xl  #(ralt - x ralt - l XX)
+  x;  #(ralt - x ralt - ; XX)
+  xn  #(ralt - x ralt - n XX)
+  xm  (tap-next-release (around ralt #(= x - m XX)) (around ralt #(= x = m (layer-toggle kana0))))
+  x,  #(ralt - x ralt - , XX)
+  x.  #(ralt - x ralt - . XX)
+  x/  #(ralt - x ralt - / XX)
+
+  ci  #(ralt - c ralt - i XX)
+  co  #(ralt - c ralt - o XX)
+  cp  #(ralt - c ralt - p XX)
+  ch  #(ralt - c ralt - h XX)
+  cj  (tap-next-release (around ralt #(= c - j XX)) (around ralt #(= c = j (layer-toggle kana0))))
+  ck  #(ralt - c ralt - h XX)
+  cl  #(ralt - c ralt - k XX)
+  c;  #(ralt - c ralt - ; XX)
+  cn  #(ralt - c ralt - n XX)
+  cm  (tap-next-release (around ralt #(= c - m XX)) (around ralt #(= c = m (layer-toggle kana0))))
+  c,  #(ralt - c ralt - , XX)
+  c.  #(ralt - c ralt - . XX)
+  c/  #(ralt - c ralt - / XX)
+
+  vi  #(ralt - v ralt - i XX)
+  vo  #(ralt - v ralt - o XX)
+  vp  (tap-next-release (around ralt #(= v - p XX)) (around ralt #(= v = p (layer-toggle kana0))))
+  vh  #(ralt - v ralt - h XX)
+  vj  (tap-next-release (around ralt #(= v - j XX)) (around ralt #(= v = j (layer-toggle kana0))))
+  vl  #(ralt - v ralt - l XX)
+  vk  #(ralt - v ralt - k XX)
+  v;  (tap-next-release (around ralt #(= v - ; XX)) (around ralt #(= v = ; (layer-toggle kana0))))
+  vn  #(ralt - v ralt - n XX)
+  v,  #(ralt - v ralt - , XX)
+  v.  #(ralt - v ralt - . XX)
+  v/  #(ralt - v ralt - / XX)
+
+  ^q #(ralt = - q XX)
+  ^w #(ralt = - w XX)
+  ^e #(ralt = - e XX)
+  ^r #(ralt = - r XX)
+  ^t #(ralt = - t XX)
+  ^a #(ralt = - a XX)
+  ^s #(ralt = - s XX)
+  ^d #(ralt = - d XX)
+  ^f #(ralt = - f XX)
+  ^g #(ralt = - g XX)
+  ^z #(ralt = - z XX)
+  ^x #(ralt = - x XX)
+  ^c #(ralt = - c XX)
+  ^v (tap-next-press (around ralt #(= - v XX)) (around ralt #(- = v (layer-toggle kana-v))))
+  ^b #(ralt = - b XX)
+  ^y #(ralt = - y XX)
+  ^u #(ralt = - u XX)
+  ^i #(ralt = - i XX)
+  ^o #(ralt = - o XX)
+  ^p #(ralt = - p XX)
+  ^h #(ralt = - h XX)
+  ^j #(ralt = - j XX)
+  ^k #(ralt = - k XX)
+  ^l #(ralt = - l XX)
+  ^; #(ralt = - ; XX)
+  ^n #(ralt = - n XX)
+  ^m #(ralt = - m XX)
+  ^, #(ralt = - , XX)
+  ^. #(ralt = - . XX)
+  ^/ #(ralt = - / XX)
+
+  Q  (tap-next-release #(- q XX) #(= q))
+  W  (tap-next-release #(- w XX) #(= w))
+  E  (tap-next-release #(- e XX) #(= e))
+  R  (tap-next-release #(- r XX) #(= r))
+  T  (tap-next-release #(- t XX) #(= t))
+  A  (tap-next-release #(- a XX) #(= a))
+  S  (tap-next-release #(- s XX) #(= s))
+  D  (tap-next-release #(- d XX) #(= d))
+  F  (tap-next-release #(- f XX) #(= f))
+  G  (tap-next-release #(- g XX) #(= g))
+  Z  (tap-next-release #(- z XX) #(= z))
+  X  (tap-next-release #(- x XX) #(= x))
+  C  (tap-next-release #(- c XX) #(= c))
+  V  (tap-next-release #(- v XX) #(= v))
+  B  (tap-next-release #(- b XX) #(= b))
+  Y  (tap-next-release #(- y XX) #(= y))
+  U  (tap-next-release #(- u XX) #(= u))
+  I  (tap-next-release #(- i XX) #(= i))
+  O  (tap-next-release #(- o XX) #(= o))
+  P  (tap-next-release #(- p XX) #(= p))
+  H  (tap-next-release #(- h XX) #(= h))
+  J  (tap-next-release #(- j XX) #(= j))
+  K  (tap-next-release #(- k XX) #(= k))
+  L  (tap-next-release #(- l XX) #(= l))
+  :  (tap-next-release #(- ; XX) #(= ;))
+  N  (tap-next-release #(- n XX) #(= n))
+  M  (tap-next-release #(- m XX) #(= m))
+  <  (tap-next-release #(- , XX) #(= ,))
+  >  (tap-next-release #(- . XX) #(= .))
+  ?  (tap-next-release #(- / XX) #(= /))
+
+  roma-v (tap-hold-next 180 v (layer-toggle roma-v))
+  roma-h (tap-hold-next 180 h (layer-toggle roma-h))
+  roma-j (tap-hold-next 180 j (layer-toggle roma-j))
+  roma-m (tap-hold-next 180 m (layer-toggle roma-m))
+
+  kana-w (tap-next-press (around ralt #(- w XX)) (layer-toggle kana-w))
+  kana-e (tap-next-press (around ralt #(- e XX)) (layer-toggle kana-e))
+  kana-r (tap-next-press (around ralt #(- r XX)) (layer-toggle kana-r))
+  kana-t (tap-next-release #(lsft left) (around ralt #(= t (layer-toggle kanji))))
+  kana-s (tap-next-press (around ralt #(- s XX)) (layer-toggle kana-s))
+  kana-d (tap-next-press (around ralt #(- d XX)) (layer-toggle kana-d))
+  kana-f (tap-next-press (around ralt #(- f XX)) (layer-toggle kana-f))
+  kana-g (tap-next-press (around ralt #(- g XX)) (around ralt #(= g (layer-toggle kana-g))))
+  kana-x (tap-next-press (around ralt #(- x XX)) (layer-toggle kana-x))
+  kana-c (tap-next-press (around ralt #(- c XX)) (layer-toggle kana-c))
+  kana-v (tap-next-press (around ralt #(- v XX)) (layer-toggle kana-v))
+  kana-y (tap-next-release #(lsft right) (around ralt #(= y (layer-toggle kanji))))
+  kana-u (tap-next-release bspc (around ralt #(= u (layer-toggle kana-u))))
+  kana-m (tap-next-release (around ralt #(- m XX)) (around ralt #(= m (layer-toggle kana-m))))
+
+  rw> (layer-toggle rw>)
+  re> (layer-toggle re>)
+
+  ew> (layer-toggle ew>)
+  er> (layer-toggle er>)
+  ef> (layer-toggle ef>)
+
+  we> (layer-toggle we>)
+  wr> (layer-toggle wr>)
+  wf> (layer-toggle wf>)
+
+  sq> (layer-toggle sq>)
+  se> (layer-toggle se>)
+  sr> (layer-toggle sr>)
+  sd> (layer-toggle sd>)
+  sf> (layer-toggle sf>)
+  sc> (layer-toggle sc>)
+  sv> (layer-toggle sv>)
+
+  dw> (layer-toggle dw>)
+  ds> (layer-toggle ds>)
+  df> (layer-toggle df>)
+  dg> (layer-toggle dg>)
+  dc> (layer-toggle dc>)
+  dv> (layer-toggle dv>)
+
+  fw> (layer-toggle fw>)
+  fe> (layer-toggle fe>)
+  fr> (layer-toggle fr>)
+  fs> (layer-toggle fs>)
+  fd> (layer-toggle fd>)
+
+  xd> (layer-toggle xd>)
+  xf> (layer-toggle xf>)
+  xc> (layer-toggle xc>)
+  xv> (layer-toggle xv>)
+
+  cs> (layer-toggle cs>)
+  cd> (layer-toggle cd>)
+  cg> (layer-toggle cg>)
+  cx> (layer-toggle cx>)
+  cv> (layer-toggle cv>)
+  cb> (layer-toggle cb>)
+
+  vs> (layer-toggle vs>)
+  vd> (layer-toggle vd>)
+  vf> (layer-toggle vf>)
+  vx> (layer-toggle vx>)
+  vc> (layer-toggle vc>)
+
+  r-y (tap-next-release #(r y XX) (around-next #(r = y (layer-toggle kanji))))
+  r-u (tap-next-release #(r u XX) (around-next #(r = u (layer-toggle kanji))))
+  r-i (tap-next-release #(r i XX) (around-next #(r = i (layer-toggle kanji))))
+  r-o (tap-next-release #(r o XX) (around-next #(r = o (layer-toggle kanji))))
+  r-p (tap-next-release #(r p XX) (around-next #(r = p (layer-toggle kanji))))
+  r-h (tap-next-release #(r h XX) (around-next #(r = h (layer-toggle kanji))))
+  r-j (tap-next-release #(r j XX) (around-next #(r = j (layer-toggle kanji))))
+  r-k (tap-next-release #(r k XX) (around-next #(r = k (layer-toggle kanji))))
+  r-l (tap-next-release #(r l XX) (around-next #(r = l (layer-toggle kanji))))
+  r-; (tap-next-release #(r ; XX) (around-next #(r = ; (layer-toggle kanji))))
+  r-n (tap-next-release #(r n XX) (around-next #(r = n (layer-toggle kanji))))
+  r-m (tap-next-release #(r m XX) (around-next #(r = m (layer-toggle kanji))))
+  r-, (tap-next-release #(r , XX) (around-next #(r = , (layer-toggle kanji))))
+  r-. (tap-next-release #(r . XX) (around-next #(r = . (layer-toggle kanji))))
+  r-/ (tap-next-release #(r / XX) (around-next #(r = / (layer-toggle kanji))))
+
+  f-y (tap-next-release #(f y XX) (around-next #(f = y (layer-toggle kanji))))
+  f-u (tap-next-release #(f u XX) (around-next #(f = u (layer-toggle kanji))))
+  f-i (tap-next-release #(f i XX) (around-next #(f = i (layer-toggle kanji))))
+  f-o (tap-next-release #(f o XX) (around-next #(f = o (layer-toggle kanji))))
+  f-p (tap-next-release #(f p XX) (around-next #(f = p (layer-toggle kanji))))
+  f-h (tap-next-release #(f h XX) (around-next #(f = h (layer-toggle kanji))))
+  f-j (tap-next-release #(f j XX) (around-next #(f = j (layer-toggle kanji))))
+  f-k (tap-next-release #(f k XX) (around-next #(f = k (layer-toggle kanji))))
+  f-l (tap-next-release #(f l XX) (around-next #(f = l (layer-toggle kanji))))
+  f-; (tap-next-release #(f ; XX) (around-next #(f = ; (layer-toggle kanji))))
+  f-n (tap-next-release #(f n XX) (around-next #(f = n (layer-toggle kanji))))
+  f-m (tap-next-release #(f m XX) (around-next #(f = m (layer-toggle kanji))))
+  f-, (tap-next-release #(f , XX) (around-next #(f = , (layer-toggle kanji))))
+  f-. (tap-next-release #(f . XX) (around-next #(f = . (layer-toggle kanji))))
+  f-/ (tap-next-release #(f / XX) (around-next #(f = / (layer-toggle kanji))))
+
+  v-y (tap-next-release #(v y XX) (around-next #(v = y (layer-toggle kanji))))
+  v-u (tap-next-release #(v u XX) (around-next #(v = u (layer-toggle kanji))))
+  v-i (tap-next-release #(v i XX) (around-next #(v = i (layer-toggle kanji))))
+  v-o (tap-next-release #(v o XX) (around-next #(v = o (layer-toggle kanji))))
+  v-p (tap-next-release #(v p XX) (around-next #(v = p (layer-toggle kanji))))
+  v-h (tap-next-release #(v h XX) (around-next #(v = h (layer-toggle kanji))))
+  v-j (tap-next-release #(v j XX) (around-next #(v = j (layer-toggle kanji))))
+  v-k (tap-next-release #(v k XX) (around-next #(v = k (layer-toggle kanji))))
+  v-l (tap-next-release #(v l XX) (around-next #(v = l (layer-toggle kanji))))
+  v-; (tap-next-release #(v ; XX) (around-next #(v = ; (layer-toggle kanji))))
+  v-n (tap-next-release #(v n XX) (around-next #(v = n (layer-toggle kanji))))
+  v-m (tap-next-release #(v m XX) (around-next #(v = m (layer-toggle kanji))))
+  v-, (tap-next-release #(v , XX) (around-next #(v = , (layer-toggle kanji))))
+  v-. (tap-next-release #(v . XX) (around-next #(v = . (layer-toggle kanji))))
+  v-/ (tap-next-release #(v / XX) (around-next #(v = / (layer-toggle kanji))))
+
+  e-y (tap-next-release #(e y XX) (around-next #(e = y (layer-toggle kanji))))
+  e-u (tap-next-release #(e u XX) (around-next #(e = u (layer-toggle kanji))))
+  e-i (tap-next-release #(e i XX) (around-next #(e = i (layer-toggle kanji))))
+  e-o (tap-next-release #(e o XX) (around-next #(e = o (layer-toggle kanji))))
+  e-p (tap-next-release #(e p XX) (around-next #(e = p (layer-toggle kanji))))
+  e-h (tap-next-release #(e h XX) (around-next #(e = h (layer-toggle kanji))))
+  e-j (tap-next-release #(e j XX) (around-next #(e = j (layer-toggle kanji))))
+  e-k (tap-next-release #(e k XX) (around-next #(e = k (layer-toggle kanji))))
+  e-l (tap-next-release #(e l XX) (around-next #(e = l (layer-toggle kanji))))
+  e-; (tap-next-release #(e ; XX) (around-next #(e = ; (layer-toggle kanji))))
+  e-n (tap-next-release #(e n XX) (around-next #(e = n (layer-toggle kanji))))
+  e-m (tap-next-release #(e m XX) (around-next #(e = m (layer-toggle kanji))))
+  e-, (tap-next-release #(e , XX) (around-next #(e = , (layer-toggle kanji))))
+  e-. (tap-next-release #(e . XX) (around-next #(e = . (layer-toggle kanji))))
+  e-/ (tap-next-release #(e / XX) (around-next #(e = / (layer-toggle kanji))))
+
+  d-y (tap-next-release #(d y XX) (around-next #(d = y (layer-toggle kanji))))
+  d-u (tap-next-release #(d u XX) (around-next #(d = u (layer-toggle kanji))))
+  d-i (tap-next-release #(d i XX) (around-next #(d = i (layer-toggle kanji))))
+  d-o (tap-next-release #(d o XX) (around-next #(d = o (layer-toggle kanji))))
+  d-p (tap-next-release #(d p XX) (around-next #(d = p (layer-toggle kanji))))
+  d-h (tap-next-release #(d h XX) (around-next #(d = h (layer-toggle kanji))))
+  d-j (tap-next-release #(d j XX) (around-next #(d = j (layer-toggle kanji))))
+  d-k (tap-next-release #(d k XX) (around-next #(d = k (layer-toggle kanji))))
+  d-l (tap-next-release #(d l XX) (around-next #(d = l (layer-toggle kanji))))
+  d-; (tap-next-release #(d ; XX) (around-next #(d = ; (layer-toggle kanji))))
+  d-n (tap-next-release #(d n XX) (around-next #(d = n (layer-toggle kanji))))
+  d-m (tap-next-release #(d m XX) (around-next #(d = m (layer-toggle kanji))))
+  d-, (tap-next-release #(d , XX) (around-next #(d = , (layer-toggle kanji))))
+  d-. (tap-next-release #(d . XX) (around-next #(d = . (layer-toggle kanji))))
+  d-/ (tap-next-release #(d / XX) (around-next #(d = / (layer-toggle kanji))))
+
+  x-y (tap-next-release #(x y XX) (around-next #(x = y (layer-toggle kanji))))
+  x-u (tap-next-release #(x u XX) (around-next #(x = u (layer-toggle kanji))))
+  x-i (tap-next-release #(x i XX) (around-next #(x = i (layer-toggle kanji))))
+  x-o (tap-next-release #(x o XX) (around-next #(x = o (layer-toggle kanji))))
+  x-p (tap-next-release #(x p XX) (around-next #(x = p (layer-toggle kanji))))
+  x-h (tap-next-release #(x h XX) (around-next #(x = h (layer-toggle kanji))))
+  x-j (tap-next-release #(x j XX) (around-next #(x = j (layer-toggle kanji))))
+  x-k (tap-next-release #(x k XX) (around-next #(x = k (layer-toggle kanji))))
+  x-l (tap-next-release #(x l XX) (around-next #(x = l (layer-toggle kanji))))
+  x-; (tap-next-release #(x ; XX) (around-next #(x = ; (layer-toggle kanji))))
+  x-n (tap-next-release #(x n XX) (around-next #(x = n (layer-toggle kanji))))
+  x-m (tap-next-release #(x m XX) (around-next #(x = m (layer-toggle kanji))))
+  x-, (tap-next-release #(x , XX) (around-next #(x = , (layer-toggle kanji))))
+  x-. (tap-next-release #(x . XX) (around-next #(x = . (layer-toggle kanji))))
+  x-/ (tap-next-release #(x / XX) (around-next #(x = / (layer-toggle kanji))))
+
+  c-y (tap-next-release #(c y XX) (around-next #(c = y (layer-toggle kanji))))
+  c-u (tap-next-release #(c u XX) (around-next #(c = u (layer-toggle kanji))))
+  c-i (tap-next-release #(c i XX) (around-next #(c = i (layer-toggle kanji))))
+  c-o (tap-next-release #(c o XX) (around-next #(c = o (layer-toggle kanji))))
+  c-p (tap-next-release #(c p XX) (around-next #(c = p (layer-toggle kanji))))
+  c-h (tap-next-release #(c h XX) (around-next #(c = h (layer-toggle kanji))))
+  c-j (tap-next-release #(c j XX) (around-next #(c = j (layer-toggle kanji))))
+  c-k (tap-next-release #(c k XX) (around-next #(c = k (layer-toggle kanji))))
+  c-l (tap-next-release #(c l XX) (around-next #(c = l (layer-toggle kanji))))
+  c-; (tap-next-release #(c ; XX) (around-next #(c = ; (layer-toggle kanji))))
+  c-n (tap-next-release #(c n XX) (around-next #(c = n (layer-toggle kanji))))
+  c-m (tap-next-release #(c m XX) (around-next #(c = m (layer-toggle kanji))))
+  c-, (tap-next-release #(c , XX) (around-next #(c = , (layer-toggle kanji))))
+  c-. (tap-next-release #(c . XX) (around-next #(c = . (layer-toggle kanji))))
+  c-/ (tap-next-release #(c / XX) (around-next #(c = / (layer-toggle kanji))))
+
+  rw-y (tap-next-release (around ralt #(= r w y XX)) (around-next #(ralt = r w = y (layer-toggle kanji))))
+  rw-u (tap-next-release (around ralt #(= r w u XX)) (around-next #(ralt = r w = u (layer-toggle kanji))))
+  rw-i (tap-next-release (around ralt #(= r w i XX)) (around-next #(ralt = r w = i (layer-toggle kanji))))
+  rw-o (tap-next-release (around ralt #(= r w o XX)) (around-next #(ralt = r w = o (layer-toggle kanji))))
+  rw-p (tap-next-release (around ralt #(= r w p XX)) (around-next #(ralt = r w = p (layer-toggle kanji))))
+  rw-h (tap-next-release (around ralt #(= r w h XX)) (around-next #(ralt = r w = h (layer-toggle kanji))))
+  rw-j (tap-next-release (around ralt #(= r w j XX)) (around-next #(ralt = r w = j (layer-toggle kanji))))
+  rw-k (tap-next-release (around ralt #(= r w k XX)) (around-next #(ralt = r w = k (layer-toggle kanji))))
+  rw-l (tap-next-release (around ralt #(= r w l XX)) (around-next #(ralt = r w = l (layer-toggle kanji))))
+  rw-; (tap-next-release (around ralt #(= r w ; XX)) (around-next #(ralt = r w = ; (layer-toggle kanji))))
+  rw-n (tap-next-release (around ralt #(= r w n XX)) (around-next #(ralt = r w = n (layer-toggle kanji))))
+  rw-m (tap-next-release (around ralt #(= r w m XX)) (around-next #(ralt = r w = m (layer-toggle kanji))))
+  rw-, (tap-next-release (around ralt #(= r w , XX)) (around-next #(ralt = r w = , (layer-toggle kanji))))
+  rw-. (tap-next-release (around ralt #(= r w . XX)) (around-next #(ralt = r w = . (layer-toggle kanji))))
+  rw-/ (tap-next-release (around ralt #(= r w / XX)) (around-next #(ralt = r w = / (layer-toggle kanji))))
+
+  re-y (tap-next-release (around ralt #(= r e y XX)) (around-next #(ralt = r e = y (layer-toggle kanji))))
+  re-u (tap-next-release (around ralt #(= r e u XX)) (around-next #(ralt = r e = u (layer-toggle kanji))))
+  re-i (tap-next-release (around ralt #(= r e i XX)) (around-next #(ralt = r e = i (layer-toggle kanji))))
+  re-o (tap-next-release (around ralt #(= r e o XX)) (around-next #(ralt = r e = o (layer-toggle kanji))))
+  re-p (tap-next-release (around ralt #(= r e p XX)) (around-next #(ralt = r e = p (layer-toggle kanji))))
+  re-h (tap-next-release (around ralt #(= r e h XX)) (around-next #(ralt = r e = h (layer-toggle kanji))))
+  re-j (tap-next-release (around ralt #(= r e j XX)) (around-next #(ralt = r e = j (layer-toggle kanji))))
+  re-k (tap-next-release (around ralt #(= r e k XX)) (around-next #(ralt = r e = k (layer-toggle kanji))))
+  re-l (tap-next-release (around ralt #(= r e l XX)) (around-next #(ralt = r e = l (layer-toggle kanji))))
+  re-; (tap-next-release (around ralt #(= r e ; XX)) (around-next #(ralt = r e = ; (layer-toggle kanji))))
+  re-n (tap-next-release (around ralt #(= r e n XX)) (around-next #(ralt = r e = n (layer-toggle kanji))))
+  re-m (tap-next-release (around ralt #(= r e m XX)) (around-next #(ralt = r e = m (layer-toggle kanji))))
+  re-, (tap-next-release (around ralt #(= r e , XX)) (around-next #(ralt = r e = , (layer-toggle kanji))))
+  re-. (tap-next-release (around ralt #(= r e . XX)) (around-next #(ralt = r e = . (layer-toggle kanji))))
+  re-/ (tap-next-release (around ralt #(= r e / XX)) (around-next #(ralt = r e = / (layer-toggle kanji))))
+
+  ew-y (tap-next-release (around ralt #(= e w y XX)) (around-next #(ralt = e w = y (layer-toggle kanji))))
+  ew-u (tap-next-release (around ralt #(= e w u XX)) (around-next #(ralt = e w = u (layer-toggle kanji))))
+  ew-i (tap-next-release (around ralt #(= e w i XX)) (around-next #(ralt = e w = i (layer-toggle kanji))))
+  ew-o (tap-next-release (around ralt #(= e w o XX)) (around-next #(ralt = e w = o (layer-toggle kanji))))
+  ew-p (tap-next-release (around ralt #(= e w p XX)) (around-next #(ralt = e w = p (layer-toggle kanji))))
+  ew-h (tap-next-release (around ralt #(= e w h XX)) (around-next #(ralt = e w = h (layer-toggle kanji))))
+  ew-j (tap-next-release (around ralt #(= e w j XX)) (around-next #(ralt = e w = j (layer-toggle kanji))))
+  ew-k (tap-next-release (around ralt #(= e w k XX)) (around-next #(ralt = e w = k (layer-toggle kanji))))
+  ew-l (tap-next-release (around ralt #(= e w l XX)) (around-next #(ralt = e w = l (layer-toggle kanji))))
+  ew-; (tap-next-release (around ralt #(= e w ; XX)) (around-next #(ralt = e w = ; (layer-toggle kanji))))
+  ew-n (tap-next-release (around ralt #(= e w n XX)) (around-next #(ralt = e w = n (layer-toggle kanji))))
+  ew-m (tap-next-release (around ralt #(= e w m XX)) (around-next #(ralt = e w = m (layer-toggle kanji))))
+  ew-, (tap-next-release (around ralt #(= e w , XX)) (around-next #(ralt = e w = , (layer-toggle kanji))))
+  ew-. (tap-next-release (around ralt #(= e w . XX)) (around-next #(ralt = e w = . (layer-toggle kanji))))
+  ew-/ (tap-next-release (around ralt #(= e w / XX)) (around-next #(ralt = e w = / (layer-toggle kanji))))
+
+  er-y (tap-next-release (around ralt #(= e r y XX)) (around-next #(ralt = e r = y (layer-toggle kanji))))
+  er-u (tap-next-release (around ralt #(= e r u XX)) (around-next #(ralt = e r = u (layer-toggle kanji))))
+  er-i (tap-next-release (around ralt #(= e r i XX)) (around-next #(ralt = e r = i (layer-toggle kanji))))
+  er-o (tap-next-release (around ralt #(= e r o XX)) (around-next #(ralt = e r = o (layer-toggle kanji))))
+  er-p (tap-next-release (around ralt #(= e r p XX)) (around-next #(ralt = e r = p (layer-toggle kanji))))
+  er-h (tap-next-release (around ralt #(= e r h XX)) (around-next #(ralt = e r = h (layer-toggle kanji))))
+  er-j (tap-next-release (around ralt #(= e r j XX)) (around-next #(ralt = e r = j (layer-toggle kanji))))
+  er-k (tap-next-release (around ralt #(= e r k XX)) (around-next #(ralt = e r = k (layer-toggle kanji))))
+  er-l (tap-next-release (around ralt #(= e r l XX)) (around-next #(ralt = e r = l (layer-toggle kanji))))
+  er-; (tap-next-release (around ralt #(= e r ; XX)) (around-next #(ralt = e r = ; (layer-toggle kanji))))
+  er-n (tap-next-release (around ralt #(= e r n XX)) (around-next #(ralt = e r = n (layer-toggle kanji))))
+  er-m (tap-next-release (around ralt #(= e r m XX)) (around-next #(ralt = e r = m (layer-toggle kanji))))
+  er-, (tap-next-release (around ralt #(= e r , XX)) (around-next #(ralt = e r = , (layer-toggle kanji))))
+  er-. (tap-next-release (around ralt #(= e r . XX)) (around-next #(ralt = e r = . (layer-toggle kanji))))
+  er-/ (tap-next-release (around ralt #(= e r / XX)) (around-next #(ralt = e r = / (layer-toggle kanji))))
+
+  et-y (tap-next-release (around ralt #(= e t y XX)) (around-next #(ralt = e t = y (layer-toggle kanji))))
+  et-u (tap-next-release (around ralt #(= e t u XX)) (around-next #(ralt = e t = u (layer-toggle kanji))))
+  et-i (tap-next-release (around ralt #(= e t i XX)) (around-next #(ralt = e t = i (layer-toggle kanji))))
+  et-o (tap-next-release (around ralt #(= e t o XX)) (around-next #(ralt = e t = o (layer-toggle kanji))))
+  et-p (tap-next-release (around ralt #(= e t p XX)) (around-next #(ralt = e t = p (layer-toggle kanji))))
+  et-h (tap-next-release (around ralt #(= e t h XX)) (around-next #(ralt = e t = h (layer-toggle kanji))))
+  et-j (tap-next-release (around ralt #(= e t j XX)) (around-next #(ralt = e t = j (layer-toggle kanji))))
+  et-k (tap-next-release (around ralt #(= e t k XX)) (around-next #(ralt = e t = k (layer-toggle kanji))))
+  et-l (tap-next-release (around ralt #(= e t l XX)) (around-next #(ralt = e t = l (layer-toggle kanji))))
+  et-; (tap-next-release (around ralt #(= e t ; XX)) (around-next #(ralt = e t = ; (layer-toggle kanji))))
+  et-n (tap-next-release (around ralt #(= e t n XX)) (around-next #(ralt = e t = n (layer-toggle kanji))))
+  et-m (tap-next-release (around ralt #(= e t m XX)) (around-next #(ralt = e t = m (layer-toggle kanji))))
+  et-, (tap-next-release (around ralt #(= e t , XX)) (around-next #(ralt = e t = , (layer-toggle kanji))))
+  et-. (tap-next-release (around ralt #(= e t . XX)) (around-next #(ralt = e t = . (layer-toggle kanji))))
+  et-/ (tap-next-release (around ralt #(= e t / XX)) (around-next #(ralt = e t = / (layer-toggle kanji))))
+
+  ef-y (tap-next-release (around ralt #(= e f y XX)) (around-next #(ralt = e f = y (layer-toggle kanji))))
+  ef-u (tap-next-release (around ralt #(= e f u XX)) (around-next #(ralt = e f = u (layer-toggle kanji))))
+  ef-i (tap-next-release (around ralt #(= e f i XX)) (around-next #(ralt = e f = i (layer-toggle kanji))))
+  ef-o (tap-next-release (around ralt #(= e f o XX)) (around-next #(ralt = e f = o (layer-toggle kanji))))
+  ef-p (tap-next-release (around ralt #(= e f p XX)) (around-next #(ralt = e f = p (layer-toggle kanji))))
+  ef-h (tap-next-release (around ralt #(= e f h XX)) (around-next #(ralt = e f = h (layer-toggle kanji))))
+  ef-j (tap-next-release (around ralt #(= e f j XX)) (around-next #(ralt = e f = j (layer-toggle kanji))))
+  ef-k (tap-next-release (around ralt #(= e f k XX)) (around-next #(ralt = e f = k (layer-toggle kanji))))
+  ef-l (tap-next-release (around ralt #(= e f l XX)) (around-next #(ralt = e f = l (layer-toggle kanji))))
+  ef-; (tap-next-release (around ralt #(= e f ; XX)) (around-next #(ralt = e f = ; (layer-toggle kanji))))
+  ef-n (tap-next-release (around ralt #(= e f n XX)) (around-next #(ralt = e f = n (layer-toggle kanji))))
+  ef-m (tap-next-release (around ralt #(= e f m XX)) (around-next #(ralt = e f = m (layer-toggle kanji))))
+  ef-, (tap-next-release (around ralt #(= e f , XX)) (around-next #(ralt = e f = , (layer-toggle kanji))))
+  ef-. (tap-next-release (around ralt #(= e f . XX)) (around-next #(ralt = e f = . (layer-toggle kanji))))
+  ef-/ (tap-next-release (around ralt #(= e f / XX)) (around-next #(ralt = e f = / (layer-toggle kanji))))
+
+  we-y (tap-next-release (around ralt #(= w e y XX)) (around-next #(ralt = w e = y (layer-toggle kanji))))
+  we-u (tap-next-release (around ralt #(= w e u XX)) (around-next #(ralt = w e = u (layer-toggle kanji))))
+  we-i (tap-next-release (around ralt #(= w e i XX)) (around-next #(ralt = w e = i (layer-toggle kanji))))
+  we-o (tap-next-release (around ralt #(= w e o XX)) (around-next #(ralt = w e = o (layer-toggle kanji))))
+  we-p (tap-next-release (around ralt #(= w e p XX)) (around-next #(ralt = w e = p (layer-toggle kanji))))
+  we-h (tap-next-release (around ralt #(= w e h XX)) (around-next #(ralt = w e = h (layer-toggle kanji))))
+  we-j (tap-next-release (around ralt #(= w e j XX)) (around-next #(ralt = w e = j (layer-toggle kanji))))
+  we-k (tap-next-release (around ralt #(= w e k XX)) (around-next #(ralt = w e = k (layer-toggle kanji))))
+  we-l (tap-next-release (around ralt #(= w e l XX)) (around-next #(ralt = w e = l (layer-toggle kanji))))
+  we-; (tap-next-release (around ralt #(= w e ; XX)) (around-next #(ralt = w e = ; (layer-toggle kanji))))
+  we-n (tap-next-release (around ralt #(= w e n XX)) (around-next #(ralt = w e = n (layer-toggle kanji))))
+  we-m (tap-next-release (around ralt #(= w e m XX)) (around-next #(ralt = w e = m (layer-toggle kanji))))
+  we-, (tap-next-release (around ralt #(= w e , XX)) (around-next #(ralt = w e = , (layer-toggle kanji))))
+  we-. (tap-next-release (around ralt #(= w e . XX)) (around-next #(ralt = w e = . (layer-toggle kanji))))
+  we-/ (tap-next-release (around ralt #(= w e / XX)) (around-next #(ralt = w e = / (layer-toggle kanji))))
+
+  wr-y (tap-next-release (around ralt #(= w r y XX)) (around-next #(ralt = w r = y (layer-toggle kanji))))
+  wr-u (tap-next-release (around ralt #(= w r u XX)) (around-next #(ralt = w r = u (layer-toggle kanji))))
+  wr-i (tap-next-release (around ralt #(= w r i XX)) (around-next #(ralt = w r = i (layer-toggle kanji))))
+  wr-o (tap-next-release (around ralt #(= w r o XX)) (around-next #(ralt = w r = o (layer-toggle kanji))))
+  wr-p (tap-next-release (around ralt #(= w r p XX)) (around-next #(ralt = w r = p (layer-toggle kanji))))
+  wr-h (tap-next-release (around ralt #(= w r h XX)) (around-next #(ralt = w r = h (layer-toggle kanji))))
+  wr-j (tap-next-release (around ralt #(= w r j XX)) (around-next #(ralt = w r = j (layer-toggle kanji))))
+  wr-k (tap-next-release (around ralt #(= w r k XX)) (around-next #(ralt = w r = k (layer-toggle kanji))))
+  wr-l (tap-next-release (around ralt #(= w r l XX)) (around-next #(ralt = w r = l (layer-toggle kanji))))
+  wr-; (tap-next-release (around ralt #(= w r ; XX)) (around-next #(ralt = w r = ; (layer-toggle kanji))))
+  wr-n (tap-next-release (around ralt #(= w r n XX)) (around-next #(ralt = w r = n (layer-toggle kanji))))
+  wr-m (tap-next-release (around ralt #(= w r m XX)) (around-next #(ralt = w r = m (layer-toggle kanji))))
+  wr-, (tap-next-release (around ralt #(= w r , XX)) (around-next #(ralt = w r = , (layer-toggle kanji))))
+  wr-. (tap-next-release (around ralt #(= w r . XX)) (around-next #(ralt = w r = . (layer-toggle kanji))))
+  wr-/ (tap-next-release (around ralt #(= w r / XX)) (around-next #(ralt = w r = / (layer-toggle kanji))))
+
+  wf-y (tap-next-release (around ralt #(= w f y XX)) (around-next #(ralt = w f = y (layer-toggle kanji))))
+  wf-u (tap-next-release (around ralt #(= w f u XX)) (around-next #(ralt = w f = u (layer-toggle kanji))))
+  wf-i (tap-next-release (around ralt #(= w f i XX)) (around-next #(ralt = w f = i (layer-toggle kanji))))
+  wf-o (tap-next-release (around ralt #(= w f o XX)) (around-next #(ralt = w f = o (layer-toggle kanji))))
+  wf-p (tap-next-release (around ralt #(= w f p XX)) (around-next #(ralt = w f = p (layer-toggle kanji))))
+  wf-h (tap-next-release (around ralt #(= w f h XX)) (around-next #(ralt = w f = h (layer-toggle kanji))))
+  wf-j (tap-next-release (around ralt #(= w f j XX)) (around-next #(ralt = w f = j (layer-toggle kanji))))
+  wf-k (tap-next-release (around ralt #(= w f k XX)) (around-next #(ralt = w f = k (layer-toggle kanji))))
+  wf-l (tap-next-release (around ralt #(= w f l XX)) (around-next #(ralt = w f = l (layer-toggle kanji))))
+  wf-; (tap-next-release (around ralt #(= w f ; XX)) (around-next #(ralt = w f = ; (layer-toggle kanji))))
+  wf-n (tap-next-release (around ralt #(= w f n XX)) (around-next #(ralt = w f = n (layer-toggle kanji))))
+  wf-m (tap-next-release (around ralt #(= w f m XX)) (around-next #(ralt = w f = m (layer-toggle kanji))))
+  wf-, (tap-next-release (around ralt #(= w f , XX)) (around-next #(ralt = w f = , (layer-toggle kanji))))
+  wf-. (tap-next-release (around ralt #(= w f . XX)) (around-next #(ralt = w f = . (layer-toggle kanji))))
+  wf-/ (tap-next-release (around ralt #(= w f / XX)) (around-next #(ralt = w f = / (layer-toggle kanji))))
+
+  sq-y (tap-next-release (around ralt #(= s q y XX)) (around-next #(ralt = s q = y (layer-toggle kanji))))
+  sq-u (tap-next-release (around ralt #(= s q u XX)) (around-next #(ralt = s q = u (layer-toggle kanji))))
+  sq-i (tap-next-release (around ralt #(= s q i XX)) (around-next #(ralt = s q = i (layer-toggle kanji))))
+  sq-o (tap-next-release (around ralt #(= s q o XX)) (around-next #(ralt = s q = o (layer-toggle kanji))))
+  sq-p (tap-next-release (around ralt #(= s q p XX)) (around-next #(ralt = s q = p (layer-toggle kanji))))
+  sq-h (tap-next-release (around ralt #(= s q h XX)) (around-next #(ralt = s q = h (layer-toggle kanji))))
+  sq-j (tap-next-release (around ralt #(= s q j XX)) (around-next #(ralt = s q = j (layer-toggle kanji))))
+  sq-k (tap-next-release (around ralt #(= s q k XX)) (around-next #(ralt = s q = k (layer-toggle kanji))))
+  sq-l (tap-next-release (around ralt #(= s q l XX)) (around-next #(ralt = s q = l (layer-toggle kanji))))
+  sq-; (tap-next-release (around ralt #(= s q ; XX)) (around-next #(ralt = s q = ; (layer-toggle kanji))))
+  sq-n (tap-next-release (around ralt #(= s q n XX)) (around-next #(ralt = s q = n (layer-toggle kanji))))
+  sq-m (tap-next-release (around ralt #(= s q m XX)) (around-next #(ralt = s q = m (layer-toggle kanji))))
+  sq-, (tap-next-release (around ralt #(= s q , XX)) (around-next #(ralt = s q = , (layer-toggle kanji))))
+  sq-. (tap-next-release (around ralt #(= s q . XX)) (around-next #(ralt = s q = . (layer-toggle kanji))))
+  sq-/ (tap-next-release (around ralt #(= s q / XX)) (around-next #(ralt = s q = / (layer-toggle kanji))))
+
+  se-y (tap-next-release (around ralt #(= s e y XX)) (around-next #(ralt = s e = y (layer-toggle kanji))))
+  se-u (tap-next-release (around ralt #(= s e u XX)) (around-next #(ralt = s e = u (layer-toggle kanji))))
+  se-i (tap-next-release (around ralt #(= s e i XX)) (around-next #(ralt = s e = i (layer-toggle kanji))))
+  se-o (tap-next-release (around ralt #(= s e o XX)) (around-next #(ralt = s e = o (layer-toggle kanji))))
+  se-p (tap-next-release (around ralt #(= s e p XX)) (around-next #(ralt = s e = p (layer-toggle kanji))))
+  se-h (tap-next-release (around ralt #(= s e h XX)) (around-next #(ralt = s e = h (layer-toggle kanji))))
+  se-j (tap-next-release (around ralt #(= s e j XX)) (around-next #(ralt = s e = j (layer-toggle kanji))))
+  se-k (tap-next-release (around ralt #(= s e k XX)) (around-next #(ralt = s e = k (layer-toggle kanji))))
+  se-l (tap-next-release (around ralt #(= s e l XX)) (around-next #(ralt = s e = l (layer-toggle kanji))))
+  se-; (tap-next-release (around ralt #(= s e ; XX)) (around-next #(ralt = s e = ; (layer-toggle kanji))))
+  se-n (tap-next-release (around ralt #(= s e n XX)) (around-next #(ralt = s e = n (layer-toggle kanji))))
+  se-m (tap-next-release (around ralt #(= s e m XX)) (around-next #(ralt = s e = m (layer-toggle kanji))))
+  se-, (tap-next-release (around ralt #(= s e , XX)) (around-next #(ralt = s e = , (layer-toggle kanji))))
+  se-. (tap-next-release (around ralt #(= s e . XX)) (around-next #(ralt = s e = . (layer-toggle kanji))))
+  se-/ (tap-next-release (around ralt #(= s e / XX)) (around-next #(ralt = s e = / (layer-toggle kanji))))
+
+  sr-y (tap-next-release (around ralt #(= s r y XX)) (around-next #(ralt = s r = y (layer-toggle kanji))))
+  sr-u (tap-next-release (around ralt #(= s r u XX)) (around-next #(ralt = s r = u (layer-toggle kanji))))
+  sr-i (tap-next-release (around ralt #(= s r i XX)) (around-next #(ralt = s r = i (layer-toggle kanji))))
+  sr-o (tap-next-release (around ralt #(= s r o XX)) (around-next #(ralt = s r = o (layer-toggle kanji))))
+  sr-p (tap-next-release (around ralt #(= s r p XX)) (around-next #(ralt = s r = p (layer-toggle kanji))))
+  sr-h (tap-next-release (around ralt #(= s r h XX)) (around-next #(ralt = s r = h (layer-toggle kanji))))
+  sr-j (tap-next-release (around ralt #(= s r j XX)) (around-next #(ralt = s r = j (layer-toggle kanji))))
+  sr-k (tap-next-release (around ralt #(= s r k XX)) (around-next #(ralt = s r = k (layer-toggle kanji))))
+  sr-l (tap-next-release (around ralt #(= s r l XX)) (around-next #(ralt = s r = l (layer-toggle kanji))))
+  sr-; (tap-next-release (around ralt #(= s r ; XX)) (around-next #(ralt = s r = ; (layer-toggle kanji))))
+  sr-n (tap-next-release (around ralt #(= s r n XX)) (around-next #(ralt = s r = n (layer-toggle kanji))))
+  sr-m (tap-next-release (around ralt #(= s r m XX)) (around-next #(ralt = s r = m (layer-toggle kanji))))
+  sr-, (tap-next-release (around ralt #(= s r , XX)) (around-next #(ralt = s r = , (layer-toggle kanji))))
+  sr-. (tap-next-release (around ralt #(= s r . XX)) (around-next #(ralt = s r = . (layer-toggle kanji))))
+  sr-/ (tap-next-release (around ralt #(= s r / XX)) (around-next #(ralt = s r = / (layer-toggle kanji))))
+
+  sd-y (tap-next-release (around ralt #(= s d y XX)) (around-next #(ralt = s d = y (layer-toggle kanji))))
+  sd-u (tap-next-release (around ralt #(= s d u XX)) (around-next #(ralt = s d = u (layer-toggle kanji))))
+  sd-i (tap-next-release (around ralt #(= s d i XX)) (around-next #(ralt = s d = i (layer-toggle kanji))))
+  sd-o (tap-next-release (around ralt #(= s d o XX)) (around-next #(ralt = s d = o (layer-toggle kanji))))
+  sd-p (tap-next-release (around ralt #(= s d p XX)) (around-next #(ralt = s d = p (layer-toggle kanji))))
+  sd-h (tap-next-release (around ralt #(= s d h XX)) (around-next #(ralt = s d = h (layer-toggle kanji))))
+  sd-j (tap-next-release (around ralt #(= s d j XX)) (around-next #(ralt = s d = j (layer-toggle kanji))))
+  sd-k (tap-next-release (around ralt #(= s d k XX)) (around-next #(ralt = s d = k (layer-toggle kanji))))
+  sd-l (tap-next-release (around ralt #(= s d l XX)) (around-next #(ralt = s d = l (layer-toggle kanji))))
+  sd-; (tap-next-release (around ralt #(= s d ; XX)) (around-next #(ralt = s d = ; (layer-toggle kanji))))
+  sd-n (tap-next-release (around ralt #(= s d n XX)) (around-next #(ralt = s d = n (layer-toggle kanji))))
+  sd-m (tap-next-release (around ralt #(= s d m XX)) (around-next #(ralt = s d = m (layer-toggle kanji))))
+  sd-, (tap-next-release (around ralt #(= s d , XX)) (around-next #(ralt = s d = , (layer-toggle kanji))))
+  sd-. (tap-next-release (around ralt #(= s d . XX)) (around-next #(ralt = s d = . (layer-toggle kanji))))
+  sd-/ (tap-next-release (around ralt #(= s d / XX)) (around-next #(ralt = s d = / (layer-toggle kanji))))
+
+  sf-y (tap-next-release (around ralt #(= s f y XX)) (around-next #(ralt = s f = y (layer-toggle kanji))))
+  sf-u (tap-next-release (around ralt #(= s f u XX)) (around-next #(ralt = s f = u (layer-toggle kanji))))
+  sf-i (tap-next-release (around ralt #(= s f i XX)) (around-next #(ralt = s f = i (layer-toggle kanji))))
+  sf-o (tap-next-release (around ralt #(= s f o XX)) (around-next #(ralt = s f = o (layer-toggle kanji))))
+  sf-p (tap-next-release (around ralt #(= s f p XX)) (around-next #(ralt = s f = p (layer-toggle kanji))))
+  sf-h (tap-next-release (around ralt #(= s f h XX)) (around-next #(ralt = s f = h (layer-toggle kanji))))
+  sf-j (tap-next-release (around ralt #(= s f j XX)) (around-next #(ralt = s f = j (layer-toggle kanji))))
+  sf-k (tap-next-release (around ralt #(= s f k XX)) (around-next #(ralt = s f = k (layer-toggle kanji))))
+  sf-l (tap-next-release (around ralt #(= s f l XX)) (around-next #(ralt = s f = l (layer-toggle kanji))))
+  sf-; (tap-next-release (around ralt #(= s f ; XX)) (around-next #(ralt = s f = ; (layer-toggle kanji))))
+  sf-n (tap-next-release (around ralt #(= s f n XX)) (around-next #(ralt = s f = n (layer-toggle kanji))))
+  sf-m (tap-next-release (around ralt #(= s f m XX)) (around-next #(ralt = s f = m (layer-toggle kanji))))
+  sf-, (tap-next-release (around ralt #(= s f , XX)) (around-next #(ralt = s f = , (layer-toggle kanji))))
+  sf-. (tap-next-release (around ralt #(= s f . XX)) (around-next #(ralt = s f = . (layer-toggle kanji))))
+  sf-/ (tap-next-release (around ralt #(= s f / XX)) (around-next #(ralt = s f = / (layer-toggle kanji))))
+
+  sc-y (tap-next-release (around ralt #(= s c y XX)) (around-next #(ralt = s c = y (layer-toggle kanji))))
+  sc-u (tap-next-release (around ralt #(= s c u XX)) (around-next #(ralt = s c = u (layer-toggle kanji))))
+  sc-i (tap-next-release (around ralt #(= s c i XX)) (around-next #(ralt = s c = i (layer-toggle kanji))))
+  sc-o (tap-next-release (around ralt #(= s c o XX)) (around-next #(ralt = s c = o (layer-toggle kanji))))
+  sc-p (tap-next-release (around ralt #(= s c p XX)) (around-next #(ralt = s c = p (layer-toggle kanji))))
+  sc-h (tap-next-release (around ralt #(= s c h XX)) (around-next #(ralt = s c = h (layer-toggle kanji))))
+  sc-j (tap-next-release (around ralt #(= s c j XX)) (around-next #(ralt = s c = j (layer-toggle kanji))))
+  sc-k (tap-next-release (around ralt #(= s c k XX)) (around-next #(ralt = s c = k (layer-toggle kanji))))
+  sc-l (tap-next-release (around ralt #(= s c l XX)) (around-next #(ralt = s c = l (layer-toggle kanji))))
+  sc-; (tap-next-release (around ralt #(= s c ; XX)) (around-next #(ralt = s c = ; (layer-toggle kanji))))
+  sc-n (tap-next-release (around ralt #(= s c n XX)) (around-next #(ralt = s c = n (layer-toggle kanji))))
+  sc-m (tap-next-release (around ralt #(= s c m XX)) (around-next #(ralt = s c = m (layer-toggle kanji))))
+  sc-, (tap-next-release (around ralt #(= s c , XX)) (around-next #(ralt = s c = , (layer-toggle kanji))))
+  sc-. (tap-next-release (around ralt #(= s c . XX)) (around-next #(ralt = s c = . (layer-toggle kanji))))
+  sc-/ (tap-next-release (around ralt #(= s c / XX)) (around-next #(ralt = s c = / (layer-toggle kanji))))
+
+  sv-y (tap-next-release (around ralt #(= s v y XX)) (around-next #(ralt = s v = y (layer-toggle kanji))))
+  sv-u (tap-next-release (around ralt #(= s v u XX)) (around-next #(ralt = s v = u (layer-toggle kanji))))
+  sv-i (tap-next-release (around ralt #(= s v i XX)) (around-next #(ralt = s v = i (layer-toggle kanji))))
+  sv-o (tap-next-release (around ralt #(= s v o XX)) (around-next #(ralt = s v = o (layer-toggle kanji))))
+  sv-p (tap-next-release (around ralt #(= s v p XX)) (around-next #(ralt = s v = p (layer-toggle kanji))))
+  sv-h (tap-next-release (around ralt #(= s v h XX)) (around-next #(ralt = s v = h (layer-toggle kanji))))
+  sv-j (tap-next-release (around ralt #(= s v j XX)) (around-next #(ralt = s v = j (layer-toggle kanji))))
+  sv-k (tap-next-release (around ralt #(= s v k XX)) (around-next #(ralt = s v = k (layer-toggle kanji))))
+  sv-l (tap-next-release (around ralt #(= s v l XX)) (around-next #(ralt = s v = l (layer-toggle kanji))))
+  sv-; (tap-next-release (around ralt #(= s v ; XX)) (around-next #(ralt = s v = ; (layer-toggle kanji))))
+  sv-n (tap-next-release (around ralt #(= s v n XX)) (around-next #(ralt = s v = n (layer-toggle kanji))))
+  sv-m (tap-next-release (around ralt #(= s v m XX)) (around-next #(ralt = s v = m (layer-toggle kanji))))
+  sv-, (tap-next-release (around ralt #(= s v , XX)) (around-next #(ralt = s v = , (layer-toggle kanji))))
+  sv-. (tap-next-release (around ralt #(= s v . XX)) (around-next #(ralt = s v = . (layer-toggle kanji))))
+  sv-/ (tap-next-release (around ralt #(= s v / XX)) (around-next #(ralt = s v = / (layer-toggle kanji))))
+
+  dw-y (tap-next-release (around ralt #(= d w y XX)) (around-next #(ralt = d w = y (layer-toggle kanji))))
+  dw-u (tap-next-release (around ralt #(= d w u XX)) (around-next #(ralt = d w = u (layer-toggle kanji))))
+  dw-i (tap-next-release (around ralt #(= d w i XX)) (around-next #(ralt = d w = i (layer-toggle kanji))))
+  dw-o (tap-next-release (around ralt #(= d w o XX)) (around-next #(ralt = d w = o (layer-toggle kanji))))
+  dw-p (tap-next-release (around ralt #(= d w p XX)) (around-next #(ralt = d w = p (layer-toggle kanji))))
+  dw-h (tap-next-release (around ralt #(= d w h XX)) (around-next #(ralt = d w = h (layer-toggle kanji))))
+  dw-j (tap-next-release (around ralt #(= d w j XX)) (around-next #(ralt = d w = j (layer-toggle kanji))))
+  dw-k (tap-next-release (around ralt #(= d w k XX)) (around-next #(ralt = d w = k (layer-toggle kanji))))
+  dw-l (tap-next-release (around ralt #(= d w l XX)) (around-next #(ralt = d w = l (layer-toggle kanji))))
+  dw-; (tap-next-release (around ralt #(= d w ; XX)) (around-next #(ralt = d w = ; (layer-toggle kanji))))
+  dw-n (tap-next-release (around ralt #(= d w n XX)) (around-next #(ralt = d w = n (layer-toggle kanji))))
+  dw-m (tap-next-release (around ralt #(= d w m XX)) (around-next #(ralt = d w = m (layer-toggle kanji))))
+  dw-, (tap-next-release (around ralt #(= d w , XX)) (around-next #(ralt = d w = , (layer-toggle kanji))))
+  dw-. (tap-next-release (around ralt #(= d w . XX)) (around-next #(ralt = d w = . (layer-toggle kanji))))
+  dw-/ (tap-next-release (around ralt #(= d w / XX)) (around-next #(ralt = d w = / (layer-toggle kanji))))
+
+  ds-y (tap-next-release (around ralt #(= d s y XX)) (around-next #(ralt = d s = y (layer-toggle kanji))))
+  ds-u (tap-next-release (around ralt #(= d s u XX)) (around-next #(ralt = d s = u (layer-toggle kanji))))
+  ds-i (tap-next-release (around ralt #(= d s i XX)) (around-next #(ralt = d s = i (layer-toggle kanji))))
+  ds-o (tap-next-release (around ralt #(= d s o XX)) (around-next #(ralt = d s = o (layer-toggle kanji))))
+  ds-p (tap-next-release (around ralt #(= d s p XX)) (around-next #(ralt = d s = p (layer-toggle kanji))))
+  ds-h (tap-next-release (around ralt #(= d s h XX)) (around-next #(ralt = d s = h (layer-toggle kanji))))
+  ds-j (tap-next-release (around ralt #(= d s j XX)) (around-next #(ralt = d s = j (layer-toggle kanji))))
+  ds-k (tap-next-release (around ralt #(= d s k XX)) (around-next #(ralt = d s = k (layer-toggle kanji))))
+  ds-l (tap-next-release (around ralt #(= d s l XX)) (around-next #(ralt = d s = l (layer-toggle kanji))))
+  ds-; (tap-next-release (around ralt #(= d s ; XX)) (around-next #(ralt = d s = ; (layer-toggle kanji))))
+  ds-n (tap-next-release (around ralt #(= d s n XX)) (around-next #(ralt = d s = n (layer-toggle kanji))))
+  ds-m (tap-next-release (around ralt #(= d s m XX)) (around-next #(ralt = d s = m (layer-toggle kanji))))
+  ds-, (tap-next-release (around ralt #(= d s , XX)) (around-next #(ralt = d s = , (layer-toggle kanji))))
+  ds-. (tap-next-release (around ralt #(= d s . XX)) (around-next #(ralt = d s = . (layer-toggle kanji))))
+  ds-/ (tap-next-release (around ralt #(= d s / XX)) (around-next #(ralt = d s = / (layer-toggle kanji))))
+
+  df-y (tap-next-release (around ralt #(= d f y XX)) (around-next #(ralt = d f = y (layer-toggle kanji))))
+  df-u (tap-next-release (around ralt #(= d f u XX)) (around-next #(ralt = d f = u (layer-toggle kanji))))
+  df-i (tap-next-release (around ralt #(= d f i XX)) (around-next #(ralt = d f = i (layer-toggle kanji))))
+  df-o (tap-next-release (around ralt #(= d f o XX)) (around-next #(ralt = d f = o (layer-toggle kanji))))
+  df-p (tap-next-release (around ralt #(= d f p XX)) (around-next #(ralt = d f = p (layer-toggle kanji))))
+  df-h (tap-next-release (around ralt #(= d f h XX)) (around-next #(ralt = d f = h (layer-toggle kanji))))
+  df-j (tap-next-release (around ralt #(= d f j XX)) (around-next #(ralt = d f = j (layer-toggle kanji))))
+  df-k (tap-next-release (around ralt #(= d f k XX)) (around-next #(ralt = d f = k (layer-toggle kanji))))
+  df-l (tap-next-release (around ralt #(= d f l XX)) (around-next #(ralt = d f = l (layer-toggle kanji))))
+  df-; (tap-next-release (around ralt #(= d f ; XX)) (around-next #(ralt = d f = ; (layer-toggle kanji))))
+  df-n (tap-next-release (around ralt #(= d f n XX)) (around-next #(ralt = d f = n (layer-toggle kanji))))
+  df-m (tap-next-release (around ralt #(= d f m XX)) (around-next #(ralt = d f = m (layer-toggle kanji))))
+  df-, (tap-next-release (around ralt #(= d f , XX)) (around-next #(ralt = d f = , (layer-toggle kanji))))
+  df-. (tap-next-release (around ralt #(= d f . XX)) (around-next #(ralt = d f = . (layer-toggle kanji))))
+  df-/ (tap-next-release (around ralt #(= d f / XX)) (around-next #(ralt = d f = / (layer-toggle kanji))))
+
+  dg-y (tap-next-release (around ralt #(= d g y XX)) (around-next #(ralt = d g = y (layer-toggle kanji))))
+  dg-u (tap-next-release (around ralt #(= d g u XX)) (around-next #(ralt = d g = u (layer-toggle kanji))))
+  dg-i (tap-next-release (around ralt #(= d g i XX)) (around-next #(ralt = d g = i (layer-toggle kanji))))
+  dg-o (tap-next-release (around ralt #(= d g o XX)) (around-next #(ralt = d g = o (layer-toggle kanji))))
+  dg-p (tap-next-release (around ralt #(= d g p XX)) (around-next #(ralt = d g = p (layer-toggle kanji))))
+  dg-h (tap-next-release (around ralt #(= d g h XX)) (around-next #(ralt = d g = h (layer-toggle kanji))))
+  dg-j (tap-next-release (around ralt #(= d g j XX)) (around-next #(ralt = d g = j (layer-toggle kanji))))
+  dg-k (tap-next-release (around ralt #(= d g k XX)) (around-next #(ralt = d g = k (layer-toggle kanji))))
+  dg-l (tap-next-release (around ralt #(= d g l XX)) (around-next #(ralt = d g = l (layer-toggle kanji))))
+  dg-; (tap-next-release (around ralt #(= d g ; XX)) (around-next #(ralt = d g = ; (layer-toggle kanji))))
+  dg-n (tap-next-release (around ralt #(= d g n XX)) (around-next #(ralt = d g = n (layer-toggle kanji))))
+  dg-m (tap-next-release (around ralt #(= d g m XX)) (around-next #(ralt = d g = m (layer-toggle kanji))))
+  dg-, (tap-next-release (around ralt #(= d g , XX)) (around-next #(ralt = d g = , (layer-toggle kanji))))
+  dg-. (tap-next-release (around ralt #(= d g . XX)) (around-next #(ralt = d g = . (layer-toggle kanji))))
+  dg-/ (tap-next-release (around ralt #(= d g / XX)) (around-next #(ralt = d g = / (layer-toggle kanji))))
+
+  dc-y (tap-next-release (around ralt #(= d c y XX)) (around-next #(ralt = d c = y (layer-toggle kanji))))
+  dc-u (tap-next-release (around ralt #(= d c u XX)) (around-next #(ralt = d c = u (layer-toggle kanji))))
+  dc-i (tap-next-release (around ralt #(= d c i XX)) (around-next #(ralt = d c = i (layer-toggle kanji))))
+  dc-o (tap-next-release (around ralt #(= d c o XX)) (around-next #(ralt = d c = o (layer-toggle kanji))))
+  dc-p (tap-next-release (around ralt #(= d c p XX)) (around-next #(ralt = d c = p (layer-toggle kanji))))
+  dc-h (tap-next-release (around ralt #(= d c h XX)) (around-next #(ralt = d c = h (layer-toggle kanji))))
+  dc-j (tap-next-release (around ralt #(= d c j XX)) (around-next #(ralt = d c = j (layer-toggle kanji))))
+  dc-k (tap-next-release (around ralt #(= d c k XX)) (around-next #(ralt = d c = k (layer-toggle kanji))))
+  dc-l (tap-next-release (around ralt #(= d c l XX)) (around-next #(ralt = d c = l (layer-toggle kanji))))
+  dc-; (tap-next-release (around ralt #(= d c ; XX)) (around-next #(ralt = d c = ; (layer-toggle kanji))))
+  dc-n (tap-next-release (around ralt #(= d c n XX)) (around-next #(ralt = d c = n (layer-toggle kanji))))
+  dc-m (tap-next-release (around ralt #(= d c m XX)) (around-next #(ralt = d c = m (layer-toggle kanji))))
+  dc-, (tap-next-release (around ralt #(= d c , XX)) (around-next #(ralt = d c = , (layer-toggle kanji))))
+  dc-. (tap-next-release (around ralt #(= d c . XX)) (around-next #(ralt = d c = . (layer-toggle kanji))))
+  dc-/ (tap-next-release (around ralt #(= d c / XX)) (around-next #(ralt = d c = / (layer-toggle kanji))))
+
+  dv-y (tap-next-release (around ralt #(= d v y XX)) (around-next #(ralt = d v = y (layer-toggle kanji))))
+  dv-u (tap-next-release (around ralt #(= d v u XX)) (around-next #(ralt = d v = u (layer-toggle kanji))))
+  dv-i (tap-next-release (around ralt #(= d v i XX)) (around-next #(ralt = d v = i (layer-toggle kanji))))
+  dv-o (tap-next-release (around ralt #(= d v o XX)) (around-next #(ralt = d v = o (layer-toggle kanji))))
+  dv-p (tap-next-release (around ralt #(= d v p XX)) (around-next #(ralt = d v = p (layer-toggle kanji))))
+  dv-h (tap-next-release (around ralt #(= d v h XX)) (around-next #(ralt = d v = h (layer-toggle kanji))))
+  dv-j (tap-next-release (around ralt #(= d v j XX)) (around-next #(ralt = d v = j (layer-toggle kanji))))
+  dv-k (tap-next-release (around ralt #(= d v k XX)) (around-next #(ralt = d v = k (layer-toggle kanji))))
+  dv-l (tap-next-release (around ralt #(= d v l XX)) (around-next #(ralt = d v = l (layer-toggle kanji))))
+  dv-; (tap-next-release (around ralt #(= d v ; XX)) (around-next #(ralt = d v = ; (layer-toggle kanji))))
+  dv-n (tap-next-release (around ralt #(= d v n XX)) (around-next #(ralt = d v = n (layer-toggle kanji))))
+  dv-m (tap-next-release (around ralt #(= d v m XX)) (around-next #(ralt = d v = m (layer-toggle kanji))))
+  dv-, (tap-next-release (around ralt #(= d v , XX)) (around-next #(ralt = d v = , (layer-toggle kanji))))
+  dv-. (tap-next-release (around ralt #(= d v . XX)) (around-next #(ralt = d v = . (layer-toggle kanji))))
+  dv-/ (tap-next-release (around ralt #(= d v / XX)) (around-next #(ralt = d v = / (layer-toggle kanji))))
+
+  fw-y (tap-next-release (around ralt #(= f w y XX)) (around-next #(ralt = f w = y (layer-toggle kanji))))
+  fw-u (tap-next-release (around ralt #(= f w u XX)) (around-next #(ralt = f w = u (layer-toggle kanji))))
+  fw-i (tap-next-release (around ralt #(= f w i XX)) (around-next #(ralt = f w = i (layer-toggle kanji))))
+  fw-o (tap-next-release (around ralt #(= f w o XX)) (around-next #(ralt = f w = o (layer-toggle kanji))))
+  fw-p (tap-next-release (around ralt #(= f w p XX)) (around-next #(ralt = f w = p (layer-toggle kanji))))
+  fw-h (tap-next-release (around ralt #(= f w h XX)) (around-next #(ralt = f w = h (layer-toggle kanji))))
+  fw-j (tap-next-release (around ralt #(= f w j XX)) (around-next #(ralt = f w = j (layer-toggle kanji))))
+  fw-k (tap-next-release (around ralt #(= f w k XX)) (around-next #(ralt = f w = k (layer-toggle kanji))))
+  fw-l (tap-next-release (around ralt #(= f w l XX)) (around-next #(ralt = f w = l (layer-toggle kanji))))
+  fw-; (tap-next-release (around ralt #(= f w ; XX)) (around-next #(ralt = f w = ; (layer-toggle kanji))))
+  fw-n (tap-next-release (around ralt #(= f w n XX)) (around-next #(ralt = f w = n (layer-toggle kanji))))
+  fw-m (tap-next-release (around ralt #(= f w m XX)) (around-next #(ralt = f w = m (layer-toggle kanji))))
+  fw-, (tap-next-release (around ralt #(= f w , XX)) (around-next #(ralt = f w = , (layer-toggle kanji))))
+  fw-. (tap-next-release (around ralt #(= f w . XX)) (around-next #(ralt = f w = . (layer-toggle kanji))))
+  fw-/ (tap-next-release (around ralt #(= f w / XX)) (around-next #(ralt = f w = / (layer-toggle kanji))))
+
+  fe-y (tap-next-release (around ralt #(= f e y XX)) (around-next #(ralt = f e = y (layer-toggle kanji))))
+  fe-u (tap-next-release (around ralt #(= f e u XX)) (around-next #(ralt = f e = u (layer-toggle kanji))))
+  fe-i (tap-next-release (around ralt #(= f e i XX)) (around-next #(ralt = f e = i (layer-toggle kanji))))
+  fe-o (tap-next-release (around ralt #(= f e o XX)) (around-next #(ralt = f e = o (layer-toggle kanji))))
+  fe-p (tap-next-release (around ralt #(= f e p XX)) (around-next #(ralt = f e = p (layer-toggle kanji))))
+  fe-h (tap-next-release (around ralt #(= f e h XX)) (around-next #(ralt = f e = h (layer-toggle kanji))))
+  fe-j (tap-next-release (around ralt #(= f e j XX)) (around-next #(ralt = f e = j (layer-toggle kanji))))
+  fe-k (tap-next-release (around ralt #(= f e k XX)) (around-next #(ralt = f e = k (layer-toggle kanji))))
+  fe-l (tap-next-release (around ralt #(= f e l XX)) (around-next #(ralt = f e = l (layer-toggle kanji))))
+  fe-; (tap-next-release (around ralt #(= f e ; XX)) (around-next #(ralt = f e = ; (layer-toggle kanji))))
+  fe-n (tap-next-release (around ralt #(= f e n XX)) (around-next #(ralt = f e = n (layer-toggle kanji))))
+  fe-m (tap-next-release (around ralt #(= f e m XX)) (around-next #(ralt = f e = m (layer-toggle kanji))))
+  fe-, (tap-next-release (around ralt #(= f e , XX)) (around-next #(ralt = f e = , (layer-toggle kanji))))
+  fe-. (tap-next-release (around ralt #(= f e . XX)) (around-next #(ralt = f e = . (layer-toggle kanji))))
+  fe-/ (tap-next-release (around ralt #(= f e / XX)) (around-next #(ralt = f e = / (layer-toggle kanji))))
+
+  fr-y (tap-next-release (around ralt #(= f r y XX)) (around-next #(ralt = f r = y (layer-toggle kanji))))
+  fr-u (tap-next-release (around ralt #(= f r u XX)) (around-next #(ralt = f r = u (layer-toggle kanji))))
+  fr-i (tap-next-release (around ralt #(= f r i XX)) (around-next #(ralt = f r = i (layer-toggle kanji))))
+  fr-o (tap-next-release (around ralt #(= f r o XX)) (around-next #(ralt = f r = o (layer-toggle kanji))))
+  fr-p (tap-next-release (around ralt #(= f r p XX)) (around-next #(ralt = f r = p (layer-toggle kanji))))
+  fr-h (tap-next-release (around ralt #(= f r h XX)) (around-next #(ralt = f r = h (layer-toggle kanji))))
+  fr-j (tap-next-release (around ralt #(= f r j XX)) (around-next #(ralt = f r = j (layer-toggle kanji))))
+  fr-k (tap-next-release (around ralt #(= f r k XX)) (around-next #(ralt = f r = k (layer-toggle kanji))))
+  fr-l (tap-next-release (around ralt #(= f r l XX)) (around-next #(ralt = f r = l (layer-toggle kanji))))
+  fr-; (tap-next-release (around ralt #(= f r ; XX)) (around-next #(ralt = f r = ; (layer-toggle kanji))))
+  fr-n (tap-next-release (around ralt #(= f r n XX)) (around-next #(ralt = f r = n (layer-toggle kanji))))
+  fr-m (tap-next-release (around ralt #(= f r m XX)) (around-next #(ralt = f r = m (layer-toggle kanji))))
+  fr-, (tap-next-release (around ralt #(= f r , XX)) (around-next #(ralt = f r = , (layer-toggle kanji))))
+  fr-. (tap-next-release (around ralt #(= f r . XX)) (around-next #(ralt = f r = . (layer-toggle kanji))))
+  fr-/ (tap-next-release (around ralt #(= f r / XX)) (around-next #(ralt = f r = / (layer-toggle kanji))))
+
+  fs-y (tap-next-release (around ralt #(= f s y XX)) (around-next #(ralt = f s = y (layer-toggle kanji))))
+  fs-u (tap-next-release (around ralt #(= f s u XX)) (around-next #(ralt = f s = u (layer-toggle kanji))))
+  fs-i (tap-next-release (around ralt #(= f s i XX)) (around-next #(ralt = f s = i (layer-toggle kanji))))
+  fs-o (tap-next-release (around ralt #(= f s o XX)) (around-next #(ralt = f s = o (layer-toggle kanji))))
+  fs-p (tap-next-release (around ralt #(= f s p XX)) (around-next #(ralt = f s = p (layer-toggle kanji))))
+  fs-h (tap-next-release (around ralt #(= f s h XX)) (around-next #(ralt = f s = h (layer-toggle kanji))))
+  fs-j (tap-next-release (around ralt #(= f s j XX)) (around-next #(ralt = f s = j (layer-toggle kanji))))
+  fs-k (tap-next-release (around ralt #(= f s k XX)) (around-next #(ralt = f s = k (layer-toggle kanji))))
+  fs-l (tap-next-release (around ralt #(= f s l XX)) (around-next #(ralt = f s = l (layer-toggle kanji))))
+  fs-; (tap-next-release (around ralt #(= f s ; XX)) (around-next #(ralt = f s = ; (layer-toggle kanji))))
+  fs-n (tap-next-release (around ralt #(= f s n XX)) (around-next #(ralt = f s = n (layer-toggle kanji))))
+  fs-m (tap-next-release (around ralt #(= f s m XX)) (around-next #(ralt = f s = m (layer-toggle kanji))))
+  fs-, (tap-next-release (around ralt #(= f s , XX)) (around-next #(ralt = f s = , (layer-toggle kanji))))
+  fs-. (tap-next-release (around ralt #(= f s . XX)) (around-next #(ralt = f s = . (layer-toggle kanji))))
+  fs-/ (tap-next-release (around ralt #(= f s / XX)) (around-next #(ralt = f s = / (layer-toggle kanji))))
+
+  fd-y (tap-next-release (around ralt #(= f d y XX)) (around-next #(ralt = f d = y (layer-toggle kanji))))
+  fd-u (tap-next-release (around ralt #(= f d u XX)) (around-next #(ralt = f d = u (layer-toggle kanji))))
+  fd-i (tap-next-release (around ralt #(= f d i XX)) (around-next #(ralt = f d = i (layer-toggle kanji))))
+  fd-o (tap-next-release (around ralt #(= f d o XX)) (around-next #(ralt = f d = o (layer-toggle kanji))))
+  fd-p (tap-next-release (around ralt #(= f d p XX)) (around-next #(ralt = f d = p (layer-toggle kanji))))
+  fd-h (tap-next-release (around ralt #(= f d h XX)) (around-next #(ralt = f d = h (layer-toggle kanji))))
+  fd-j (tap-next-release (around ralt #(= f d j XX)) (around-next #(ralt = f d = j (layer-toggle kanji))))
+  fd-k (tap-next-release (around ralt #(= f d k XX)) (around-next #(ralt = f d = k (layer-toggle kanji))))
+  fd-l (tap-next-release (around ralt #(= f d l XX)) (around-next #(ralt = f d = l (layer-toggle kanji))))
+  fd-; (tap-next-release (around ralt #(= f d ; XX)) (around-next #(ralt = f d = ; (layer-toggle kanji))))
+  fd-n (tap-next-release (around ralt #(= f d n XX)) (around-next #(ralt = f d = n (layer-toggle kanji))))
+  fd-m (tap-next-release (around ralt #(= f d m XX)) (around-next #(ralt = f d = m (layer-toggle kanji))))
+  fd-, (tap-next-release (around ralt #(= f d , XX)) (around-next #(ralt = f d = , (layer-toggle kanji))))
+  fd-. (tap-next-release (around ralt #(= f d . XX)) (around-next #(ralt = f d = . (layer-toggle kanji))))
+  fd-/ (tap-next-release (around ralt #(= f d / XX)) (around-next #(ralt = f d = / (layer-toggle kanji))))
+
+  xd-y (tap-next-release (around ralt #(= x d y XX)) (around-next #(ralt = x d = y (layer-toggle kanji))))
+  xd-u (tap-next-release (around ralt #(= x d u XX)) (around-next #(ralt = x d = u (layer-toggle kanji))))
+  xd-i (tap-next-release (around ralt #(= x d i XX)) (around-next #(ralt = x d = i (layer-toggle kanji))))
+  xd-o (tap-next-release (around ralt #(= x d o XX)) (around-next #(ralt = x d = o (layer-toggle kanji))))
+  xd-p (tap-next-release (around ralt #(= x d p XX)) (around-next #(ralt = x d = p (layer-toggle kanji))))
+  xd-h (tap-next-release (around ralt #(= x d h XX)) (around-next #(ralt = x d = h (layer-toggle kanji))))
+  xd-j (tap-next-release (around ralt #(= x d j XX)) (around-next #(ralt = x d = j (layer-toggle kanji))))
+  xd-k (tap-next-release (around ralt #(= x d k XX)) (around-next #(ralt = x d = k (layer-toggle kanji))))
+  xd-l (tap-next-release (around ralt #(= x d l XX)) (around-next #(ralt = x d = l (layer-toggle kanji))))
+  xd-; (tap-next-release (around ralt #(= x d ; XX)) (around-next #(ralt = x d = ; (layer-toggle kanji))))
+  xd-n (tap-next-release (around ralt #(= x d n XX)) (around-next #(ralt = x d = n (layer-toggle kanji))))
+  xd-m (tap-next-release (around ralt #(= x d m XX)) (around-next #(ralt = x d = m (layer-toggle kanji))))
+  xd-, (tap-next-release (around ralt #(= x d , XX)) (around-next #(ralt = x d = , (layer-toggle kanji))))
+  xd-. (tap-next-release (around ralt #(= x d . XX)) (around-next #(ralt = x d = . (layer-toggle kanji))))
+  xd-/ (tap-next-release (around ralt #(= x d / XX)) (around-next #(ralt = x d = / (layer-toggle kanji))))
+
+  xf-y (tap-next-release (around ralt #(= x f y XX)) (around-next #(ralt = x f = y (layer-toggle kanji))))
+  xf-u (tap-next-release (around ralt #(= x f u XX)) (around-next #(ralt = x f = u (layer-toggle kanji))))
+  xf-i (tap-next-release (around ralt #(= x f i XX)) (around-next #(ralt = x f = i (layer-toggle kanji))))
+  xf-o (tap-next-release (around ralt #(= x f o XX)) (around-next #(ralt = x f = o (layer-toggle kanji))))
+  xf-p (tap-next-release (around ralt #(= x f p XX)) (around-next #(ralt = x f = p (layer-toggle kanji))))
+  xf-h (tap-next-release (around ralt #(= x f h XX)) (around-next #(ralt = x f = h (layer-toggle kanji))))
+  xf-j (tap-next-release (around ralt #(= x f j XX)) (around-next #(ralt = x f = j (layer-toggle kanji))))
+  xf-k (tap-next-release (around ralt #(= x f k XX)) (around-next #(ralt = x f = k (layer-toggle kanji))))
+  xf-l (tap-next-release (around ralt #(= x f l XX)) (around-next #(ralt = x f = l (layer-toggle kanji))))
+  xf-; (tap-next-release (around ralt #(= x f ; XX)) (around-next #(ralt = x f = ; (layer-toggle kanji))))
+  xf-n (tap-next-release (around ralt #(= x f n XX)) (around-next #(ralt = x f = n (layer-toggle kanji))))
+  xf-m (tap-next-release (around ralt #(= x f m XX)) (around-next #(ralt = x f = m (layer-toggle kanji))))
+  xf-, (tap-next-release (around ralt #(= x f , XX)) (around-next #(ralt = x f = , (layer-toggle kanji))))
+  xf-. (tap-next-release (around ralt #(= x f . XX)) (around-next #(ralt = x f = . (layer-toggle kanji))))
+  xf-/ (tap-next-release (around ralt #(= x f / XX)) (around-next #(ralt = x f = / (layer-toggle kanji))))
+
+  xg-y (tap-next-release (around ralt #(= x g y XX)) (around-next #(ralt = x g = y (layer-toggle kanji))))
+  xg-u (tap-next-release (around ralt #(= x g u XX)) (around-next #(ralt = x g = u (layer-toggle kanji))))
+  xg-i (tap-next-release (around ralt #(= x g i XX)) (around-next #(ralt = x g = i (layer-toggle kanji))))
+  xg-o (tap-next-release (around ralt #(= x g o XX)) (around-next #(ralt = x g = o (layer-toggle kanji))))
+  xg-p (tap-next-release (around ralt #(= x g p XX)) (around-next #(ralt = x g = p (layer-toggle kanji))))
+  xg-h (tap-next-release (around ralt #(= x g h XX)) (around-next #(ralt = x g = h (layer-toggle kanji))))
+  xg-j (tap-next-release (around ralt #(= x g j XX)) (around-next #(ralt = x g = j (layer-toggle kanji))))
+  xg-k (tap-next-release (around ralt #(= x g k XX)) (around-next #(ralt = x g = k (layer-toggle kanji))))
+  xg-l (tap-next-release (around ralt #(= x g l XX)) (around-next #(ralt = x g = l (layer-toggle kanji))))
+  xg-; (tap-next-release (around ralt #(= x g ; XX)) (around-next #(ralt = x g = ; (layer-toggle kanji))))
+  xg-n (tap-next-release (around ralt #(= x g n XX)) (around-next #(ralt = x g = n (layer-toggle kanji))))
+  xg-m (tap-next-release (around ralt #(= x g m XX)) (around-next #(ralt = x g = m (layer-toggle kanji))))
+  xg-, (tap-next-release (around ralt #(= x g , XX)) (around-next #(ralt = x g = , (layer-toggle kanji))))
+  xg-. (tap-next-release (around ralt #(= x g . XX)) (around-next #(ralt = x g = . (layer-toggle kanji))))
+  xg-/ (tap-next-release (around ralt #(= x g / XX)) (around-next #(ralt = x g = / (layer-toggle kanji))))
+
+  xc-y (tap-next-release (around ralt #(= x c y XX)) (around-next #(ralt = x c = y (layer-toggle kanji))))
+  xc-u (tap-next-release (around ralt #(= x c u XX)) (around-next #(ralt = x c = u (layer-toggle kanji))))
+  xc-i (tap-next-release (around ralt #(= x c i XX)) (around-next #(ralt = x c = i (layer-toggle kanji))))
+  xc-o (tap-next-release (around ralt #(= x c o XX)) (around-next #(ralt = x c = o (layer-toggle kanji))))
+  xc-p (tap-next-release (around ralt #(= x c p XX)) (around-next #(ralt = x c = p (layer-toggle kanji))))
+  xc-h (tap-next-release (around ralt #(= x c h XX)) (around-next #(ralt = x c = h (layer-toggle kanji))))
+  xc-j (tap-next-release (around ralt #(= x c j XX)) (around-next #(ralt = x c = j (layer-toggle kanji))))
+  xc-k (tap-next-release (around ralt #(= x c k XX)) (around-next #(ralt = x c = k (layer-toggle kanji))))
+  xc-l (tap-next-release (around ralt #(= x c l XX)) (around-next #(ralt = x c = l (layer-toggle kanji))))
+  xc-; (tap-next-release (around ralt #(= x c ; XX)) (around-next #(ralt = x c = ; (layer-toggle kanji))))
+  xc-n (tap-next-release (around ralt #(= x c n XX)) (around-next #(ralt = x c = n (layer-toggle kanji))))
+  xc-m (tap-next-release (around ralt #(= x c m XX)) (around-next #(ralt = x c = m (layer-toggle kanji))))
+  xc-, (tap-next-release (around ralt #(= x c , XX)) (around-next #(ralt = x c = , (layer-toggle kanji))))
+  xc-. (tap-next-release (around ralt #(= x c . XX)) (around-next #(ralt = x c = . (layer-toggle kanji))))
+  xc-/ (tap-next-release (around ralt #(= x c / XX)) (around-next #(ralt = x c = / (layer-toggle kanji))))
+
+  xv-y (tap-next-release (around ralt #(= x v y XX)) (around-next #(ralt = x v = y (layer-toggle kanji))))
+  xv-u (tap-next-release (around ralt #(= x v u XX)) (around-next #(ralt = x v = u (layer-toggle kanji))))
+  xv-i (tap-next-release (around ralt #(= x v i XX)) (around-next #(ralt = x v = i (layer-toggle kanji))))
+  xv-o (tap-next-release (around ralt #(= x v o XX)) (around-next #(ralt = x v = o (layer-toggle kanji))))
+  xv-p (tap-next-release (around ralt #(= x v p XX)) (around-next #(ralt = x v = p (layer-toggle kanji))))
+  xv-h (tap-next-release (around ralt #(= x v h XX)) (around-next #(ralt = x v = h (layer-toggle kanji))))
+  xv-j (tap-next-release (around ralt #(= x v j XX)) (around-next #(ralt = x v = j (layer-toggle kanji))))
+  xv-k (tap-next-release (around ralt #(= x v k XX)) (around-next #(ralt = x v = k (layer-toggle kanji))))
+  xv-l (tap-next-release (around ralt #(= x v l XX)) (around-next #(ralt = x v = l (layer-toggle kanji))))
+  xv-; (tap-next-release (around ralt #(= x v ; XX)) (around-next #(ralt = x v = ; (layer-toggle kanji))))
+  xv-n (tap-next-release (around ralt #(= x v n XX)) (around-next #(ralt = x v = n (layer-toggle kanji))))
+  xv-m (tap-next-release (around ralt #(= x v m XX)) (around-next #(ralt = x v = m (layer-toggle kanji))))
+  xv-, (tap-next-release (around ralt #(= x v , XX)) (around-next #(ralt = x v = , (layer-toggle kanji))))
+  xv-. (tap-next-release (around ralt #(= x v . XX)) (around-next #(ralt = x v = . (layer-toggle kanji))))
+  xv-/ (tap-next-release (around ralt #(= x v / XX)) (around-next #(ralt = x v = / (layer-toggle kanji))))
+
+  cs-y (tap-next-release (around ralt #(= c s y XX)) (around-next #(ralt = c s = y (layer-toggle kanji))))
+  cs-u (tap-next-release (around ralt #(= c s u XX)) (around-next #(ralt = c s = u (layer-toggle kanji))))
+  cs-i (tap-next-release (around ralt #(= c s i XX)) (around-next #(ralt = c s = i (layer-toggle kanji))))
+  cs-o (tap-next-release (around ralt #(= c s o XX)) (around-next #(ralt = c s = o (layer-toggle kanji))))
+  cs-p (tap-next-release (around ralt #(= c s p XX)) (around-next #(ralt = c s = p (layer-toggle kanji))))
+  cs-h (tap-next-release (around ralt #(= c s h XX)) (around-next #(ralt = c s = h (layer-toggle kanji))))
+  cs-j (tap-next-release (around ralt #(= c s j XX)) (around-next #(ralt = c s = j (layer-toggle kanji))))
+  cs-k (tap-next-release (around ralt #(= c s k XX)) (around-next #(ralt = c s = k (layer-toggle kanji))))
+  cs-l (tap-next-release (around ralt #(= c s l XX)) (around-next #(ralt = c s = l (layer-toggle kanji))))
+  cs-; (tap-next-release (around ralt #(= c s ; XX)) (around-next #(ralt = c s = ; (layer-toggle kanji))))
+  cs-n (tap-next-release (around ralt #(= c s n XX)) (around-next #(ralt = c s = n (layer-toggle kanji))))
+  cs-m (tap-next-release (around ralt #(= c s m XX)) (around-next #(ralt = c s = m (layer-toggle kanji))))
+  cs-, (tap-next-release (around ralt #(= c s , XX)) (around-next #(ralt = c s = , (layer-toggle kanji))))
+  cs-. (tap-next-release (around ralt #(= c s . XX)) (around-next #(ralt = c s = . (layer-toggle kanji))))
+  cs-/ (tap-next-release (around ralt #(= c s / XX)) (around-next #(ralt = c s = / (layer-toggle kanji))))
+
+  cd-y (tap-next-release (around ralt #(= c d y XX)) (around-next #(ralt = c d = y (layer-toggle kanji))))
+  cd-u (tap-next-release (around ralt #(= c d u XX)) (around-next #(ralt = c d = u (layer-toggle kanji))))
+  cd-i (tap-next-release (around ralt #(= c d i XX)) (around-next #(ralt = c d = i (layer-toggle kanji))))
+  cd-o (tap-next-release (around ralt #(= c d o XX)) (around-next #(ralt = c d = o (layer-toggle kanji))))
+  cd-p (tap-next-release (around ralt #(= c d p XX)) (around-next #(ralt = c d = p (layer-toggle kanji))))
+  cd-h (tap-next-release (around ralt #(= c d h XX)) (around-next #(ralt = c d = h (layer-toggle kanji))))
+  cd-j (tap-next-release (around ralt #(= c d j XX)) (around-next #(ralt = c d = j (layer-toggle kanji))))
+  cd-k (tap-next-release (around ralt #(= c d k XX)) (around-next #(ralt = c d = k (layer-toggle kanji))))
+  cd-l (tap-next-release (around ralt #(= c d l XX)) (around-next #(ralt = c d = l (layer-toggle kanji))))
+  cd-; (tap-next-release (around ralt #(= c d ; XX)) (around-next #(ralt = c d = ; (layer-toggle kanji))))
+  cd-n (tap-next-release (around ralt #(= c d n XX)) (around-next #(ralt = c d = n (layer-toggle kanji))))
+  cd-m (tap-next-release (around ralt #(= c d m XX)) (around-next #(ralt = c d = m (layer-toggle kanji))))
+  cd-, (tap-next-release (around ralt #(= c d , XX)) (around-next #(ralt = c d = , (layer-toggle kanji))))
+  cd-. (tap-next-release (around ralt #(= c d . XX)) (around-next #(ralt = c d = . (layer-toggle kanji))))
+  cd-/ (tap-next-release (around ralt #(= c d / XX)) (around-next #(ralt = c d = / (layer-toggle kanji))))
+
+  cg-y (tap-next-release (around ralt #(= c g y XX)) (around-next #(ralt = c g = y (layer-toggle kanji))))
+  cg-u (tap-next-release (around ralt #(= c g u XX)) (around-next #(ralt = c g = u (layer-toggle kanji))))
+  cg-i (tap-next-release (around ralt #(= c g i XX)) (around-next #(ralt = c g = i (layer-toggle kanji))))
+  cg-o (tap-next-release (around ralt #(= c g o XX)) (around-next #(ralt = c g = o (layer-toggle kanji))))
+  cg-p (tap-next-release (around ralt #(= c g p XX)) (around-next #(ralt = c g = p (layer-toggle kanji))))
+  cg-h (tap-next-release (around ralt #(= c g h XX)) (around-next #(ralt = c g = h (layer-toggle kanji))))
+  cg-j (tap-next-release (around ralt #(= c g j XX)) (around-next #(ralt = c g = j (layer-toggle kanji))))
+  cg-k (tap-next-release (around ralt #(= c g k XX)) (around-next #(ralt = c g = k (layer-toggle kanji))))
+  cg-l (tap-next-release (around ralt #(= c g l XX)) (around-next #(ralt = c g = l (layer-toggle kanji))))
+  cg-; (tap-next-release (around ralt #(= c g ; XX)) (around-next #(ralt = c g = ; (layer-toggle kanji))))
+  cg-n (tap-next-release (around ralt #(= c g n XX)) (around-next #(ralt = c g = n (layer-toggle kanji))))
+  cg-m (tap-next-release (around ralt #(= c g m XX)) (around-next #(ralt = c g = m (layer-toggle kanji))))
+  cg-, (tap-next-release (around ralt #(= c g , XX)) (around-next #(ralt = c g = , (layer-toggle kanji))))
+  cg-. (tap-next-release (around ralt #(= c g . XX)) (around-next #(ralt = c g = . (layer-toggle kanji))))
+  cg-/ (tap-next-release (around ralt #(= c g / XX)) (around-next #(ralt = c g = / (layer-toggle kanji))))
+
+  cx-y (tap-next-release (around ralt #(= c x y XX)) (around-next #(ralt = c x = y (layer-toggle kanji))))
+  cx-u (tap-next-release (around ralt #(= c x u XX)) (around-next #(ralt = c x = u (layer-toggle kanji))))
+  cx-i (tap-next-release (around ralt #(= c x i XX)) (around-next #(ralt = c x = i (layer-toggle kanji))))
+  cx-o (tap-next-release (around ralt #(= c x o XX)) (around-next #(ralt = c x = o (layer-toggle kanji))))
+  cx-p (tap-next-release (around ralt #(= c x p XX)) (around-next #(ralt = c x = p (layer-toggle kanji))))
+  cx-h (tap-next-release (around ralt #(= c x h XX)) (around-next #(ralt = c x = h (layer-toggle kanji))))
+  cx-j (tap-next-release (around ralt #(= c x j XX)) (around-next #(ralt = c x = j (layer-toggle kanji))))
+  cx-k (tap-next-release (around ralt #(= c x k XX)) (around-next #(ralt = c x = k (layer-toggle kanji))))
+  cx-l (tap-next-release (around ralt #(= c x l XX)) (around-next #(ralt = c x = l (layer-toggle kanji))))
+  cx-; (tap-next-release (around ralt #(= c x ; XX)) (around-next #(ralt = c x = ; (layer-toggle kanji))))
+  cx-n (tap-next-release (around ralt #(= c x n XX)) (around-next #(ralt = c x = n (layer-toggle kanji))))
+  cx-m (tap-next-release (around ralt #(= c x m XX)) (around-next #(ralt = c x = m (layer-toggle kanji))))
+  cx-, (tap-next-release (around ralt #(= c x , XX)) (around-next #(ralt = c x = , (layer-toggle kanji))))
+  cx-. (tap-next-release (around ralt #(= c x . XX)) (around-next #(ralt = c x = . (layer-toggle kanji))))
+  cx-/ (tap-next-release (around ralt #(= c x / XX)) (around-next #(ralt = c x = / (layer-toggle kanji))))
+
+  cv-y (tap-next-release (around ralt #(= c v y XX)) (around-next #(ralt = c v = y (layer-toggle kanji))))
+  cv-u (tap-next-release (around ralt #(= c v u XX)) (around-next #(ralt = c v = u (layer-toggle kanji))))
+  cv-i (tap-next-release (around ralt #(= c v i XX)) (around-next #(ralt = c v = i (layer-toggle kanji))))
+  cv-o (tap-next-release (around ralt #(= c v o XX)) (around-next #(ralt = c v = o (layer-toggle kanji))))
+  cv-p (tap-next-release (around ralt #(= c v p XX)) (around-next #(ralt = c v = p (layer-toggle kanji))))
+  cv-h (tap-next-release (around ralt #(= c v h XX)) (around-next #(ralt = c v = h (layer-toggle kanji))))
+  cv-j (tap-next-release (around ralt #(= c v j XX)) (around-next #(ralt = c v = j (layer-toggle kanji))))
+  cv-k (tap-next-release (around ralt #(= c v k XX)) (around-next #(ralt = c v = k (layer-toggle kanji))))
+  cv-l (tap-next-release (around ralt #(= c v l XX)) (around-next #(ralt = c v = l (layer-toggle kanji))))
+  cv-; (tap-next-release (around ralt #(= c v ; XX)) (around-next #(ralt = c v = ; (layer-toggle kanji))))
+  cv-n (tap-next-release (around ralt #(= c v n XX)) (around-next #(ralt = c v = n (layer-toggle kanji))))
+  cv-m (tap-next-release (around ralt #(= c v m XX)) (around-next #(ralt = c v = m (layer-toggle kanji))))
+  cv-, (tap-next-release (around ralt #(= c v , XX)) (around-next #(ralt = c v = , (layer-toggle kanji))))
+  cv-. (tap-next-release (around ralt #(= c v . XX)) (around-next #(ralt = c v = . (layer-toggle kanji))))
+  cv-/ (tap-next-release (around ralt #(= c v / XX)) (around-next #(ralt = c v = / (layer-toggle kanji))))
+
+  cb-y (tap-next-release (around ralt #(= c b y XX)) (around-next #(ralt = c b = y (layer-toggle kanji))))
+  cb-u (tap-next-release (around ralt #(= c b u XX)) (around-next #(ralt = c b = u (layer-toggle kanji))))
+  cb-i (tap-next-release (around ralt #(= c b i XX)) (around-next #(ralt = c b = i (layer-toggle kanji))))
+  cb-o (tap-next-release (around ralt #(= c b o XX)) (around-next #(ralt = c b = o (layer-toggle kanji))))
+  cb-p (tap-next-release (around ralt #(= c b p XX)) (around-next #(ralt = c b = p (layer-toggle kanji))))
+  cb-h (tap-next-release (around ralt #(= c b h XX)) (around-next #(ralt = c b = h (layer-toggle kanji))))
+  cb-j (tap-next-release (around ralt #(= c b j XX)) (around-next #(ralt = c b = j (layer-toggle kanji))))
+  cb-k (tap-next-release (around ralt #(= c b k XX)) (around-next #(ralt = c b = k (layer-toggle kanji))))
+  cb-l (tap-next-release (around ralt #(= c b l XX)) (around-next #(ralt = c b = l (layer-toggle kanji))))
+  cb-; (tap-next-release (around ralt #(= c b ; XX)) (around-next #(ralt = c b = ; (layer-toggle kanji))))
+  cb-n (tap-next-release (around ralt #(= c b n XX)) (around-next #(ralt = c b = n (layer-toggle kanji))))
+  cb-m (tap-next-release (around ralt #(= c b m XX)) (around-next #(ralt = c b = m (layer-toggle kanji))))
+  cb-, (tap-next-release (around ralt #(= c b , XX)) (around-next #(ralt = c b = , (layer-toggle kanji))))
+  cb-. (tap-next-release (around ralt #(= c b . XX)) (around-next #(ralt = c b = . (layer-toggle kanji))))
+  cb-/ (tap-next-release (around ralt #(= c b / XX)) (around-next #(ralt = c b = / (layer-toggle kanji))))
+
+  vs-y (tap-next-release (around ralt #(= v s y XX)) (around-next #(ralt = v s = y (layer-toggle kanji))))
+  vs-u (tap-next-release (around ralt #(= v s u XX)) (around-next #(ralt = v s = u (layer-toggle kanji))))
+  vs-i (tap-next-release (around ralt #(= v s i XX)) (around-next #(ralt = v s = i (layer-toggle kanji))))
+  vs-o (tap-next-release (around ralt #(= v s o XX)) (around-next #(ralt = v s = o (layer-toggle kanji))))
+  vs-p (tap-next-release (around ralt #(= v s p XX)) (around-next #(ralt = v s = p (layer-toggle kanji))))
+  vs-h (tap-next-release (around ralt #(= v s h XX)) (around-next #(ralt = v s = h (layer-toggle kanji))))
+  vs-j (tap-next-release (around ralt #(= v s j XX)) (around-next #(ralt = v s = j (layer-toggle kanji))))
+  vs-k (tap-next-release (around ralt #(= v s k XX)) (around-next #(ralt = v s = k (layer-toggle kanji))))
+  vs-l (tap-next-release (around ralt #(= v s l XX)) (around-next #(ralt = v s = l (layer-toggle kanji))))
+  vs-; (tap-next-release (around ralt #(= v s ; XX)) (around-next #(ralt = v s = ; (layer-toggle kanji))))
+  vs-n (tap-next-release (around ralt #(= v s n XX)) (around-next #(ralt = v s = n (layer-toggle kanji))))
+  vs-m (tap-next-release (around ralt #(= v s m XX)) (around-next #(ralt = v s = m (layer-toggle kanji))))
+  vs-, (tap-next-release (around ralt #(= v s , XX)) (around-next #(ralt = v s = , (layer-toggle kanji))))
+  vs-. (tap-next-release (around ralt #(= v s . XX)) (around-next #(ralt = v s = . (layer-toggle kanji))))
+  vs-/ (tap-next-release (around ralt #(= v s / XX)) (around-next #(ralt = v s = / (layer-toggle kanji))))
+
+  vd-y (tap-next-release (around ralt #(= v d y XX)) (around-next #(ralt = v d = y (layer-toggle kanji))))
+  vd-u (tap-next-release (around ralt #(= v d u XX)) (around-next #(ralt = v d = u (layer-toggle kanji))))
+  vd-i (tap-next-release (around ralt #(= v d i XX)) (around-next #(ralt = v d = i (layer-toggle kanji))))
+  vd-o (tap-next-release (around ralt #(= v d o XX)) (around-next #(ralt = v d = o (layer-toggle kanji))))
+  vd-p (tap-next-release (around ralt #(= v d p XX)) (around-next #(ralt = v d = p (layer-toggle kanji))))
+  vd-h (tap-next-release (around ralt #(= v d h XX)) (around-next #(ralt = v d = h (layer-toggle kanji))))
+  vd-j (tap-next-release (around ralt #(= v d j XX)) (around-next #(ralt = v d = j (layer-toggle kanji))))
+  vd-k (tap-next-release (around ralt #(= v d k XX)) (around-next #(ralt = v d = k (layer-toggle kanji))))
+  vd-l (tap-next-release (around ralt #(= v d l XX)) (around-next #(ralt = v d = l (layer-toggle kanji))))
+  vd-; (tap-next-release (around ralt #(= v d ; XX)) (around-next #(ralt = v d = ; (layer-toggle kanji))))
+  vd-n (tap-next-release (around ralt #(= v d n XX)) (around-next #(ralt = v d = n (layer-toggle kanji))))
+  vd-m (tap-next-release (around ralt #(= v d m XX)) (around-next #(ralt = v d = m (layer-toggle kanji))))
+  vd-, (tap-next-release (around ralt #(= v d , XX)) (around-next #(ralt = v d = , (layer-toggle kanji))))
+  vd-. (tap-next-release (around ralt #(= v d . XX)) (around-next #(ralt = v d = . (layer-toggle kanji))))
+  vd-/ (tap-next-release (around ralt #(= v d / XX)) (around-next #(ralt = v d = / (layer-toggle kanji))))
+
+  vf-y (tap-next-release (around ralt #(= v f y XX)) (around-next #(ralt = v f = y (layer-toggle kanji))))
+  vf-u (tap-next-release (around ralt #(= v f u XX)) (around-next #(ralt = v f = u (layer-toggle kanji))))
+  vf-i (tap-next-release (around ralt #(= v f i XX)) (around-next #(ralt = v f = i (layer-toggle kanji))))
+  vf-o (tap-next-release (around ralt #(= v f o XX)) (around-next #(ralt = v f = o (layer-toggle kanji))))
+  vf-p (tap-next-release (around ralt #(= v f p XX)) (around-next #(ralt = v f = p (layer-toggle kanji))))
+  vf-h (tap-next-release (around ralt #(= v f h XX)) (around-next #(ralt = v f = h (layer-toggle kanji))))
+  vf-j (tap-next-release (around ralt #(= v f j XX)) (around-next #(ralt = v f = j (layer-toggle kanji))))
+  vf-k (tap-next-release (around ralt #(= v f k XX)) (around-next #(ralt = v f = k (layer-toggle kanji))))
+  vf-l (tap-next-release (around ralt #(= v f l XX)) (around-next #(ralt = v f = l (layer-toggle kanji))))
+  vf-; (tap-next-release (around ralt #(= v f ; XX)) (around-next #(ralt = v f = ; (layer-toggle kanji))))
+  vf-n (tap-next-release (around ralt #(= v f n XX)) (around-next #(ralt = v f = n (layer-toggle kanji))))
+  vf-m (tap-next-release (around ralt #(= v f m XX)) (around-next #(ralt = v f = m (layer-toggle kanji))))
+  vf-, (tap-next-release (around ralt #(= v f , XX)) (around-next #(ralt = v f = , (layer-toggle kanji))))
+  vf-. (tap-next-release (around ralt #(= v f . XX)) (around-next #(ralt = v f = . (layer-toggle kanji))))
+  vf-/ (tap-next-release (around ralt #(= v f / XX)) (around-next #(ralt = v f = / (layer-toggle kanji))))
+
+  vx-y (tap-next-release (around ralt #(= v x y XX)) (around-next #(ralt = v x = y (layer-toggle kanji))))
+  vx-u (tap-next-release (around ralt #(= v x u XX)) (around-next #(ralt = v x = u (layer-toggle kanji))))
+  vx-i (tap-next-release (around ralt #(= v x i XX)) (around-next #(ralt = v x = i (layer-toggle kanji))))
+  vx-o (tap-next-release (around ralt #(= v x o XX)) (around-next #(ralt = v x = o (layer-toggle kanji))))
+  vx-p (tap-next-release (around ralt #(= v x p XX)) (around-next #(ralt = v x = p (layer-toggle kanji))))
+  vx-h (tap-next-release (around ralt #(= v x h XX)) (around-next #(ralt = v x = h (layer-toggle kanji))))
+  vx-j (tap-next-release (around ralt #(= v x j XX)) (around-next #(ralt = v x = j (layer-toggle kanji))))
+  vx-k (tap-next-release (around ralt #(= v x k XX)) (around-next #(ralt = v x = k (layer-toggle kanji))))
+  vx-l (tap-next-release (around ralt #(= v x l XX)) (around-next #(ralt = v x = l (layer-toggle kanji))))
+  vx-; (tap-next-release (around ralt #(= v x ; XX)) (around-next #(ralt = v x = ; (layer-toggle kanji))))
+  vx-n (tap-next-release (around ralt #(= v x n XX)) (around-next #(ralt = v x = n (layer-toggle kanji))))
+  vx-m (tap-next-release (around ralt #(= v x m XX)) (around-next #(ralt = v x = m (layer-toggle kanji))))
+  vx-, (tap-next-release (around ralt #(= v x , XX)) (around-next #(ralt = v x = , (layer-toggle kanji))))
+  vx-. (tap-next-release (around ralt #(= v x . XX)) (around-next #(ralt = v x = . (layer-toggle kanji))))
+  vx-/ (tap-next-release (around ralt #(= v x / XX)) (around-next #(ralt = v x = / (layer-toggle kanji))))
+
+  vc-y (tap-next-release (around ralt #(= v c y XX)) (around-next #(ralt = v c = y (layer-toggle kanji))))
+  vc-u (tap-next-release (around ralt #(= v c u XX)) (around-next #(ralt = v c = u (layer-toggle kanji))))
+  vc-i (tap-next-release (around ralt #(= v c i XX)) (around-next #(ralt = v c = i (layer-toggle kanji))))
+  vc-o (tap-next-release (around ralt #(= v c o XX)) (around-next #(ralt = v c = o (layer-toggle kanji))))
+  vc-p (tap-next-release (around ralt #(= v c p XX)) (around-next #(ralt = v c = p (layer-toggle kanji))))
+  vc-h (tap-next-release (around ralt #(= v c h XX)) (around-next #(ralt = v c = h (layer-toggle kanji))))
+  vc-j (tap-next-release (around ralt #(= v c j XX)) (around-next #(ralt = v c = j (layer-toggle kanji))))
+  vc-k (tap-next-release (around ralt #(= v c k XX)) (around-next #(ralt = v c = k (layer-toggle kanji))))
+  vc-l (tap-next-release (around ralt #(= v c l XX)) (around-next #(ralt = v c = l (layer-toggle kanji))))
+  vc-; (tap-next-release (around ralt #(= v c ; XX)) (around-next #(ralt = v c = ; (layer-toggle kanji))))
+  vc-n (tap-next-release (around ralt #(= v c n XX)) (around-next #(ralt = v c = n (layer-toggle kanji))))
+  vc-m (tap-next-release (around ralt #(= v c m XX)) (around-next #(ralt = v c = m (layer-toggle kanji))))
+  vc-, (tap-next-release (around ralt #(= v c , XX)) (around-next #(ralt = v c = , (layer-toggle kanji))))
+  vc-. (tap-next-release (around ralt #(= v c . XX)) (around-next #(ralt = v c = . (layer-toggle kanji))))
+  vc-/ (tap-next-release (around ralt #(= v c / XX)) (around-next #(ralt = v c = / (layer-toggle kanji))))
+
+  w-y (tap-next-release #(w y XX) (around-next #(w = y (layer-toggle kanji))))
+  w-u (tap-next-release #(w u XX) (around-next #(w = u (layer-toggle kanji))))
+  w-i (tap-next-release #(w i XX) (around-next #(w = i (layer-toggle kanji))))
+  w-o (tap-next-release #(w o XX) (around-next #(w = o (layer-toggle kanji))))
+  w-p (tap-next-release #(w p XX) (around-next #(w = p (layer-toggle kanji))))
+  w-h (tap-next-release #(w h XX) (around-next #(w = h (layer-toggle kanji))))
+  w-j (tap-next-release #(w j XX) (around-next #(w = j (layer-toggle kanji))))
+  w-k (tap-next-release #(w k XX) (around-next #(w = k (layer-toggle kanji))))
+  w-l (tap-next-release #(w l XX) (around-next #(w = l (layer-toggle kanji))))
+  w-; (tap-next-release #(w ; XX) (around-next #(w = ; (layer-toggle kanji))))
+  w-n (tap-next-release #(w n XX) (around-next #(w = n (layer-toggle kanji))))
+  w-m (tap-next-release #(w m XX) (around-next #(w = m (layer-toggle kanji))))
+  w-, (tap-next-release #(w , XX) (around-next #(w = , (layer-toggle kanji))))
+  w-. (tap-next-release #(w . XX) (around-next #(w = . (layer-toggle kanji))))
+  w-/ (tap-next-release #(w / XX) (around-next #(w = / (layer-toggle kanji))))
+
+  s-y (tap-next-release #(s y XX) (around-next #(s = y (layer-toggle kanji))))
+  s-u (tap-next-release #(s u XX) (around-next #(s = u (layer-toggle kanji))))
+  s-i (tap-next-release #(s i XX) (around-next #(s = i (layer-toggle kanji))))
+  s-o (tap-next-release #(s o XX) (around-next #(s = o (layer-toggle kanji))))
+  s-p (tap-next-release #(s p XX) (around-next #(s = p (layer-toggle kanji))))
+  s-h (tap-next-release #(s h XX) (around-next #(s = h (layer-toggle kanji))))
+  s-j (tap-next-release #(s j XX) (around-next #(s = j (layer-toggle kanji))))
+  s-k (tap-next-release #(s k XX) (around-next #(s = k (layer-toggle kanji))))
+  s-l (tap-next-release #(s l XX) (around-next #(s = l (layer-toggle kanji))))
+  s-; (tap-next-release #(s ; XX) (around-next #(s = ; (layer-toggle kanji))))
+  s-n (tap-next-release #(s n XX) (around-next #(s = n (layer-toggle kanji))))
+  s-m (tap-next-release #(s m XX) (around-next #(s = m (layer-toggle kanji))))
+  s-, (tap-next-release #(s , XX) (around-next #(s = , (layer-toggle kanji))))
+  s-. (tap-next-release #(s . XX) (around-next #(s = . (layer-toggle kanji))))
+  s-/ (tap-next-release #(s / XX) (around-next #(s = / (layer-toggle kanji))))
+
+  b-y (tap-next-release #(b y XX) (around-next #(b = y (layer-toggle kanji))))
+  b-u (tap-next-release #(b u XX) (around-next #(b = u (layer-toggle kanji))))
+  b-i (tap-next-release #(b i XX) (around-next #(b = i (layer-toggle kanji))))
+  b-o (tap-next-release #(b o XX) (around-next #(b = o (layer-toggle kanji))))
+  b-p (tap-next-release #(b p XX) (around-next #(b = p (layer-toggle kanji))))
+  b-h (tap-next-release #(b h XX) (around-next #(b = h (layer-toggle kanji))))
+  b-j (tap-next-release #(b j XX) (around-next #(b = j (layer-toggle kanji))))
+  b-k (tap-next-release #(b k XX) (around-next #(b = k (layer-toggle kanji))))
+  b-l (tap-next-release #(b l XX) (around-next #(b = l (layer-toggle kanji))))
+  b-; (tap-next-release #(b ; XX) (around-next #(b = ; (layer-toggle kanji))))
+  b-n (tap-next-release #(b n XX) (around-next #(b = n (layer-toggle kanji))))
+  b-m (tap-next-release #(b m XX) (around-next #(b = m (layer-toggle kanji))))
+  b-, (tap-next-release #(b , XX) (around-next #(b = , (layer-toggle kanji))))
+  b-. (tap-next-release #(b . XX) (around-next #(b = . (layer-toggle kanji))))
+  b-/ (tap-next-release #(b / XX) (around-next #(b = / (layer-toggle kanji))))
+
+  g-y (tap-next-release #(g y XX) (around-next #(g = y (layer-toggle kanji))))
+  g-u (tap-next-release #(g u XX) (around-next #(g = u (layer-toggle kanji))))
+  g-i (tap-next-release #(g i XX) (around-next #(g = i (layer-toggle kanji))))
+  g-o (tap-next-release #(g o XX) (around-next #(g = o (layer-toggle kanji))))
+  g-p (tap-next-release #(g p XX) (around-next #(g = p (layer-toggle kanji))))
+  g-h (tap-next-release #(g h XX) (around-next #(g = h (layer-toggle kanji))))
+  g-j (tap-next-release #(g j XX) (around-next #(g = j (layer-toggle kanji))))
+  g-k (tap-next-release #(g k XX) (around-next #(g = k (layer-toggle kanji))))
+  g-l (tap-next-release #(g l XX) (around-next #(g = l (layer-toggle kanji))))
+  g-; (tap-next-release #(g ; XX) (around-next #(g = ; (layer-toggle kanji))))
+  g-n (tap-next-release #(g n XX) (around-next #(g = n (layer-toggle kanji))))
+  g-m (tap-next-release #(g m XX) (around-next #(g = m (layer-toggle kanji))))
+  g-, (tap-next-release #(g , XX) (around-next #(g = , (layer-toggle kanji))))
+  g-. (tap-next-release #(g . XX) (around-next #(g = . (layer-toggle kanji))))
+  g-/ (tap-next-release #(g / XX) (around-next #(g = / (layer-toggle kanji))))
+
+  t-y (tap-next-release #(t y XX) (around-next #(t = y (layer-toggle kanji))))
+  t-u (tap-next-release #(t u XX) (around-next #(t = u (layer-toggle kanji))))
+  t-i (tap-next-release #(t i XX) (around-next #(t = i (layer-toggle kanji))))
+  t-o (tap-next-release #(t o XX) (around-next #(t = o (layer-toggle kanji))))
+  t-p (tap-next-release #(t p XX) (around-next #(t = p (layer-toggle kanji))))
+  t-h (tap-next-release #(t h XX) (around-next #(t = h (layer-toggle kanji))))
+  t-j (tap-next-release #(t j XX) (around-next #(t = j (layer-toggle kanji))))
+  t-k (tap-next-release #(t k XX) (around-next #(t = k (layer-toggle kanji))))
+  t-l (tap-next-release #(t l XX) (around-next #(t = l (layer-toggle kanji))))
+  t-; (tap-next-release #(t ; XX) (around-next #(t = ; (layer-toggle kanji))))
+  t-n (tap-next-release #(t n XX) (around-next #(t = n (layer-toggle kanji))))
+  t-m (tap-next-release #(t m XX) (around-next #(t = m (layer-toggle kanji))))
+  t-, (tap-next-release #(t , XX) (around-next #(t = , (layer-toggle kanji))))
+  t-. (tap-next-release #(t . XX) (around-next #(t = . (layer-toggle kanji))))
+  t-/ (tap-next-release #(t / XX) (around-next #(t = / (layer-toggle kanji))))
+)
+
+(deflayer roma1
+           1        2        3        4        5        6        7        8        9        0
+  _        q        w        e        r        t        y        u        i        o        p        [
+  _        a        s        d        f        g        @roma-h  @roma-j  k        l        ;        '        ret
+  _        z        x        c        @roma-v  b        n        @roma-m  ,        .        /        _
+  _                                            @s&s			  _
+)
+
+(deflayer roma0
+           1        2        3        4        5        6        7        8        9        0
+  _        q        w        e        r        t        y        u        i        o        p        [
+  _        a        s        d        f        g        h        j        k        l        ;        '        ret
+  _        z        x        c        v        b        n        m        ,        .        /        _
+  _                        	   	       @s&s                       _
+)
+
+(deflayer roma-h
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       @kana    XX       XX       XX	     XX       ret
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  _                                            @s&s                       _	
+)
+
+(deflayer roma-j
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       @kana    XX       XX       XX       XX       XX       ret
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  _                                            @s&s                       _	
+)
+
+(deflayer roma-v
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       ret
+  _        XX       XX       XX       XX       XX       XX       ret      XX       XX       XX       _
+  _                                            @s&s                       _	
+)
+
+(deflayer roma-m
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       ret
+  _        XX       XX       XX       ret      XX       XX       XX       XX       XX       XX       _
+  _                                            @s&s                       _	
+)
+
+(deflayer kana1
+           _        _        _        _        _        _        _        _        _        _
+  _        @q       @kana-w  @kana-e  @kana-r  @kana-t  @kana-y  @kana-u  @i       @o       @p       [
+  _        @a       @kana-s  @kana-d  @kana-f  @kana-g  @h       @j       @k       @l       @;       '        ret
+  _        @z       @kana-x  @kana-c  @kana-v  @b       @n       @kana-m  @,       @.       @/       _
+  _                          		       @s&ks                      _
+)
+
+(deflayer kana0
+           _        _        _        _        _        _        _        _        _        _
+  _        @q       @w       @e       @r       @t       @y       @u       @i       @o       @p       [
+  _        @a       @s       @d       @f       @g       @h       @j       @k       @l       @;       '        ret
+  lsft	   @z       @x       @c       @v       @b       @n       @m       @,       @.       @/       _
+  _                           		       @s&ks                      _	
+)
+
+(deflayer shift
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       @^q      @^w      @^e      @^r      @^t      @^y      @^u      @^i      @^o      @^p      XX
+  _        @^a      @^s      @^d      @^f      @^g      @^h      @^j      @^k      @^l      @^;      XX       XX
+  _        @^z      @^x      @^c      @^v      @^b      @^n      @^m      @^,      @^.      @^/      _
+  _                                            XX                         XX
+)
+
+(deflayer kanji
+           _        _        _        _        _        _        _        _        _        _
+  _        @Q       @W       @E       @R       @T       @Y	 @U       @I       @O       @P       [
+  _        @A       @S       @D       @F       @G       @H       @J       @K       @L       @:       '        ret
+  _        @Z       @X       @C       @V       @B       @N       @M       @<       @>       @?       _
+  _                          		       spc                        _	
+)
+
+(deflayer kana-w
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       @we>     @wr>     XX       XX       XX       @wi      @wo      @wp      XX
+  _        XX       XX       XX       @wf>     XX       @wh      @wj      @wk      @wl      @w;      XX       ret
+  _        XX       XX       XX       XX       XX       @wn      @wm      @w,      @w.      @w/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-e
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       @ew>     XX       @er>     XX       XX       XX       @ei      @eo      @ep      XX
+  _        XX       XX       XX       @ef>     XX       @eh      @ej      @ek      @el      @e;      XX       ret
+  _        XX       XX       XX       XX       @eb      @en      @em      @e,      @e.      @e/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-r
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       @rw>     @re>     XX       @rt      XX       XX       @ri      @ro      @rp      XX
+  _        XX       XX       XX       XX       XX       @rh      @rj      @rk      @rl      @r;      XX       ret
+  _        XX       XX       XX       XX       XX       @rn      @rm      @r,      @r.      @r/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-s
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        @sq      XX       @se>     @sr>     XX       XX       XX       @si      @so      @sp      XX
+  _        XX       XX       @sd>     @sf>     XX       @sh      @sj      @sk      @sl      @s;      XX       ret
+  _        XX       XX       @sc>     @sv>     XX       @sn      @sm      @s,      @s.      @s/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-d
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       @dw>     XX       XX       XX       XX       XX       @di      @do      @dp      XX
+  _        XX       @ds>     XX       @df>     @dg>     @dh      @dj      @dk      @dl      @d;      XX       ret
+  _        XX       XX       @dc>     @dv>     XX       @dn      @dm      @d,      @d.      @d/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-f
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        @fq      @fw>     @fe>     @fr>     XX       XX       @fu      @fi      @fo      @fp      XX
+  _        XX       @fs>     @fd>     XX       @roma    @fh      @fj      @fk      @fl      @f;      XX       ret
+  _        XX       XX       XX       XX       XX       @fn      @fm      @f,      @f.      @f/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-g
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       @i	   @go      @p       XX
+  _        XX       XX       XX       @roma    XX       @h       @j       @gk      @gl      @g;      XX       ret
+  _        XX       XX       XX       XX       XX       @gn      @gm      @g,      @g.      @g/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-x
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       @xi	   @xo      @xp      XX
+  _        XX       XX       @xd>     @xf>     XX       @xh      @xj      @xk      @xl      @x;      XX       ret
+  _        XX       XX       @xc>     @xv>     XX       @xn      @xm      @x,      @x.      @x/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-c
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       XX       XX       @ci	   @co      @cp      XX
+  _        XX       @cs>     @cd>     XX       @cg>     @ch      @cj      @ck      @cl      @c;      XX       ret
+  _        XX       @cx>     XX       @cv>     @cb>     @cn      @cm      @c,      @c.      @c/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-v
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       XX       XX       @vi      @vo      @vp      XX
+  XX       XX       @vs>     @vd>     @vf>     XX       @vh      @vj      @vk      @vl      @v;      XX       ret
+  XX       XX       @vx>     @vc>     XX       XX       @vn      @ret     @v,      @v.      @v/      XX
+  _                                            _                          _	
+)
+
+(deflayer kana-m
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       @e       XX       XX       XX       XX       @i	   XX       @p       XX
+  _        XX       XX       XX       XX       XX       @h       XX       XX       XX       XX       XX       ret
+  _        @z       @x       @c       @ret     XX       XX       XX       XX       XX       XX       XX
+  _                                            _                          _	
+)
+
+(deflayer kana-u
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _        XX       XX       XX       XX       XX       @kana-y  XX       XX       XX       XX       XX
+  _        XX       XX       XX       @f       XX       XX       XX       XX       XX       XX       XX       ret
+  _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  _                                            _                          _	
+)
+
+(deflayer rw>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @rw-y    @rw-u    @rw-i    @rw-o    @rw-p    XX
+  XX       XX       XX       XX       XX       XX       @rw-h    @rw-j    @rw-k    @rw-l    @rw-;    XX       XX
+  XX       XX       XX       XX       XX       XX       @rw-n    @rw-m    @rw-,    @rw-.    @rw-/    XX
+  _                            		       @s&s			  XX
+)
+
+(deflayer re>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @re-y    @re-u    @re-i    @re-o    @re-p    XX
+  XX       XX       XX       XX       XX       XX       @re-h    @re-j    @re-k    @re-l    @re-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @re-n    @re-m    @re-,    @re-.    @re-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer ew>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @ew-y    @ew-u    @ew-i    @ew-o    @ew-p    XX
+  XX       XX       XX       XX       XX       XX       @ew-h    @ew-j    @ew-k    @ew-l    @ew-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @ew-n    @ew-m    @ew-,    @ew-.    @ew-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer er>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @er-y    @er-u    @er-i    @er-o    @er-p    XX
+  XX       XX       XX       XX       XX       XX       @er-h    @er-j    @er-k    @er-l    @er-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @er-n    @er-m    @er-,    @er-.    @er-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer ef>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @ef-y    @ef-u    @ef-i    @ef-o    @ef-p    XX
+  XX       XX       XX       XX       XX       XX       @ef-h    @ef-j    @ef-k    @ef-l    @ef-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @ef-n    @ef-m    @ef-,    @ef-.    @ef-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer we>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @we-y    @we-u    @we-i    @we-o    @we-p    XX
+  XX       XX       XX       XX       XX       XX       @we-h    @we-j    @we-k    @we-l    @we-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @we-n    @we-m    @we-,    @we-.    @we-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer wr>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @wr-y    @wr-u    @wr-i    @wr-o    @wr-p    XX
+  XX       XX       XX       XX       XX       XX       @wr-h    @wr-j    @wr-k    @wr-l    @wr-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @wr-n    @wr-m    @wr-,    @wr-.    @wr-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer wf>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @wf-y    @wf-u    @wf-i    @wf-o    @wf-p    XX
+  XX       XX       XX       XX       XX       XX       @wf-h    @wf-j    @wf-k    @wf-l    @wf-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @wf-n    @wf-m    @wf-,    @wf-.    @wf-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sq>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sq-y    @sq-u    @sq-i    @sq-o    @sq-p    XX
+  XX       XX       XX       XX       XX       XX       @sq-h    @sq-j    @sq-k    @sq-l    @sq-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sq-n    @sq-m    @sq-,    @sq-.    @sq-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer se>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @se-y    @se-u    @se-i    @se-o    @se-p    XX
+  XX       XX       XX       XX       XX       XX       @se-h    @se-j    @se-k    @se-l    @se-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @se-n    @se-m    @se-,    @se-.    @se-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sr>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sr-y    @sr-u    @sr-i    @sr-o    @sr-p    XX
+  XX       XX       XX       XX       XX       XX       @sr-h    @sr-j    @sr-k    @sr-l    @sr-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sr-n    @sr-m    @sr-,    @sr-.    @sr-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sd>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sd-y    @sd-u    @sd-i    @sd-o    @sd-p    XX
+  XX       XX       XX       XX       XX       XX       @sd-h    @sd-j    @sd-k    @sd-l    @sd-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sd-n    @sd-m    @sd-,    @sd-.    @sd-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sf>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sf-y    @sf-u    @sf-i    @sf-o    @sf-p    XX
+  XX       XX       XX       XX       XX       XX       @sf-h    @sf-j    @sf-k    @sf-l    @sf-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sf-n    @sf-m    @sf-,    @sf-.    @sf-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sc>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sc-y    @sc-u    @sc-i    @sc-o    @sc-p    XX
+  XX       XX       XX       XX       XX       XX       @sc-h    @sc-j    @sc-k    @sc-l    @sc-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sc-n    @sc-m    @sc-,    @sc-.    @sc-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer sv>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @sv-y    @sv-u    @sv-i    @sv-o    @sv-p    XX
+  XX       XX       XX       XX       XX       XX       @sv-h    @sv-j    @sv-k    @sv-l    @sv-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @sv-n    @sv-m    @sv-,    @sv-.    @sv-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer dw>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @dw-y    @dw-u    @dw-i    @dw-o    @dw-p    XX
+  XX       XX       XX       XX       XX       XX       @dw-h    @dw-j    @dw-k    @dw-l    @dw-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @dw-n    @dw-m    @dw-,    @dw-.    @dw-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer ds>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @ds-y    @ds-u    @ds-i    @ds-o    @ds-p    XX
+  XX       XX       XX       XX       XX       XX       @ds-h    @ds-j    @ds-k    @ds-l    @ds-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @ds-n    @ds-m    @ds-,    @ds-.    @ds-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer df>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @df-y    @df-u    @df-i    @df-o    @df-p    XX
+  XX       XX       XX       XX       XX       XX       @df-h    @df-j    @df-k    @df-l    @df-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @df-n    @df-m    @df-,    @df-.    @df-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer dg>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @dg-y    @dg-u    @dg-i    @dg-o    @dg-p    XX
+  XX       XX       XX       XX       XX       XX       @dg-h    @dg-j    @dg-k    @dg-l    @dg-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @dg-n    @dg-m    @dg-,    @dg-.    @dg-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer dc>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @dc-y    @dc-u    @dc-i    @dc-o    @dc-p    XX
+  XX       XX       XX       XX       XX       XX       @dc-h    @dc-j    @dc-k    @dc-l    @dc-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @dc-n    @dc-m    @dc-,    @dc-.    @dc-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer dv>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @dv-y    @dv-u    @dv-i    @dv-o    @dv-p    XX
+  XX       XX       XX       XX       XX       XX       @dv-h    @dv-j    @dv-k    @dv-l    @dv-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @dv-n    @dv-m    @dv-,    @dv-.    @dv-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer fw>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @fw-y    @fw-u    @fw-i    @fw-o    @fw-p    XX
+  XX       XX       XX       XX       XX       XX       @fw-h    @fw-j    @fw-k    @fw-l    @fw-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @fw-n    @fw-m    @fw-,    @fw-.    @fw-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer fe>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @fe-y    @fe-u    @fe-i    @fe-o    @fe-p    XX
+  XX       XX       XX       XX       XX       XX       @fe-h    @fe-j    @fe-k    @fe-l    @fe-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @fe-n    @fe-m    @fe-,    @fe-.    @fe-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer fr>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+  XX       XX       XX       XX       XX       XX       @fr-y    @fr-u    @fr-i    @fr-o    @fr-p    XX
+  XX       XX       XX       XX       XX       XX       @fr-h    @fr-j    @fr-k    @fr-l    @fr-;    XX       ret
+  XX       XX       XX       XX       XX       XX       @fr-n    @fr-m    @fr-,    @fr-.    @fr-/    XX
+  _                                            @s&s                       XX
+)
+
+(deflayer fs>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @fs-y    @fs-u    @fs-i    @fs-o    @fs-p    [
+  XX       XX       XX       XX       XX       XX       @fs-h    @fs-j    @fs-k    @fs-l    @fs-;    '        ret
+  XX       XX       XX       XX       XX       XX       @fs-n    @fs-m    @fs-,    @fs-.    @fs-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer fd>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @fd-y    @fd-u    @fd-i    @fd-o    @fd-p    [
+  XX       XX       XX       XX       XX       XX       @fd-h    @fd-j    @fd-k    @fd-l    @fd-;    '        ret
+  XX       XX       XX       XX       XX       XX       @fd-n    @fd-m    @fd-,    @fd-.    @fd-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer xd>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @xd-y    @xd-u    @xd-i    @xd-o    @xd-p    [
+  XX       XX       XX       XX       XX       XX       @xd-h    @xd-j    @xd-k    @xd-l    @xd-;    '        ret
+  XX       XX       XX       XX       XX       XX       @xd-n    @xd-m    @xd-,    @xd-.    @xd-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer xf>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @xf-y    @xf-u    @xf-i    @xf-o    @xf-p    [
+  XX       XX       XX       XX       XX       XX       @xf-h    @xf-j    @xf-k    @xf-l    @xf-;    '        ret
+  XX       XX       XX       XX       XX       XX       @xf-n    @xf-m    @xf-,    @xf-.    @xf-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer xc>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @xc-y    @xc-u    @xc-i    @xc-o    @xc-p    [
+  XX       XX       XX       XX       XX       XX       @xc-h    @xc-j    @xc-k    @xc-l    @xc-;    '        ret
+  XX       XX       XX       XX       XX       XX       @xc-n    @xc-m    @xc-,    @xc-.    @xc-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer xv>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @xv-y    @xv-u    @xv-i    @xv-o    @xv-p    [
+  XX       XX       XX       XX       XX       XX       @xv-h    @xv-j    @xv-k    @xv-l    @xv-;    '        ret
+  XX       XX       XX       XX       XX       XX       @xv-n    @xv-m    @xv-,    @xv-.    @xv-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cs>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cs-y    @cs-u    @cs-i    @cs-o    @cs-p    [
+  XX       XX       XX       XX       XX       XX       @cs-h    @cs-j    @cs-k    @cs-l    @cs-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cs-n    @cs-m    @cs-,    @cs-.    @cs-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cd>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cd-y    @cd-u    @cd-i    @cd-o    @cd-p    [
+  XX       XX       XX       XX       XX       XX       @cd-h    @cd-j    @cd-k    @cd-l    @cd-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cd-n    @cd-m    @cd-,    @cd-.    @cd-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cg>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cg-y    @cg-u    @cg-i    @cg-o    @cg-p    [
+  XX       XX       XX       XX       XX       XX       @cg-h    @cg-j    @cg-k    @cg-l    @cg-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cg-n    @cg-m    @cg-,    @cg-.    @cg-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cx>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cx-y    @cx-u    @cx-i    @cx-o    @cx-p    [
+  XX       XX       XX       XX       XX       XX       @cx-h    @cx-j    @cx-k    @cx-l    @cx-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cx-n    @cx-m    @cx-,    @cx-.    @cx-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cv>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cv-y    @cv-u    @cv-i    @cv-o    @cv-p    [
+  XX       XX       XX       XX       XX       XX       @cv-h    @cv-j    @cv-k    @cv-l    @cv-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cv-n    @cv-m    @cv-,    @cv-.    @cv-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer cb>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @cb-y    @cb-u    @cb-i    @cb-o    @cb-p    [
+  XX       XX       XX       XX       XX       XX       @cb-h    @cb-j    @cb-k    @cb-l    @cb-;    '        ret
+  XX       XX       XX       XX       XX       XX       @cb-n    @cb-m    @cb-,    @cb-.    @cb-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer vs>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @vs-y    @vs-u    @vs-i    @vs-o    @vs-p    [
+  XX       XX       XX       XX       XX       XX       @vs-h    @vs-j    @vs-k    @vs-l    @vs-;    '        ret
+  XX       XX       XX       XX       XX       XX       @vs-n    @vs-m    @vs-,    @vs-.    @vs-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer vd>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @vd-y    @vd-u    @vd-i    @vd-o    @vd-p    [
+  XX       XX       XX       XX       XX       XX       @vd-h    @vd-j    @vd-k    @vd-l    @vd-;    '        ret
+  XX       XX       XX       XX       XX       XX       @vd-n    @vd-m    @vd-,    @vd-.    @vd-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer vf>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @vf-y    @vf-u    @vf-i    @vf-o    @vf-p    [
+  XX       XX       XX       XX       XX       XX       @vf-h    @vf-j    @vf-k    @vf-l    @vf-;    '        ret
+  XX       XX       XX       XX       XX       XX       @vf-n    @vf-m    @vf-,    @vf-.    @vf-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer vx>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @vx-y    @vx-u    @vx-i    @vx-o    @vx-p    [
+  XX       XX       XX       XX       XX       XX       @vx-h    @vx-j    @vx-k    @vx-l    @vx-;    '        ret
+  XX       XX       XX       XX       XX       XX       @vx-n    @vx-m    @vx-,    @vx-.    @vx-/    _
+  _                                            @s&s                       _
+)
+
+(deflayer vc>
+           XX       XX       XX       XX       XX       XX       XX       XX       XX       _
+  XX       XX       XX       XX       XX       XX       @vc-y    @vc-u    @vc-i    @vc-o    @vc-p    [
+  XX       XX       XX       XX       XX       XX       @vc-h    @vc-j    @vc-k    @vc-l    @vc-;    '        ret
+  XX       XX       XX       XX       XX       XX       @vc-n    @vc-m    @vc-,    @vc-.    @vc-/    _
+  _                                            @s&s                       _
+)
