@@ -260,7 +260,7 @@
   kana-w (tap-next-press (around ralt #(- w XX)) (layer-toggle kana-w))
   kana-e (tap-next-press (around ralt #(- e XX)) (layer-toggle kana-e))
   kana-r (tap-next-press (around ralt #(- r XX)) (layer-toggle kana-r))
-  kana-t (tap-next-release #(lsft left) (around ralt #(= t (layer-toggle kanji))))
+  kana-t (tap-next-release #(lsft left XX) (around ralt #(= t (layer-toggle kanji))))
   kana-s (tap-next-press (around ralt #(- s XX)) (layer-toggle kana-s))
   kana-d (tap-next-press (around ralt #(- d XX)) (layer-toggle kana-d))
   kana-f (tap-next-press (around ralt #(- f XX)) (layer-toggle kana-f))
@@ -268,7 +268,7 @@
   kana-x (tap-next-press (around ralt #(- x XX)) (layer-toggle kana-x))
   kana-c (tap-next-press (around ralt #(- c XX)) (layer-toggle kana-c))
   kana-v (tap-next-press (around ralt #(- v XX)) (layer-toggle kana-v))
-  kana-y (tap-next-release #(lsft right) (around ralt #(= y (layer-toggle kanji))))
+  kana-y (tap-next-release #(lsft right XX) (around ralt #(= y (layer-toggle kanji))))
   kana-u (tap-next-release bspc (around ralt #(= u (layer-toggle kana-u))))
   kana-m (tap-next-release (around ralt #(- m XX)) (around ralt #(= m (layer-toggle kana-m))))
 
