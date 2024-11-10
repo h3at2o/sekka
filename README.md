@@ -18,7 +18,7 @@ LinuxでIMEがなくても日本語を打てるようにする
 
 ## インストール
 ```
-cp .XCompose /home
+cp .XCompose /home/USER/
 ```
 config.kbdのinput行を自分の環境に合わせて編集しコメントアウトする。
 ```
