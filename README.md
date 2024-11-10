@@ -16,6 +16,14 @@ LinuxでIMEがなくても日本語を打てるようにする
 - Linux環境
 - KMonad 4.2以上
 
+## インストール
+    
+cp .XCompose /home
+
+config.kbdのinput行を自分の環境に合わせて編集し、コメントアウトする。
+    
+kmonad config.kbd
+
 ## 実装上の問題点
 - KMonadはWindowsでも使えるが、漢字の定義を加えるとWinComposeの容量を超えるのか動作しない
 - 熟語の定義を加えると、GnomeのIME基盤であるibusが「.XComposeが大き過ぎる」とエラーを吐いて落ちる
