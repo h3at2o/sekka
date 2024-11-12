@@ -30,6 +30,17 @@ KMonadを起動する
 ```
 kmonad config.kbd
 ```
+
+## 練習方法
+1. 四角号碼を学ぶ
+2. Emacsの設定ファイルに「4Corner2Sekka.el」をデフォルトIMEとして登録する
+```
+(require '4Corner2Sekka)
+(setq default-input-method "4Corner2Sekka")
+```
+3. IMEをオンにして数字（四角号碼）を入力する
+4. 漢字と共に表示されるキーストロークを打つ
+
 ## 実装上の問題点
 - KMonadはWindowsでも使えるが、漢字の定義を加えるとWinComposeの容量を超えるのか動作しない
 - 熟語の定義を加えると、GnomeのIME基盤であるibusが「.XComposeが大き過ぎる」とエラーを吐いて落ちる
