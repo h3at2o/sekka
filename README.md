@@ -18,10 +18,11 @@ LinuxでIMEがなくても日本語を打てるようにする
 - KMonad 4.2以上
 
 ## インストール
+X Composeの設定をユーザーの/homeにコピーし、ウィンドウマネージャやコンポジタに再ログインする
 ```
 cp .XCompose /home/USER/
 ```
-config.kbdのinput行を自分の環境に合わせて編集しコメントアウトする。
+config.kbdのinput行を自分の環境に合わせて編集しコメントアウトする
 ```
 (defcfg
   input  (device-file "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd")
