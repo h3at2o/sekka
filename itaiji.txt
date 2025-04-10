@@ -1,299 +1,298 @@
-# "_" = space
-
-e r i _ 歲
-r e m k _ 盃
-w e o h _ 濱
-s r u _ 收
-s r u l _ 糺
-d w . h _ 囓
-r w h o _ 峯
-c b k u _ 苅
-c d j k _ 歸
-s r p _ 亂
-c b i _ 埜
-f w h i _ 藝
-c x m o _ 齊
-c x m l _ 齋
-c x m k _ 劑
-c x m _ 濟
-w e ; l _ 亞
-w e ; m _ 唖
-w e ; _ 惡
-w f o y _ 凛
-s r l k _ 參
-f d l m _ 飮
-r e j _ 來
-d c ; _ 條
-f d h o _ 劍
-f d h _ 檢
-f d h k _ 驗
-f d h p _ 鹸
-f d o u _ 兒
-w r l k _ 內
-c s p _ 兩
-v s j _ 續
-v s j k _ 讀
-c x i j _ 册
-c s j _ 滿
-s f j p _ 螢
-w f k j _ 處
-e f k u _ 靭
-s f j _ 勞
-f r n . _ 麹
-d s n i _ 腦
-w e m _ 區
-w e m , _ 躯
-s r k _ 點
-f w p j _ 絕
-f w n , _ 脃
-x d h k _ 卽
-f r p u _ 彥
-d c i n _ 掻
-d g . k _ 沒
-d g l j _ 假
-d g o i _ 嚴
-d g o p _ 巖
-x c l k _ 﨑
-v f l _ 權
-v f l k _ 觀
-w f l _ 當
-w f l j _ 黨
-x c p _ 吿
-e f . _ 單
-e f . k _ 彈
-e r k _ 戰
-e f . n _ 箪
-d v k o _ 壽
-d v k p _ 祷
-w e k l _ 圓
-w f p _ 總
-w f p h _ 聰
-w e k j _ 圖
-d c / j _ 鐵
-d f k m _ 聽
-w e . m _ 廳
-s e ; _ 燒
-c b h _ 經
-c b h k _ 輕
-d f i n _ 呑
-f e / l _ 侠
-f e j l _ 頬
-d c u l _ 溪
-d c u o _ 鷄
-d c u o g 雞
-f r l _ 數
-f s l j _ 舘
-w e h _ 實
-w f m _ 將
-w f m , _ 醤
-c d o j _ 專
-c d o _ 傳
-c d o h _ 團
-c d o i _ 轉
-c d l j _ 對
-c g i l _ 薗
-f e i l _ 臺
-x d h p _ 臈
-v d l h _ 蝋
-d s l n _ 煕
-f d i l _ 稅
-f d i o _ 脫
-f d i _ 說
-c s k l _ 舩
-w r h _ 亰
-w r h k _ 凉
-c g j _ 帶
-e f , m _ 屏
-w r j _ 關
-c x / l _ 佛
-v d o i _ 緣
-e f k m _ 剥
-e r h k _ 綠
-e r h _ 錄
-c x . j _ 祕
-d f k o _ 德
-c d o u _ 惠
-s v h k _ 恆
-e r l _ 殘
-e r l i _ 錢
-w e k g 圀
-w e k _ 國
-w e k m _ 掴
-w r o i _ 戶
-w r / j _ 泪
-d v j i _ 擧
-d c l u _ 拜
-d c h _ 敎
-e f i o _ 斷
-s v m k _ 郞
-x f j o _ 曾
-x f j _ 增
-x v l _ 會
-v f l n _ 雜
-r w / _ 乘
-c v p _ 樂
-c v p j _ 藥
-d w . m _ 齒
-d w k j _ 步
-d w u o _ 澁
-c v m _ 聲
-f r j k _ 每
-f r j l _ 楳
-s d p _ 氣
-s e i o _ 脉
-f e l m _ 黃
-w e p _ 廣
-w e p m _ 鑛
-f e l h _ 橫
-s f j i _ 榮
-s f j k _ 營
-d g k _ 爭
-c g k h _ 稱
-d g ; _ 隱
-v d u _ 爲
-e w / l _ 辭
-c g . j _ 讓
-s v / _ 彌
-s v / k _ 祢
-e r p n _ 壯
-e r p u _ 裝
-e r n o _ 藏
-v d p _ 狀
-v d ; l _ 髮
-s e k j _ 壓
-v d p m _ 獸
-r e h k _ 靑
-r e h l _ 淸
-r e h i _ 靜
-f r p j _ 產
-r w m l _ 鋪
-x f m k _ 冨
-s e o _ 畫
-d g . j _ 瘦
-d w h _ 發
-w e . h _ 燈
-x d i o _ 溫
-x d i m _ 盜
-x f h k _ 倶
-x f i _ 眞
-x f i j _ 填
-d s k u _ 顛
-f d k l _ 眾
-e w o _ 醫
-d v h k _ 礙
-f s i _ 萬
-c v k m _ 曆
-c v k j _ 歷
-v f i _ 應
-d s p j _ 縣
-d g h i _ 繋
-c x , j _ 寶
-v s o _ 賣
-c g o j _ 釋
-c g o i _ 澤
-v d n k _ 逹
-d c p h _ 盡
-d c j . _ 繍
-v c . _ 宍
-x f / n _ 遙
-f s k j g 邉
-f s k j _ 邊
-e w . i _ 腟
-x f , _ 舊
-w e i _ 學
-w e i n _ 覺
-d v j _ 與
-c g / _ 寫
-w f / k _ 舍
-v s l y _ 芦
-x c i _ 號
-v x j i _ 屬
-v x j _ 獨
-v d / _ 蟲
-d w n k _ 衞
-c g m k _ 醉
-x v / _ 價
-c b j _ 變
-r w k l g 躰
-r w k l _ 體
-w f j k _ 禮
-f r l k _ 櫻
-d g h _ 擊
-c g k o _ 辨
-f d j k _ 從
-d v / _ 卷
-s e j k _ 裡
-w r k _ 閒
-v f u _ 雙
-c d l i _ 靈
-w r m _ 髙
-x d l k _ 鬪
-v f k _ 嶋
-v f k g 嶌
-r e j i _ 麥
-s f / _ 黑
-v x i l _ 龍
-v x i _ 瀧
-s d o j _ 朙
-s f , _ 龝
-s f , g 穐
-v s o h _ 嘘
-d w . n _ 噛
-d s l m _ 麺
-x d k l _ 者
-s d i _ 神
-d s k _ 衟
-x c i l _ 器
-f s o i _ 芲
-w e k o _ 塚
-f r j _ 海
-c s i l _ 蓮
-x d h _ 節
-r e h o _ 精
-d f j o _ 視
-x f j k _ 層
-s e k _ 社
-x d p _ 都
-c s i _ 連
-x v i l _ 祖
-d c o u _ 殺
-d s i _ 類
-v s o i _ 虛
-x f m _ 福
-f s l j _ 館
-d g k p _ 穀
-v c i l _ 漢
-d w h i _ 隆
-s f ; _ 益
-f d n o _ 祝
-s v m o _ 朗
-x d / j _ 諸
-x f j l _ 僧
-d c m , _ 飰
-s v u _ 契
-v c k l _ 勤
-c b ; _ 糖
-d w m l _ 證
-c b i l _ 豫
-c v / j _ 豐
-c s k _ 歬
-c g k o _ 辯
-x d i l _ 鹽
-v s k o g 蹟
-v s k o _ 迹
-d w ; h _ 眦
-v d / h _ 虱
-e f / . _ 桿
-e f ; n _ 鵞
-x v l m _ 桝
-s f o i _ 渕
-x d o i _ 鄕
-s e ; j _ 堯
-f d ; _ 坐
-x f i m _ 槇
-s d h k _ 艸
-v s p u _ 菟
-s d o y _ 萠
-w e m k _ 駈
-c x k h _ 冲
-v x l j _ 篭
+v c i g 歲
+r e m k g 盃
+w e o h g 濱
+d t u g 收
+d t u l g 糺
+s c . h g 囓
+r w h o g 峯
+c b k u g 苅
+c s j k g 歸
+d t p g 亂
+c b i g 埜
+d w h i g 藝
+c x m o g 齊
+c x m l g 齋
+c x m k g 劑
+c x m g 濟
+w e ; l g 亞
+w e ; m g 唖
+w e ; g 惡
+w d o y g 凛
+d t l k g 參
+d f l m g 飮
+r e j g 來
+s f ; g 條
+d f h o g 劍
+d f h g 檢
+d f h k g 驗
+d f h p g 鹸
+d f o u g 兒
+w r l k g 內
+v s p g 兩
+e t j g 續
+e t j k g 讀
+c x i j g 册
+v s j g 滿
+f s j p g 螢
+w d k j g 處
+v x k u g 靭
+f s j g 勞
+d r n . g 麹
+s d n i g 腦
+w e m g 區
+w e m , g 躯
+d t k g 點
+d w p j g 絕
+d w n , g 脃
+x d h k g 卽
+d r p u g 彥
+s f i n g 掻
+s r . k g 沒
+s r l j g 假
+s r o i g 嚴
+s r o p g 巖
+x c l k g 﨑
+e w l g 權
+e w l k g 觀
+w d l g 當
+w d l j g 黨
+x c p g 吿
+v x . g 單
+v x . k g 彈
+v c k g 戰
+v x . n g 箪
+s v k o g 壽
+s v k p g 祷
+w e k l g 圓
+w d p g 總
+w d p h g 聰
+w e k j g 圖
+s f / j g 鐵
+s e k m g 聽
+w e . m g 廳
+f e ; g 燒
+c b h g 經
+c b h k g 輕
+s e i n g 呑
+d v / l g 侠
+d v j l g 頬
+s f u l g 溪
+s f u o g 鷄
+s f u o b 雞
+d r l g 數
+d s l j g 舘
+w e h g 實
+w d m g 將
+w d m , g 醤
+c s o j g 專
+c s o g 傳
+c s o h g 團
+c s o i g 轉
+c s l j g 對
+c g i l g 薗
+d v i l g 臺
+x d h p g 臈
+e f l h g 蝋
+s d l n g 煕
+d f i l g 稅
+d f i o g 脫
+d f i g 說
+v s k l g 舩
+w r h g 亰
+w r h k g 凉
+c g j g 帶
+v x , m g 屏
+w r j g 關
+c x / l g 佛
+e f o i g 緣
+v x k m g 剥
+v c h k g 綠
+v c h g 錄
+c x . j g 祕
+s e k o g 德
+c s o u g 惠
+d g h k g 恆
+v c l g 殘
+v c l i g 錢
+w e k b 圀
+w e k g 國
+w e k m g 掴
+w r o i g 戶
+w r / j g 泪
+s v j i g 擧
+s f l u g 拜
+s f h g 敎
+v x i o g 斷
+d g m k g 郞
+x f j o g 曾
+x f j g 增
+x v l g 會
+e w l n g 雜
+r w / g 乘
+c v p g 樂
+c v p j g 藥
+s c . m g 齒
+s c k j g 步
+s c u o g 澁
+c v m g 聲
+d r j k g 每
+d r j l g 楳
+f d p g 氣
+f e i o g 脉
+d v l m g 黃
+w e p g 廣
+w e p m g 鑛
+d v l h g 橫
+f s j i g 榮
+f s j k g 營
+s r k g 爭
+c g k h g 稱
+s r ; g 隱
+e f u g 爲
+v d / l g 辭
+c g . j g 讓
+d g / g 彌
+d g / t k g 祢
+v c p n g 壯
+v c p u g 裝
+v c n o g 藏
+e f p g 狀
+e f ; l g 髮
+f e k j g 壓
+e f p m g 獸
+r e h k g 靑
+r e h l g 淸
+r e h i g 靜
+d r p j g 產
+r w m l g 鋪
+x f m k g 冨
+f e o g 畫
+s r . j g 瘦
+s c h g 發
+w e . h g 燈
+x d i o g 溫
+x d i m g 盜
+x f h k g 倶
+x f i g 眞
+x f i j g 填
+s d k u g 顛
+d f k l g 眾
+v d o g 醫
+s v h k g 礙
+d s i g 萬
+c v k m g 曆
+c v k j g 歷
+e w i g 應
+s d p j g 縣
+s r h i g 繋
+c x , j g 寶
+e t o g 賣
+c g o j g 釋
+c g o i g 澤
+e f n k g 逹
+s f p h g 盡
+s f j . g 繍
+e r . g 宍
+x f / n g 遙
+d s k j b 邉
+d s k j g 邊
+v d . i g 腟
+x f , g 舊
+w e i g 學
+w e i n g 覺
+s v j g 與
+c g / g 寫
+w d / k g 舍
+e t l y g 芦
+x c i g 號
+e s j i g 屬
+e s j g 獨
+e f / g 蟲
+s c n k g 衞
+c g m k g 醉
+x v / g 價
+c b j g 變
+r w k l b 躰
+r w k l g 體
+w d j k g 禮
+d r l k g 櫻
+s r h g 擊
+c g k o g 辨
+d f j k g 從
+s v / g 卷
+f e j k g 裡
+w r k g 閒
+e w u g 雙
+c s l i g 靈
+w r m g 髙
+x d l k g 鬪
+e w k g 嶋
+e w k b 嶌
+r e j i g 麥
+f s / g 黑
+e s i l g 龍
+e s i g 瀧
+f d o j g 朙
+f s , g 龝
+f s , b 穐
+e t o h g 嘘
+s c . n g 噛
+s d l m g 麺
+x d k l g 者
+f d i g 神
+s d k g 衟
+x c i l g 器
+d s o i g 芲
+w e k o g 塚
+d r j g 海
+v s i l g 蓮
+x d h g 節
+r e h o g 精
+s e j o g 視
+x f j k g 層
+f e k g 社
+x d p g 都
+v s i g 連
+x v i l g 祖
+s f o u g 殺
+s d i g 類
+e t o i g 虛
+x f m g 福
+d s l j g 館
+s r k p g 穀
+e r i l g 漢
+s c h i g 隆
+f s ; g 益
+d f n o g 祝
+d g m o g 朗
+x d / j g 諸
+x f j l g 僧
+s f m , g 飰
+d g u g 契
+e r k l g 勤
+c b ; g 糖
+s c m l g 證
+c b i l g 豫
+c v / j g 豐
+v s k g 歬
+c g k o g 辯
+x d i l g 鹽
+e t k o b 蹟
+e t k o g 迹
+s c ; h g 眦
+e f / h g 虱
+v x / . g 桿
+v x ; n g 鵞
+x v l m g 桝
+f s o i g 渕
+x d o i g 鄕
+f e ; j g 堯
+d f ; g 坐
+x f i m g 槇
+f d h k g 艸
+e t p u g 菟
+f d o y g 萠
+w e m k g 駈
+c x k h g 冲
+e s l j g 篭
+d t h o g 叱
