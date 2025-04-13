@@ -8,9 +8,9 @@
 - 頻出熟語は省打鍵「くずし字入力*」
 
 ## 修正点
-- ライセンスの問題がない、偏りのない熟語頻度表が見つからなかったので、CC100の日本語データセットとUniDic辞書から生成
+- ライセンスの問題がない偏りのない熟語頻度表が見つからなかったので、CC100(ja)データセットとSudachiDict(small: UniDic)辞書から生成
 - 左手を標準運指に
-- 右小指外Enterで「カタカナ->ひらがな」しやすくするため、orz化
+- 右小指外Enterで「ひらがな->カタカナ」しやすくするためorz化
 
 ## 制作の目的
 LinuxでIMEがなくても日本語を打てるようにする
@@ -68,5 +68,7 @@ kmonad config.kbd
 - JIS X 0213のコード対応表 https://x0213.org/codetable/
 - 漢字辞典オンライン https://kanji.jitenon.jp/
 - コトバンク https://kotobank.jp/
+- CC-100 https://data.statmt.org/cc-100/
+- SudachiDict http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/
 
 This software includes the work that is distributed in the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
