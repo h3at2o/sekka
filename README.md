@@ -8,9 +8,9 @@
 - 頻出熟語は省打鍵「くずし字入力*」
 
 ## 修正点
-- ライセンスの問題がない偏りのない熟語頻度表が見つからなかったので、CC100(ja)データセットとSudachiDict(small: UniDic)辞書から生成
-- 左手を標準運指に
-- 右小指外Enterで「ひらがな->カタカナ」しやすくするためorz化
+- ライセンスの問題がない偏りのない熟語頻度表が見つからなかったので、ABEJA-CC-JAデータセットとSudachiDict(small: UniDic)辞書から生成
+- 左手を標準運指に合わせた
+- 右小指外Enterで「カタカナ->ひらがな」しやすくするためorz化
 
 ## 制作の目的
 LinuxでIMEがなくても日本語を打てるようにする
@@ -21,9 +21,9 @@ LinuxでIMEがなくても日本語を打てるようにする
 - KMonad 4.2以上
 
 ## インストール
-X Composeの設定をユーザーの/homeにコピーし、ウィンドウマネージャーやコンポジタに再ログインする
+X Compose関係の設定をユーザーの/homeにコピーし、ウィンドウマネージャーやコンポジタに再ログインする
 ```
-cp .XCompose /home/USER/
+cp .XCompose* /home/USER/
 ```
 config.kbdのinput行を自分の環境に合わせて編集しコメントアウトする
 ```
@@ -51,10 +51,6 @@ kmonad config.kbd
 - 熟語の定義を加えると、GnomeのIME基盤であるibusが「.XComposeが大き過ぎる」とエラーを吐いて落ちる
 - 左手の編集モード、固有名詞モードが漢字入力とかち合う
 - 「m」と「v」の改行がくずし字入力とかち合う
-- 生成した熟語頻度表も広告の影響を受けて偏っている気がするので、その辺を考慮したデータセットがあればそれを使うべきかもしれない
-
-## ToDo
-- 漢字系統樹表で離れている同源字を、同じグループにできるか検討する
 
 ## 参照資料
 - 漢字系統樹表2800解字 善如寺俊彦 著
@@ -69,7 +65,7 @@ kmonad config.kbd
 - JIS X 0213のコード対応表 https://x0213.org/codetable/
 - 漢字辞典オンライン https://kanji.jitenon.jp/
 - コトバンク https://kotobank.jp/
-- CC-100 https://data.statmt.org/cc-100/
+- ABEJA-CC-JA https://registry.opendata.aws/abeja-cc-ja/
 - SudachiDict http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/
 
 This software includes the work that is distributed in the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
