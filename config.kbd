@@ -36,6 +36,7 @@
     20right #(right right right right right right right right right right right right right right right right right right right right right right right right right right right right)
     swa  (around lmet (around lalt #(up XX)))
     swb  (around lmet (around lalt #(down XX)))
+    p_noun  (around ralt #(] 0 XX))
 
 ;;  単打かな prefix(tap="-", hold="]")
     q  (tap-next-release (around ralt #(- q XX)) (around ralt #(] q XX)))
@@ -92,6 +93,11 @@
     \\  #(ralt - \\)
     spc #(ralt - spc)
 
+    l_p #(ralt - \()
+    r_p #(ralt - \))
+    {   #(ralt - {)
+    }   #(ralt - })
+
     ~   #(ralt \_ ~)
     !   #(ralt \_ !)
     @   #(ralt \_ @)
@@ -101,12 +107,8 @@
     ^   #(ralt \_ ^)
     &   #(ralt \_ &)
     *   #(ralt \_ *)
-    l_p #(ralt \_ \()
-    r_p #(ralt \_ \))
     \_  #(ralt \_ \_)
     +   #(ralt \_ +)
-    {   #(ralt \_ {)
-    }   #(ralt \_ })
     |   #(ralt \_ |)
 
 ;;  シフトかな prefix(tap="=")
@@ -1742,7 +1744,7 @@
 )
  
 (deflayer kana1
-             _        _        _        _        _        _        _        _        _        _
+             _        _        @p_noun  _        _        _        _        _        @p_noun  _
     @t&a     @kana-q  @kana-w  @kana-e  @kana-r  @kana-t  _        @kana-y  @kana-u  @kana-i  @kana-o  @kana-p	@\&a
     @c&c     @kana-a  @kana-s  @kana-d  @kana-f  @kana-g  @swa     @kana-h  @kana-j  @kana-k  @kana-l  @kana-;  @s&c
     _        @kana-z  @kana-x  @kana-c  @kana-v  @kana-b  @swb     @kana-n  @kana-m  @,       @kana-.  @kana-/
