@@ -163,7 +163,7 @@
     Z{}   #(lsft ralt ` { ralt ` } P5 left)
     z<>   #(lsft ralt ` < ralt ` > P5 left)
     `/    #(ralt ` /)
-    `0    #(ralt d g ] k - j)
+    `0    #(ralt [ d g ] k d g - j)
 
     rt> (layer-toggle rt>)
     rl  #(ralt - r ralt - l XX)
