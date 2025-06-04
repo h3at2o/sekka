@@ -25,12 +25,12 @@
 <Multi_key> <underscore> <asciicircum> : "＾"
 <Multi_key> <underscore> <ampersand> : "＆"
 <Multi_key> <underscore> <asterisk> : "＊"
-<Multi_key> <underscore> <parenleft> : "（"
-<Multi_key> <underscore> <parenright> : "）"
+<Multi_key> <quotedbl> <bracketleft> : "（"
+<Multi_key> <quotedbl> <bracketright> : "）"
 <Multi_key> <underscore> <underscore> : "＿"
 <Multi_key> <underscore> <plus> : "＋"
-<Multi_key> <underscore> <braceleft> : "｛"
-<Multi_key> <underscore> <braceright> : "｝"
+<Multi_key> <apostrophe> <bracketleft> : "｛"
+<Multi_key> <apostrophe> <bracketright> : "｝"
 <Multi_key> <underscore> <bar> : "｜"
 <Multi_key> <underscore> <space> : "　"			# 全角スペース
 
