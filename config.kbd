@@ -93,11 +93,6 @@
     \\  #(ralt - \\)
     spc #(ralt - spc)
 
-    l_p #(ralt - \()
-    r_p #(ralt - \))
-    {   #(ralt - {)
-    }   #(ralt - })
-
     ~   #(ralt \_ ~)
     !   #(ralt \_ !)
     @   #(ralt \_ @)
@@ -148,6 +143,10 @@
     '.    #(ralt ' .)
     '/    #(ralt ' /)
 
+    '{    #(ralt ' [)
+    '}    #(ralt ' ])
+    ''{   #(ralt " [)
+    ''}   #(ralt " ])
     '':   #(ralt " :)
     ''?   #(ralt " ?)
 
@@ -157,8 +156,8 @@
 
     z`'   #(lsft ralt ` ` ralt ` ' P5 left)
     z[]   #(lsft @[ @] P5 left)
-    z{}   #(lsft @{ @} P5 left)
-    PRTS  #(lsft @l_p @r_p P5 left)
+    z{}   #(lsft @'{ @'} P5 left)
+    PRTS  #(lsft @''{ P5 @''} P5 left)
     Z[]   #(lsft ralt ` [ ralt ` ] P5 left)
     `PRTS #(lsft ralt ` \( ralt ` \) P5 left)
     Z{}   #(lsft ralt ` { ralt ` } P5 left)
