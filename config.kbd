@@ -1,74 +1,77 @@
 (defcfg
-    input  (device-file "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd")
-    output (uinput-sink "My KMonad output")
+    input    (device-file "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd")
+    output   (uinput-sink "My KMonad output")
     fallthrough true
 )
 
 (defsrc
              1        2        3        4        5        6        7        8        9        0
-    tab      q        w        e        r        t        y        u        i        o        p        [	\
+    tab      q        w        e        r        t        y        u        i        o        p        [	]
     caps     a        s        d        f        g        h        j        k        l        ;        '        ret
     lsft     z        x        c        v        b        n        m        ,        .        /        rsft
     lctl                                                  spc               ralt
 )
 
 (defalias
-    t&a  (tap-next tab (around lalt (layer-toggle roma0)))
-    `&c  (tap-next ` (around lctl (layer-toggle roma0)))
-    \&a (tap-next \\ (around lalt (layer-toggle roma0)))
-    '&c  (tap-next ' (around rctl (layer-toggle roma0)))
-    s&s  (tap-next spc lsft)
-    ret  (tap-next ret (layer-toggle el1))
-    tab  (tap-next tab (layer-toggle move))
-    esc  (tap-hold-next 240 #(esc P10 (layer-switch roma1)) (layer-toggle zen_num))
-    s&ks (tap-next spc (layer-toggle shift))
-    c&c  (tap-next #(lsft P10 (around lsft rsft) XX) (around lctl (layer-toggle roma0)))
-    s&c  (tap-hold-next 180 rsft (around rctl (layer-toggle roma0)))
-    kana (layer-switch kana1)
-    roma (layer-switch roma1)
-    numbers2 (tap-next spc (layer-toggle numbers2))
-    zen_num2 (tap-next spc (layer-toggle zen_num2))
-    7up   #(up up up up up up up)
-    7down #(down down down down down down down)
-    5left #(left left left left left left left)
-    5right #(right right right right right right right)
-    20left #(left left left left left left left left left left left left left left left left left left left left left left left left left left left left)
-    20right #(right right right right right right right right right right right right right right right right right right right right right right right right right right right right)
-    swa  (around lmet (around lalt #(up XX)))
-    swb  (around lmet (around lalt #(down XX)))
-    p_noun  (around ralt #(] 0 XX))
+    tab&alt  (tap-next tab (around lalt (layer-toggle roma0)))
+    zenkaku  (tap-next (layer-switch zenkaku) (around lctl (layer-toggle roma0)))
+    bsl&alt  (tap-next ] (around lalt (layer-toggle roma0)))
+    spc&sft  (tap-next spc lsft)
+    ret      (tap-next ret (layer-toggle el1))
+    tab      (tap-next tab (layer-toggle move))
+    esc      (tap-hold-next 240 #(esc P10 (layer-switch roma1)) (layer-toggle zen_num))
+    kana     (layer-switch kana1)
 
-;;  単打かな prefix(tap="-", hold="]")
-    q  (tap-next-release (around ralt #(- q XX)) (around ralt #(] q XX)))
-    w  (tap-next-release (around ralt #(- w XX)) (around ralt #(] w XX)))
-    e  (tap-next-release (around ralt #(- e XX)) (around ralt #(] e XX)))
-    r  (tap-next-release (around ralt #(- r XX)) (around ralt #(] r XX)))
-    t  (tap-next-release (around ralt #(- t XX)) (around ralt #(] t XX)))
-    a  (tap-next-release (around ralt #(- a XX)) (around ralt #(] a XX)))
-    s  (tap-next-release (around ralt #(- s XX)) (around ralt #(] s XX)))
-    d  (tap-next-release (around ralt #(- d XX)) (around ralt #(] d XX)))
-    f  (tap-next-release (around ralt #(- f XX)) (around ralt #(] f XX)))
-    g  (tap-next-release (around ralt #(- g XX)) (around ralt #(] g XX)))
-    z  (tap-next-release (around ralt #(- z XX)) (around ralt #(] z XX)))
-    x  (tap-next-release (around ralt #(- x XX)) (around ralt #(] x XX)))
-    c  (tap-next-release (around ralt #(- c XX)) (around ralt #(] c XX)))
-    v  (tap-next-release (around ralt #(- v XX)) (around ralt #(] v XX)))
-    b  (tap-next-release (around ralt #(- b XX)) (around ralt #(] b XX)))
-    y  (tap-next-release (around ralt #(- y XX)) (around ralt #(] y XX)))
-    u  (tap-next-release (around ralt #(- u XX)) (around ralt #(] u XX)))
-    i  (tap-next-release (around ralt #(- i XX)) (around ralt #(] i XX)))
-    o  (tap-next-release (around ralt #(- o XX)) (around ralt #(] o XX)))
-    p  (tap-next-release (around ralt #(- p XX)) (around ralt #(] p XX)))
-    h  (tap-next-release (around ralt #(- h XX)) (around ralt #(] h XX)))
-    j  (tap-next-release (around ralt #(- j XX)) (around ralt #(] j XX)))
-    k  (tap-next-release (around ralt #(- k XX)) (around ralt #(] k XX)))
-    l  (tap-next-release (around ralt #(- l XX)) (around ralt #(] l XX)))
-    ;  (tap-next-release (around ralt #(- ; XX)) (around ralt #(] ; XX)))
-    n  (tap-next-release (around ralt #(- n XX)) (around ralt #(] n XX)))
-    m  (tap-next-release (around ralt #(- m XX)) (around ralt #(] m XX)))
-    ,  (tap-hold-next 180 (around ralt #(- , XX)) (layer-toggle numbers))
-    .  (tap-next-release (around ralt #(- . XX)) (around ralt #(] . XX)))
-    /  (tap-next-release (around ralt #(- / XX)) (around ralt #(] / XX)))
+    cap&ctl  (tap-next #(lsft P10 (around lsft rsft) XX) (around lctl (layer-toggle roma0)))
+    sft&ctl  (tap-hold-next 180 rsft (around rctl (layer-toggle roma0)))
+    spc&ura  (tap-hold-next 70 spc (layer-toggle ura))
+    l&pn     (tap-next-release left (around ralt #(] t XX)))
+    r&pn     (tap-next-release right (around ralt #(] y XX)))
+    roma     #(lsft P10 (layer-switch roma1))
+
+    num2     (tap-next spc (layer-toggle num2))
+    zen_num2 (tap-next spc (layer-toggle zen_num2))
+    7up      #(up up up up up up up)
+    7down    #(down down down down down down down)
+    5left    #(left left left left left left left)
+    5right   #(right right right right right right right)
+    20left   #(left left left left left left left left left left left left left left left left left left left left left left left left left left left left)
+    20right  #(right right right right right right right right right right right right right right right right right right right right right right right right right right right right)
+
+    swa      (around lmet (around lalt #(up XX)))
+    swb      (around lmet (around lalt #(down XX)))
+
+;;  単打かな tap="-" hold="]"
+    q  (tap-next (around ralt #(- q XX)) (around ralt #(] q XX)))
+    w  (tap-next (around ralt #(- w XX)) (around ralt #(] w XX)))
+    e  (tap-next (around ralt #(- e XX)) (around ralt #(] e XX)))
+    r  (tap-next (around ralt #(- r XX)) (around ralt #(] r XX)))
+    t  (tap-next (around ralt #(- t XX)) (around ralt #(] t XX)))
+    a  (tap-next (around ralt #(- a XX)) (around ralt #(] a XX)))
+    s  (tap-next (around ralt #(- s XX)) (around ralt #(] s XX)))
+    d  (tap-next (around ralt #(- d XX)) (around ralt #(] d XX)))
+    f  (tap-next (around ralt #(- f XX)) (around ralt #(] f XX)))
+    g  (tap-next (around ralt #(- g XX)) (around ralt #(] g XX)))
+    z  (tap-next (around ralt #(- z XX)) (around ralt #(] z XX)))
+    x  (tap-next (around ralt #(- x XX)) (around ralt #(] x XX)))
+    c  (tap-next (around ralt #(- c XX)) (around ralt #(] c XX)))
+    v  (tap-next (around ralt #(- v XX)) (around ralt #(] v XX)))
+    b  (tap-next (around ralt #(- b XX)) (around ralt #(] b XX)))
+    y  (tap-next (around ralt #(- y XX)) (around ralt #(] y XX)))
+    u  (tap-next (around ralt #(- u XX)) (around ralt #(] u XX)))
+    i  (tap-next (around ralt #(- i XX)) (around ralt #(] i XX)))
+    o  (tap-next (around ralt #(- o XX)) (around ralt #(] o XX)))
+    p  (tap-next (around ralt #(- p XX)) (around ralt #(] p XX)))
+    h  (tap-next (around ralt #(- h XX)) (around ralt #(] h XX)))
+    j  (tap-next (around ralt #(- j XX)) (around ralt #(] j XX)))
+    k  (tap-next (around ralt #(- k XX)) (around ralt #(] k XX)))
+    l  (tap-next (around ralt #(- l XX)) (around ralt #(] l XX)))
+    ;  (tap-next (around ralt #(- ; XX)) (around ralt #(] ; XX)))
+    n  (tap-next (around ralt #(- n XX)) (around ralt #(] n XX)))
+    m  (tap-next (around ralt #(- m XX)) (around ralt #(] m XX)))
+    ,  (tap-hold-next 180 (around ralt #(- , XX)) (layer-toggle num))
+    .  (tap-next (around ralt #(- . XX)) (around ralt #(] . XX)))
+    /  (tap-next (around ralt #(- / XX)) (around ralt #(] / XX)))
 
     []   #(lsft [ ] P5 left)
     {}   #(lsft { } P5 left)
@@ -130,7 +133,8 @@
     H   #(ralt = h XX)
     J   #(ralt = j XX)
     K   #(ralt = k XX)
-    L   #(ralt = l XX)
+;;  ツァ行用
+    L  (tap-next-release (around ralt #(= l XX)) (around ralt #(] ] l XX)))
     :   #(ralt = ; XX)
     N   #(ralt = n XX)
     M   #(ralt = m XX)
@@ -138,19 +142,48 @@
     >   #(ralt = . XX)
     ?   #(ralt = / XX)
 
-    ';    #(ralt ' ;)
-    ',    #(ralt ' ,)
-    '.    #(ralt ' .)
-    '/    #(ralt ' /)
+    'q    #(ralt ' q XX)
+    'w    #(ralt ' w XX)
+    'e    #(ralt ' e XX)
+    'r    #(ralt ' r XX)
+    't    #(ralt ' t XX)
+    'a    #(ralt ' a XX)
+    's    #(ralt ' s XX)
+    'd    #(ralt ' d XX)
+    'f    #(ralt ' f XX)
+    'g    #(ralt ' g XX)
+    'z    #(ralt ' z XX)
+    'x    #(ralt ' x XX)
+    'c    #(ralt ' c XX)
+    'v    #(ralt ' v XX)
+    'b    #(ralt ' b XX)
+    'y    #(ralt ' y XX)
+    'u    #(ralt ' u XX)
+    'i    #(ralt ' i XX)
+    'o    #(ralt ' o XX)
+    'p    #(ralt ' p XX)
+    'h    #(ralt ' h XX)
+    'j    #(ralt ' j XX)
+    'k    #(ralt ' k XX)
+    'l    #(ralt ' l XX)
+    ';    #(ralt ' ; XX)
+    'n    #(ralt ' n XX)
+    'm    #(ralt ' m XX)
+    ',    #(ralt ' , XX)
+    '.    #(ralt ' . XX)
+    '/    #(ralt ' / XX)
 
-    '{    #(ralt ' [)
-    '}    #(ralt ' ])
-    ''{   #(ralt " [)
-    ''}   #(ralt " ])
-    '':   #(ralt " :)
-    ''?   #(ralt " ?)
+    '':   #(ralt " : XX)
+    ''<   #(ralt " < XX)
+    ''>   #(ralt " > XX)
+    ''?   #(ralt " ? XX)
+    '{    #(ralt ' [ XX)
+    '}    #(ralt ' ] XX)
+    ''{   #(ralt " \( XX)
+    ''}   #(ralt " \) XX)
 
-    2spc  #(@spc @spc)
+    1spc  #(ralt - spc)
+    2spc  #(ralt - spc ralt - spc)
     2.    #(ralt ` . ralt ` .)
     2-    #(ralt ` - ralt ` -)
 
@@ -163,16 +196,13 @@
     Z{}   #(lsft ralt ` { ralt ` } P5 left)
     z<>   #(lsft ralt ` < ralt ` > P5 left)
     `/    #(ralt ` /)
-    `0    #(ralt [ d g ] k d g - j)
+    `=    #(ralt ` =)
+    `0    #(ralt ` 0)
 
     rt> (layer-toggle rt>)
-    rl  #(ralt - r ralt - l XX)
     r;  (around ralt #(] r - ; XX))
     rn  (around ralt #(] r - n XX))
     rm  (around ralt #(] r - m XX))
-    r,  #(ralt - r ralt - , XX)
-    r.  #(ralt - r ralt - . XX)
-    r/  #(ralt - r ralt - / XX)
 
     yq  (tap-next-release (around ralt #(] y - q XX)) (around ralt (around [ #(y ] q XX))))
     yw  (tap-next-release (around ralt #(] y - w XX)) (around ralt (around [ #(y ] w XX))))
@@ -342,10 +372,12 @@
     lo  (around ralt #(] l - o XX))
     lp  (around ralt #(] l - p XX))
     lh> (tap-next-release (around ralt #(] l - h XX)) (layer-toggle lh>))
+    lo> (tap-next-release (around ralt #(] l - o XX)) (layer-toggle lo>))
+    lp> (tap-next-release (around ralt #(] l - p XX)) (layer-toggle lp>))
     lj> (tap-next-release (around ralt #(] l - j XX)) (layer-toggle lj>))
-    lk  (around ralt #(] l - k XX))
+    lk> (tap-next-release (around ralt #(] l - k XX)) (layer-toggle lk>))
     l;> (tap-next-release (around ralt #(] l - ; XX)) (layer-toggle l;>))
-    ln  (around ralt #(] l - n XX))
+    ln> (tap-next-release (around ralt #(] l - n XX)) (layer-toggle ln>))
     lm  (around ralt #(] l - m XX))
     l,  (around ralt #(] l - , XX))
     l/  (around ralt #(] l - / XX))
@@ -363,13 +395,11 @@
     ;v  (around ralt #(] ; - v XX))
     ;u  (around ralt #(] ; - u XX))
     ;i  (around ralt #(] ; - i XX))
-    ;o> (tap-next-release (around ralt #(] ; - o XX)) (layer-toggle ;o>))
-    ;p> (tap-next-release (around ralt #(] ; - p XX)) (layer-toggle ;p>))
+    ;o  (around ralt #(] ; - o XX))
     ;h> (tap-next-release (around ralt #(] ; - h XX)) (layer-toggle ;h>))
-    ;j> (tap-next-release (around ralt #(] ; - j XX)) (layer-toggle ;j>))
-    ;k> (tap-next-release (around ralt #(] ; - k XX)) (layer-toggle ;k>))
-    ;l> (tap-next-release (around ralt #(] ; - l XX)) (layer-toggle ;l>))
-    ;n> (tap-next-release (around ralt #(] ; - n XX)) (layer-toggle ;n>))
+    ;j  (around ralt #(] ; - j XX))
+    ;k  (around ralt #(] ; - k XX))
+    ;n  (around ralt #(] ; - n XX))
 
     nq  (around ralt #(] n - q XX))
     nw  (around ralt #(] n - w XX))
@@ -411,7 +441,7 @@
     ml  (around ralt #(] m - l XX))
     m.  (around ralt #(] m - . XX))
 
-    ,n  (around ralt #(] , - n XX))
+;;    ,n  (around ralt #(] , - n XX))
 
     .q  (around ralt #(] . - q XX))
     .w  (around ralt #(] . - w XX))
@@ -441,15 +471,16 @@
 
     roma-h (tap-next h (layer-toggle roma-h))
     roma-j (tap-next j (layer-toggle roma-j))
-    roma-, (tap-next , (layer-toggle numbers))
+    roma-, (tap-next , (layer-toggle num))
+    roma-', (tap-next #(ralt ' ,) (layer-toggle num))
 
-    kana-q (tap-next-release (around ralt #(- q XX)) (layer-toggle kana-q))
+    kana-q (tap-next (around ralt #(\_ spc XX)) (layer-toggle kana-q))
     kana-w (tap-next-press (around ralt #(- w XX)) (layer-toggle kana-w))
     kana-e (tap-next-press (around ralt #(- e XX)) (layer-toggle kana-e))
     kana-r (tap-next-press (around ralt #(- r XX)) (layer-toggle kana-r))
     kana-t (tap-next-press #(lsft left XX) (layer-toggle kana-t))
-    kana-a (tap-next-release (around ralt #(- a XX)) (layer-toggle kana-a))
-    kana-z (tap-next-release (around ralt #(- z XX)) (layer-toggle kana-z))
+    kana-a (tap-next (around ralt #(- a XX)) (layer-toggle kana-a))
+    kana-z (tap-next (around ralt #(- z XX)) (layer-toggle kana-z))
     kana-s (tap-next-press (around ralt #(- s XX)) (layer-toggle kana-s))
     kana-d (tap-next-press (around ralt #(- d XX)) (layer-toggle kana-d))
     kana-f (tap-next-press (around ralt #(- f XX)) (layer-toggle kana-f))
@@ -458,20 +489,20 @@
     kana-c (tap-next-press (around ralt #(- c XX)) (layer-toggle kana-c))
     kana-v (tap-next-press (around ralt #(- v XX)) (layer-toggle kana-v))
     kana-b (tap-next-press (around ralt #(- b XX)) (layer-toggle kana-b))
-    kana-y (tap-next-release #(lsft right XX) (layer-toggle kana-y))
-    kana-u (tap-next-release bspc (layer-toggle kana-u))
-    kana-i (tap-next-release (around ralt #(- i XX)) (layer-toggle kana-i))
-    kana-o (tap-next-release (around ralt #(- o XX)) (layer-toggle kana-o))
-    kana-p (tap-next-release (around ralt #(- p XX)) (layer-toggle kana-p))
-    kana-h (tap-next-release (around ralt #(- h XX)) (layer-toggle kana-h))
-    kana-j (tap-next-release (around ralt #(- j XX)) (layer-toggle kana-j))
-    kana-k (tap-next-release (around ralt #(- k XX)) (layer-toggle kana-k))
-    kana-l (tap-next-release (around ralt #(- l XX)) (layer-toggle kana-l))
-    kana-; (tap-next-release (around ralt #(- ; XX)) (layer-toggle kana-;))
-    kana-n (tap-next-release (around ralt #(- n XX)) (layer-toggle kana-n))
-    kana-m (tap-next-release (around ralt #(- m XX)) (layer-toggle kana-m))
-    kana-. (tap-next-release (around ralt #(- . XX)) (layer-toggle kana-.))
-    kana-/ (tap-next-release (around ralt #(- / XX)) (layer-toggle kana-/))
+    kana-y (tap-next #(lsft right XX) (layer-toggle kana-y))
+    kana-u (tap-next bspc (layer-toggle kana-u))
+    kana-i (tap-next (around ralt #(- i XX)) (layer-toggle kana-i))
+    kana-o (tap-next (around ralt #(- o XX)) (layer-toggle kana-o))
+    kana-p (tap-next (around ralt #(- p XX)) (layer-toggle kana-p))
+    kana-h (tap-next (around ralt #(- h XX)) (layer-toggle kana-h))
+    kana-j (tap-next (around ralt #(- j XX)) (layer-toggle kana-j))
+    kana-k (tap-next (around ralt #(- k XX)) (layer-toggle kana-k))
+    kana-l (tap-next (around ralt #(- l XX)) (layer-toggle kana-l))
+    kana-; (tap-next (around ralt #(- ; XX)) (layer-toggle kana-;))
+    kana-n (tap-next (around ralt #(- n XX)) (layer-toggle kana-n))
+    kana-m (tap-next (around ralt #(- m XX)) (layer-toggle kana-m))
+    kana-. (tap-next (around ralt #(- . XX)) (layer-toggle kana-.))
+    kana-/ (tap-next (around ralt #(- / XX)) (layer-toggle kana-/))
 
     qs  (around ralt #(] q - s XX))
     qf  (around ralt #(] q - f XX))
@@ -1157,7 +1188,12 @@
 
     fk-; (around ralt (around ] #(f k - ; XX)))
 
+    fl-o (around ralt (around ] #(f l - o XX)))
+    fl-p (around ralt (around ] #(f l - p XX)))
+    fl-j (around ralt (around ] #(f l - j XX)))
+    fl-k (around ralt (around ] #(f l - k XX)))
     fl-; (around ralt (around ] #(f l - ; XX)))
+    fl-n (around ralt (around ] #(f l - n XX)))
 
     f;-o (around ralt (around ] #(f ; - o XX)))
     f;-p (around ralt (around ] #(f ; - p XX)))
@@ -1617,9 +1653,18 @@
 
     lh-a (around ralt (around ] #(l h - a XX)))
 
+    lo-f (around ralt (around ] #(l o - f XX)))
+
+    lp-f (around ralt (around ] #(l p - f XX)))
+
     lj-d (around ralt (around ] #(l j - d XX)))
+    lj-f (around ralt (around ] #(l j - f XX)))
+
+    lk-f (around ralt (around ] #(l k - f XX)))
 
     l;-f (around ralt (around ] #(l ; - f XX)))
+
+    ln-f (around ralt (around ] #(l n - f XX)))
 
     ;f-o (around ralt (around ] #(; f - o XX)))
     ;f-p (around ralt (around ] #(; f - p XX)))
@@ -1628,19 +1673,7 @@
     ;f-l (around ralt (around ] #(; f - l XX)))
     ;f-n (around ralt (around ] #(; f - n XX)))
 
-    ;o-f (around ralt (around ] #(; o - f XX)))
-
-    ;p-f (around ralt (around ] #(; p - f XX)))
-
     ;h-a (around ralt (around ] #(; h - a XX)))
-
-    ;j-f (around ralt (around ] #(; j - f XX)))
-
-    ;k-f (around ralt (around ] #(; k - f XX)))
-
-    ;l-f (around ralt (around ] #(; l - f XX)))
-
-    ;n-f (around ralt (around ] #(; n - f XX)))
 
     nd-a (around ralt (around ] #(n d - a XX)))
     nd-l (around ralt (around ] #(n d - l XX)))
@@ -1672,18 +1705,26 @@
 
 (deflayer roma1
              1        2        3        4        5        6        7        8        9        0
-    @t&a     q        w        e        r        t        [        y        u        i        o        p	@\&a
-    @`&c     a        s        d        f        g        @swa     @roma-h  @roma-j  k        l        ;        @'&c
+    @tab&alt q        w        e        r        t        [        y        u        i        o        p	@bsl&alt
+    @zenkaku a        s        d        f        g        @swa     @roma-h  @roma-j  k        l        ;        rctl
     _        z        x        c        v        b        @swb     n        m        @roma-,  .        /
-    caps                                                  @s&s                       _
+    _                                                     @spc&sft                   _
 )
 
 (deflayer roma0
              1        2        3        4        5        6        7        8        9        0
     _        q        w        e        r        t        [        y        u        i        o        p	\\
-    _        a        s        d        f        g        left     h        j        k        l        ;        '
+    _        a        s        d        f        g        ]        h        j        k        l        ;        _
     _        z        x        c        v        b        right    n        m        ,        .        /
-    XX                                                    @s&s                       _
+    XX                                                    @spc&sft                   _
+)
+
+(deflayer zenkaku
+             _        _        _        _        _        _        _        _        _        _
+    _        @'q      @'w      @'e      @'r      @'t      _        @'y      @'u      @'i      @'o      @'p      \\
+    XX       @'a      @'s      @'d      @'f      @'g      _        @'h      @'j      @'k      @'l      @';      @roma
+    _        @'z      @'x      @'c      @'v      @'b      _        @'n      @'m      @roma-', @'.      @'/
+    XX                                                    @spc&sft                   _
 )
 
 (deflayer roma-h
@@ -1691,7 +1732,7 @@
     _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     _        XX       XX       XX       XX       XX       XX       XX       @kana    XX       XX       XX       XX
     _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer roma-j
@@ -1699,38 +1740,38 @@
     _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     _        XX       XX       XX       XX       XX       XX       @kana    XX       XX       XX       XX       XX
     _        XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
-(deflayer numbers
+(deflayer num
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    @{}      %        7        8        9        /        XX       XX       XX       XX       XX       XX	XX
-    @prts    0        4        5        6        -        XX       XX       @ret     XX       @esc     XX       XX
-    @[]      :        1        2        3        .        XX       @,n      bspc     XX       @tab     XX
-    XX                                                    @numbers2                  XX
+    XX       %        7        8        9        /        XX       XX       XX       XX       @[]      XX	XX
+    XX       0        4        5        6        -        XX       @prts    @ret     XX       @esc     XX       XX
+    XX       :        1        2        3        .        XX       '        bspc     XX       @tab     ` 
+    XX                                                    @num2                      XX
 )
 
-(deflayer numbers2
+(deflayer num2
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       ~        @        |        *        \\       XX       XX       XX       XX       XX       XX	XX
-    `        #        !        =        +        \_       XX       XX       @ret     XX       @esc     XX       XX
-    XX       ;        ^        &        $        ,        XX       XX       bspc     XX       @tab     XX
-    XX                                                    @s&s                       XX
+    XX       ~        @        |        *        \\       XX       XX       XX       XX       @{}      XX	XX
+    XX       #        !        =        +        \_       XX       XX       @ret     XX       XX       XX       XX
+    XX       ;        ^        &        $        ,        XX       "        XX       XX       XX       ~
+    XX                                                    XX                         XX
 )
 
 (deflayer move
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       pgup     @7up     up       end      XX       XX       XX       XX       XX       XX       XX	XX
-    @20left  @5left   left     down     right    @5right  @20right XX       ret      XX       @esc     XX       XX
-    XX       XX       home     down     @7down   pgdn     XX       XX       bspc     XX       tab      XX
-    XX                                                    @s&s                       XX
+    XX       pgup     @7up     up       end      @20right XX       XX       XX       XX       XX       XX	XX
+    XX       @5left   left     down     right    @5right  XX       XX       ret      XX       @esc     XX       XX
+    XX       @20left  home     down     @7down   pgdn     XX       XX       bspc     XX       tab      XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer zen_num
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    @z{}     @%       @7       @8       @9       @'/      XX       XX       XX       XX       XX       XX	XX
-    @PRTS    @0       @4       @5       @6       @-       XX       XX       @ret     XX       @esc     XX       XX
-    @z[]     @'':     @1       @2       @3       @'.      XX       XX       bspc     XX       @tab     XX
+    XX       @%       @7       @8       @9       @'/      XX       XX       XX       XX       XX       XX	XX
+    XX       @0       @4       @5       @6       @-       XX       XX       @ret     XX       @esc     XX       XX
+    XX       @'':     @1       @2       @3       @'.      XX       XX       bspc     XX       @tab     XX
     XX                                                    @zen_num2                  XX
 )
 
@@ -1739,23 +1780,23 @@
     XX       @~       @@       @|       @*       @\\      XX       XX       XX       XX       XX       XX	XX
     XX       @#       @!       @=       @+       @\_      XX       XX       @ret     XX       @esc     XX       XX
     XX       @';      @^       @&       @$       @',      XX       XX       bspc     XX       @tab     XX
-    XX                                                    @s&s                       XX
+    XX                                                    XX                         XX
 )
  
 (deflayer kana1
-             _        _        @p_noun  _        _        _        _        _        @p_noun  _
-    @t&a     @kana-q  @kana-w  @kana-e  @kana-r  @kana-t  _        @kana-y  @kana-u  @kana-i  @kana-o  @kana-p	@\&a
-    @c&c     @kana-a  @kana-s  @kana-d  @kana-f  @kana-g  @swa     @kana-h  @kana-j  @kana-k  @kana-l  @kana-;  @s&c
+             _        _        _        _        _        _        _        _        _        _
+    @tab&alt @kana-q  @kana-w  @kana-e  @kana-r  @l&pn    _        @r&pn    @kana-u  @kana-i  @kana-o  @kana-p	@bsl&alt
+    @cap&ctl @kana-a  @kana-s  @kana-d  @kana-f  @kana-g  @swa     @kana-h  @kana-j  @kana-k  @kana-l  @kana-;  @sft&ctl
     _        @kana-z  @kana-x  @kana-c  @kana-v  @kana-b  @swb     @kana-n  @kana-m  @,       @kana-.  @kana-/
-    caps                                                  @s&ks                      _
+    caps                                                  @spc&ura                   _
 )
 
-(deflayer shift
-             _        _        _        _        _        _        _        _        _        _
-    _        @Q       @W       @E       @R       @T       _        @Y       @U       @I       @O       @P	_
-    _        @A       @S       @D       @F       @G       _        @H       @J       @K       @L       @:       _
-    _        @Z       @X       @C       @V       @B       _        @N       @M       @<       @>       @?
-    caps                                                  spc                        _
+(deflayer ura
+             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       @Q       @W       @E       @R       @T       XX       @Y       @U       @I       @O       @P	XX
+    XX       @A       @S       @D       @F       @G       XX       @H       @J       @K       @L       @:       XX
+    XX       @Z       @X       @C       @V       @B       XX       @N       @M       @<       @>       @?
+    XX                                                    XX                         XX
 )
 
 (deflayer kana-q
@@ -1763,7 +1804,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @qi      @qo      @qp	XX
     XX       XX       @qs      XX       @qf      XX       XX       @qh      @qj      @qk      @ql      XX       XX
     XX       XX       XX       XX       XX       XX       XX       @qn      XX       XX       @q.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-w
@@ -1771,23 +1812,23 @@
     XX       XX       XX       @we>     @wr>     XX       XX       XX       XX       @wi>     @wo      @wp>	XX
     XX       XX       XX       @wd>     @wf      XX       XX       @wh>     @wj>     @wk      XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @wn      XX       XX       @w.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-e
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @ew>     XX       @er>     @et>     XX       XX       XX       @ei      XX       @ep>	XX
     XX       XX       @es>     XX       @ef>     XX       XX       @eh      @ej>     @ek>     XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       @em>      XX       @e.      XX
-    XX                                                    @s&s                       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       @em>     XX       @e.      XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-r
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @rw>     @re>     XX       @rt>     XX       XX       XX       @ri>     @ro>     @rp>	XX
-    XX       @ra      XX       XX       XX       XX       XX       @rh>     @rj>     @rk>     @rl      @r;      XX
-    XX       XX       XX       XX       XX       XX       XX       @rn      @rm      @r,      @r.      @r/
-    XX                                                    @s&s                       XX
+    XX       @ra      XX       XX       XX       XX       XX       @rh>     @rj>     @rk>     XX       @r;      XX
+    XX       XX       XX       XX       XX       XX       XX       @rn      @rm      XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-t
@@ -1795,7 +1836,7 @@
     XX       XX       XX       XX       @rt>     XX       XX       @t-y     @t-u     @t-i     @t-o     @t-p	XX
     XX       XX       XX       XX       XX       XX       XX       @t-h     @t-j     @t-k     @t-l     @t-;     XX
     XX       XX       XX       XX       XX       XX       XX       @t-n     @t-m     @t-,     @t-.     @t-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-a
@@ -1803,7 +1844,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @af      XX       XX       XX       @aj      XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @a,>     XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-s
@@ -1811,7 +1852,7 @@
     XX       @sq      XX       @se>     @sr>     XX       XX       XX       XX       @si      XX       @sp	XX
     XX       @sa      XX       @sd>     @sf>     @sg      XX       @sh      @sj      @sk>     @sl      XX       XX
     XX       XX       XX       @sc>     @sv>     XX       XX       @sn      @sm      @s,      @s.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-d
@@ -1819,7 +1860,7 @@
     XX       XX       @dw>     XX       @dr>     @dt>     XX       XX       XX       @di      XX       @dp	XX
     XX       XX       @ds>     XX       @df>     @dg>     XX       @dh      @dj>     @dk>     @dl>     XX       XX
     XX       XX       XX       XX       @dv>     @db>     XX       @dn      @dm      XX       @d.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-f
@@ -1827,7 +1868,7 @@
     XX       @fq      @fw      @fe>     XX       XX       XX       XX       @fu      @fi      @fo>     @fp>	XX
     XX       @fa      @fs>     @fd>     XX       @roma    XX       @fh>     @fj>     @fk>     @fl>     @f;>     XX
     XX       XX       XX       XX       XX       XX       XX       @fn>     @fm>     @f,      @f.>     @f/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-g
@@ -1835,7 +1876,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @gi>     @go      @gp>	XX
     XX       XX       XX       XX       @roma    XX       @5right  @gh>     @gj>     XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-z
@@ -1843,7 +1884,7 @@
     XX       XX       XX       @ze      @zr      XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       @zd>     @zf      XX       XX       XX       @zj      XX       XX       XX       XX
     XX       XX       XX       XX       @zv      XX       XX       @zn>     @zm      @z,      @z.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-x
@@ -1851,7 +1892,7 @@
     XX       XX       XX       XX       @xr      XX       XX       XX       @xu      @xi>     XX       @xp>	XX
     XX       @xa      XX       @xd>     @xf>     XX       XX       @xh>     @xj>     XX       XX       XX       XX
     XX       XX       XX       @xc>     @xv>     XX       XX       @xn>     @xm>     XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-c
@@ -1859,7 +1900,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       @cu      @ci      XX       XX	XX
     XX       XX       @cs>     XX       @cf      @cg>     XX       @ch      @cj      @ck      XX       XX       XX
     XX       XX       @cx>     XX       @cv      @cb>     XX       @cn>     @cm      XX       @c.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-v
@@ -1867,7 +1908,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @vp	XX
     XX       @va>     @vs>     @vd>     XX       XX       XX       XX       @vj      XX       XX       @v;      XX
     XX       XX       @vx>     @vc>     XX       XX       XX       @vn      XX       XX       @v.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-b
@@ -1875,7 +1916,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @ba      XX       XX       XX       XX       XX       @bh      @bj      XX       @bl>     XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @bm      @b,      @b.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-y
@@ -1883,7 +1924,7 @@
     XX       @yq      @yw      @ye      @yr      @yt      XX       XX       XX       XX       XX       XX	XX
     XX       @ya      @ys      @yd      @yf      @yg      XX       XX       XX       XX       XX       XX       XX
     XX       @yz      @yx      @yc      @yv      @yb      XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-u
@@ -1891,7 +1932,7 @@
     XX       XX       @uw      @ue      @ur      XX       XX       @uy      XX       @ui      XX       XX	XX
     XX       XX       @us>     @ud>     @uf>     @ug      XX       XX       XX       @uk      XX       XX       XX
     XX       XX       @ux      @uc      @uv      XX       XX       XX       XX       XX       @u.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-o
@@ -1899,7 +1940,7 @@
     XX       @oq      @ow      @oe      @or>     XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       @os      @od      @of>     @og      XX       @oh      @oj>     @ok      @ol      @o;>     XX
     XX       XX       @ox      @oc      @ov      XX       XX       @on      @om      XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-i
@@ -1907,7 +1948,7 @@
     XX       @iq      @iw>     @ie      @ir>     XX       XX       XX       XX       XX       XX       @ip>	XX
     XX       @ia>     @is      @id      @if      @ig>     XX       XX       @ij>     XX       XX       XX       XX
     XX       XX       @ix>     @ic      @iv      @ib>     XX       XX       @im>     XX       @i.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-p
@@ -1915,7 +1956,7 @@
     XX       @pq      @pw>     @pe>     @pr>     XX       XX       XX       XX       @pi      @po      XX	XX
     XX       XX       @ps      @pd      @pf>     @pg>     XX       XX       @pj>     XX       @pl      @p;>     XX
     XX       XX       @px>     @pc      @pv      XX       XX       XX       @pm>     XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-h
@@ -1923,7 +1964,7 @@
     XX       @hq      @hw>     @he      @hr>     XX       XX       XX       XX       @hi      @ho      XX	XX
     XX       @ha      @hs      @hd      @hf>     @hg>     XX       XX       @hj>     @hk      @hl      XX       XX
     XX       XX       @hx>     @hc      @hv      XX       XX       @hn      @hm>     XX       @h.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-j
@@ -1931,7 +1972,7 @@
     XX       @jq      @jw>     @je>     @jr>     XX       XX       XX       XX       @ji>     @jo>     @jp>	XX
     XX       @ja      @js      @jd>     @jf>     @jg>     @5right  @jh>     XX       @jk>     @jl>     @j;>     XX
     XX       @jz      @jx>     @jc      @jv      @jb      XX       XX       XX       @j,      @j.>     XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-k
@@ -1939,23 +1980,23 @@
     XX       @kq      @kw>     @ke>     @kr      XX       XX       XX       @ku      XX       @ko      XX	XX
     XX       @ka      @ks      @kd>     @kf>     @kg>     XX       @kh      @kj>     XX       @kl>     @k;>     XX
     XX       XX       @kx      @kc>     @kv      XX       XX       @kn      @km      XX       @k.>     XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-l
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       @lq      @lw      @le      @lr>     XX       XX       XX       XX       @li      @lo      @lp	XX
-    XX       XX       @ls>     @ld>     @lf>     @lg>     XX       @lh>     @lj>     @lk      XX       @l;>     XX
-    XX       XX       @lx      @lc>     @lv      XX       XX       @ln      @lm      @l,      XX       @l/
-    XX                                                    @s&s                       XX
+    XX       @lq      @lw      @le      @lr>     XX       XX       XX       XX       @li      @lo>     @lp>	XX
+    XX       XX       @ls>     @ld>     @lf>     @lg>     XX       @lh>     @lj>     @lk>     XX       @l;>     XX
+    XX       XX       @lx      @lc>     @lv      XX       XX       @ln>     @lm      @l,      XX       @l/
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-;
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       @;w      @;e      @;r      XX       XX       XX       @;u      @;i      @;o>     @;p>	XX
-    XX       @;a      @;s      @;d      @;f>     @;g      XX       @;h>     @;j>     @;k>     @;l>     XX       XX
-    XX       XX       @;x      @;c      @;v      XX       XX       @;n>     XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX       XX       @;w      @;e      @;r      XX       XX       XX       @;u      @;i      @;o      XX	XX
+    XX       @;a      @;s      @;d      @;f>     @;g      XX       @;h>     @;j      @;k      XX       XX       XX
+    XX       XX       @;x      @;c      @;v      XX       XX       @;n      XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-n
@@ -1963,7 +2004,7 @@
     XX       @nq      @nw      @ne      @nr      XX       XX       XX       XX       @ni      @no      XX	XX
     XX       @na      @ns      @nd>     @nf>     @ng>     XX       @nh      XX       @nk      @nl      @n;>     XX
     XX       XX       @nx      @nc      @nv      @nb>     @5left   XX       XX       @n,      @n.      @n/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-m
@@ -1971,7 +2012,7 @@
     XX       XX       @mw      @me>     @mr      XX       XX       XX       XX       @mi>     XX       @mp>	XX
     XX       XX       @ms      @md      @mf      @mg      XX       @mh>     XX       XX       @ml      XX       XX
     XX       @mz      @mx>     @mc      @mv      XX       XX       XX       XX       XX       @m.      XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-.
@@ -1979,7 +2020,7 @@
     XX       @.q      @.w      @.e      @.r      XX       XX       XX       XX       @.i      XX       XX	XX
     XX       XX       @.s      @.d      @.f      @.g      XX       @.h      XX       XX       XX       XX       XX
     XX       XX       @.x      @.c      @.v      XX       XX       @.n      XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kana-/
@@ -1987,7 +2028,7 @@
     XX       XX       @/w      @/e      @/r      XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       @/s      @/d      @/f      @/g      XX       XX       XX       XX       XX       XX       XX
     XX       XX       @/x      @/c      @/v      XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer we>
@@ -1995,7 +2036,7 @@
     XX       XX       XX       XX       XX       XX       XX       @we-y    @we-u    @we-i    @we-o    @we-p	XX
     XX       XX       XX       XX       XX       XX       XX       @we-h    @we-j    @we-k    @we-l    @we-;    XX
     XX       XX       XX       XX       XX       XX       XX       @we-n    @we-m    @we-,    @we-.    @we-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wr>
@@ -2003,7 +2044,7 @@
     XX       XX       XX       XX       XX       XX       XX       @wr-y    @wr-u    @wr-i    @wr-o    @wr-p	XX
     XX       XX       XX       XX       XX       XX       XX       @wr-h    @wr-j    @wr-k    @wr-l    @wr-;    XX
     XX       XX       XX       XX       XX       XX       XX       @wr-n    @wr-m    @wr-,    @wr-.    @wr-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wd>
@@ -2011,7 +2052,7 @@
     XX       XX       XX       XX       XX       XX       XX       @wd-y    @wd-u    @wd-i    @wd-o    @wd-p	XX
     XX       XX       XX       XX       XX       XX       XX       @wd-h    @wd-j    @wd-k    @wd-l    @wd-;    XX
     XX       XX       XX       XX       XX       XX       XX       @wd-n    @wd-m    @wd-,    @wd-.    @wd-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wi>
@@ -2019,7 +2060,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @wi-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wp>
@@ -2027,7 +2068,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @wp-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wh>
@@ -2035,7 +2076,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @wh-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer wj>
@@ -2043,7 +2084,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @wj-i    XX       @wj-p	XX
     XX       XX       XX       XX       XX       XX       XX       @wj-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ew>
@@ -2051,7 +2092,7 @@
     XX       XX       XX       XX       XX       XX       XX       @ew-y    @ew-u    @ew-i    @ew-o    @ew-p	XX
     XX       XX       XX       XX       XX       XX       XX       @ew-h    @ew-j    @ew-k    @ew-l    @ew-;    XX
     XX       XX       XX       XX       XX       XX       XX       @ew-n    @ew-m    @ew-,    @ew-.    @ew-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer er>
@@ -2059,7 +2100,7 @@
     XX       XX       XX       XX       XX       XX       XX       @er-y    @er-u    @er-i    @er-o    @er-p	XX
     XX       XX       XX       XX       XX       XX       XX       @er-h    @er-j    @er-k    @er-l    @er-;    XX
     XX       XX       XX       XX       XX       XX       XX       @er-n    @er-m    @er-,    @er-.    @er-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer et>
@@ -2067,7 +2108,7 @@
     XX       XX       XX       XX       XX       XX       XX       @et-y    @et-u    @et-i    @et-o    @et-p	XX
     XX       XX       XX       XX       XX       XX       XX       @et-h    @et-j    @et-k    @et-l    @et-;    XX
     XX       XX       XX       XX       XX       XX       XX       @et-n    @et-m    @et-,    @et-.    @et-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer es>
@@ -2075,7 +2116,7 @@
     XX       XX       XX       XX       XX       XX       XX       @es-y    @es-u    @es-i    @es-o    @es-p	XX
     XX       XX       XX       XX       XX       XX       XX       @es-h    @es-j    @es-k    @es-l    @es-;    XX
     XX       XX       XX       XX       XX       XX       XX       @es-n    @es-m    @es-,    @es-.    @es-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ef>
@@ -2083,7 +2124,7 @@
     XX       XX       XX       XX       XX       XX       XX       @ef-y    @ef-u    @ef-i    @ef-o    @ef-p	XX
     XX       XX       XX       XX       XX       XX       XX       @ef-h    @ef-j    @ef-k    @ef-l    @ef-;    XX
     XX       XX       XX       XX       XX       XX       XX       @ef-n    @ef-m    @ef-,    @ef-.    @ef-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ep>
@@ -2091,7 +2132,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ep-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ej>
@@ -2099,7 +2140,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @ej-p    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @ej-k    XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ek>
@@ -2107,7 +2148,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ek-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer em>
@@ -2115,7 +2156,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @em-p    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rw>
@@ -2123,7 +2164,7 @@
     XX       XX       XX       XX       XX       XX       XX       @rw-y    @rw-u    @rw-i    @rw-o    @rw-p	XX
     XX       XX       XX       XX       XX       XX       XX       @rw-h    @rw-j    @rw-k    @rw-l    @rw-;    XX
     XX       XX       XX       XX       XX       XX       XX       @rw-n    @rw-m    @rw-,    @rw-.    @rw-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer re>
@@ -2131,7 +2172,7 @@
     XX       XX       XX       XX       XX       XX       XX       @re-y    @re-u    @re-i    @re-o    @re-p	XX
     XX       XX       XX       XX       XX       XX       XX       @re-h    @re-j    @re-k    @re-l    @re-;    XX
     XX       XX       XX       XX       XX       XX       XX       @re-n    @re-m    @re-,    @re-.    @re-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ri>
@@ -2139,7 +2180,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ri-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ro>
@@ -2147,7 +2188,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ro-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rp>
@@ -2155,7 +2196,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @rp-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rh>
@@ -2163,7 +2204,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @rh-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rj>
@@ -2171,7 +2212,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @rj-i    @rj-o    @rj-p	XX
     XX       XX       XX       XX       XX       XX       XX       @rj-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rk>
@@ -2179,7 +2220,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @rk-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer rt>
@@ -2187,7 +2228,7 @@
     XX       XX       XX       XX       XX       XX       XX       @rt-y    @rt-u    @rt-i    @rt-o    @rt-p	XX
     XX       XX       XX       XX       XX       XX       XX       @rt-h    @rt-j    @rt-k    @rt-l    @rt-;    XX
     XX       XX       XX       XX       XX       XX       XX       @rt-n    @rt-m    @rt-,    @rt-.    @rt-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer se>
@@ -2195,7 +2236,7 @@
     XX       XX       XX       XX       XX       XX       XX       @se-y    @se-u    @se-i    @se-o    @se-p	XX
     XX       XX       XX       XX       XX       XX       XX       @se-h    @se-j    @se-k    @se-l    @se-;    XX
     XX       XX       XX       XX       XX       XX       XX       @se-n    @se-m    @se-,    @se-.    @se-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sr>
@@ -2203,7 +2244,7 @@
     XX       XX       XX       XX       XX       XX       XX       @sr-y    @sr-u    @sr-i    @sr-o    @sr-p	XX
     XX       XX       XX       XX       XX       XX       XX       @sr-h    @sr-j    @sr-k    @sr-l    @sr-;    XX
     XX       XX       XX       XX       XX       XX       XX       @sr-n    @sr-m    @sr-,    @sr-.    @sr-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sd>
@@ -2211,7 +2252,7 @@
     XX       XX       XX       XX       XX       XX       XX       @sd-y    @sd-u    @sd-i    @sd-o    @sd-p	XX
     XX       XX       XX       XX       XX       XX       XX       @sd-h    @sd-j    @sd-k    @sd-l    @sd-;    XX
     XX       XX       XX       XX       XX       XX       XX       @sd-n    @sd-m    @sd-,    @sd-.    @sd-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sf>
@@ -2219,7 +2260,7 @@
     XX       XX       XX       XX       XX       XX       XX       @sf-y    @sf-u    @sf-i    @sf-o    @sf-p	XX
     XX       XX       XX       XX       XX       XX       XX       @sf-h    @sf-j    @sf-k    @sf-l    @sf-;    XX
     XX       XX       XX       XX       XX       XX       XX       @sf-n    @sf-m    @sf-,    @sf-.    @sf-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sc>
@@ -2227,7 +2268,7 @@
     XX       XX       XX       XX       XX       XX       XX       @sc-y    @sc-u    @sc-i    @sc-o    @sc-p	XX
     XX       XX       XX       XX       XX       XX       XX       @sc-h    @sc-j    @sc-k    @sc-l    @sc-;    XX
     XX       XX       XX       XX       XX       XX       XX       @sc-n    @sc-m    @sc-,    @sc-.    @sc-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sv>
@@ -2235,7 +2276,7 @@
     XX       XX       XX       XX       XX       XX       XX       @sv-y    @sv-u    @sv-i    @sv-o    @sv-p	XX
     XX       XX       XX       @sv-d    XX       XX       XX       @sv-h    @sv-j    @sv-k    @sv-l    @sv-;    XX
     XX       XX       XX       XX       XX       XX       XX       @sv-n    @sv-m    @sv-,    @sv-.    @sv-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer sk>
@@ -2243,7 +2284,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @sk-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dw>
@@ -2251,7 +2292,7 @@
     XX       XX       XX       XX       XX       XX       XX       @dw-y    @dw-u    @dw-i    @dw-o    @dw-p	XX
     XX       XX       XX       XX       XX       XX       XX       @dw-h    @dw-j    @dw-k    @dw-l    @dw-;    XX
     XX       XX       XX       XX       XX       XX       XX       @dw-n    @dw-m    @dw-,    @dw-.    @dw-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dr>
@@ -2259,7 +2300,7 @@
     XX       XX       @dr-w    XX       XX       XX       XX       @dr-y    @dr-u    @dr-i    @dr-o    @dr-p	XX
     XX       XX       XX       XX       XX       XX       XX       @dr-h    @dr-j    @dr-k    @dr-l    @dr-;    XX
     XX       XX       XX       XX       XX       XX       XX       @dr-n    @dr-m    @dr-,    @dr-.    @dr-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dt>
@@ -2267,7 +2308,7 @@
     XX       XX       XX       XX       XX       XX       XX       @dt-y    @dt-u    @dt-i    @dt-o    @dt-p	XX
     XX       XX       XX       XX       XX       XX       XX       @dt-h    @dt-j    @dt-k    @dt-l    @dt-;    XX
     XX       XX       XX       XX       XX       XX       XX       @dt-n    @dt-m    @dt-,    @dt-.    @dt-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ds>
@@ -2275,7 +2316,7 @@
     XX       XX       XX       XX       XX       XX       XX       @ds-y    @ds-u    @ds-i    @ds-o    @ds-p	XX
     XX       XX       XX       XX       XX       XX       XX       @ds-h    @ds-j    @ds-k    @ds-l    @ds-;    XX
     XX       XX       XX       XX       XX       XX       XX       @ds-n    @ds-m    @ds-,    @ds-.    @ds-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer df>
@@ -2283,7 +2324,7 @@
     XX       XX       XX       XX       XX       XX       XX       @df-y    @df-u    @df-i    @df-o    @df-p	XX
     XX       XX       XX       XX       XX       XX       XX       @df-h    @df-j    @df-k    @df-l    @df-;    XX
     XX       XX       XX       XX       XX       XX       XX       @df-n    @df-m    @df-,    @df-.    @df-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dg>
@@ -2291,7 +2332,7 @@
     XX       XX       XX       XX       XX       XX       XX       @dg-y    @dg-u    @dg-i    @dg-o    @dg-p	XX
     XX       XX       XX       XX       XX       XX       XX       @dg-h    @dg-j    @dg-k    @dg-l    @dg-;    XX
     XX       XX       XX       XX       XX       XX       XX       @dg-n    @dg-m    @dg-,    @dg-.    @dg-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dv>
@@ -2299,7 +2340,7 @@
     XX       XX       XX       XX       XX       XX       XX       @dv-y    @dv-u    @dv-i    @dv-o    @dv-p	XX
     XX       XX       XX       XX       XX       XX       XX       @dv-h    @dv-j    @dv-k    @dv-l    @dv-;    XX
     XX       XX       XX       XX       XX       XX       XX       @dv-n    @dv-m    @dv-,    @dv-.    @dv-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer db>
@@ -2307,7 +2348,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @db-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dj>
@@ -2315,7 +2356,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @dj-l    XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dk>
@@ -2323,7 +2364,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @dk-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer dl>
@@ -2331,7 +2372,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @dl-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fe>
@@ -2339,7 +2380,7 @@
     XX       XX       XX       XX       XX       XX       XX       @fe-y    @fe-u    @fe-i    @fe-o    @fe-p	XX
     XX       XX       XX       XX       XX       XX       XX       @fe-h    @fe-j    @fe-k    @fe-l    @fe-;    XX
     XX       XX       XX       XX       XX       XX       XX       @fe-n    @fe-m    @fe-,    @fe-.    @fe-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fs>
@@ -2347,7 +2388,7 @@
     XX       XX       XX       XX       XX       XX       XX       @fs-y    @fs-u    @fs-i    @fs-o    @fs-p	XX
     XX       XX       XX       XX       XX       XX       XX       @fs-h    @fs-j    @fs-k    @fs-l    @fs-;    XX
     XX       XX       XX       XX       XX       XX       XX       @fs-n    @fs-m    @fs-,    @fs-.    @fs-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fd>
@@ -2355,7 +2396,7 @@
     XX       XX       XX       XX       XX       XX       XX       @fd-y    @fd-u    @fd-i    @fd-o    @fd-p	XX
     XX       XX       XX       XX       XX       XX       XX       @fd-h    @fd-j    @fd-k    @fd-l    @fd-;    XX
     XX       XX       XX       XX       XX       XX       XX       @fd-n    @fd-m    @fd-,    @fd-.    @fd-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fo>
@@ -2363,7 +2404,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fo-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fp>
@@ -2371,7 +2412,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fp-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fh>
@@ -2379,7 +2420,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @fh-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fh-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fj>
@@ -2387,7 +2428,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       @fj-h    XX       XX       XX       @fj-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fk>
@@ -2395,15 +2436,15 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fk-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fl>
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fl-;    XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fl-o    @fl-p    XX 
+    XX       XX       XX       XX       XX       XX       XX       XX       @fl-j    @fl-k    XX       @fl-;    XX
+    XX       XX       XX       XX       XX       XX       XX       @fl-n    XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer f;>
@@ -2411,7 +2452,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @f;-o    @f;-p	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @f;-j    @f;-k    @f;-l    XX       XX
     XX       XX       XX       XX       XX       XX       XX       @f;-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fn>
@@ -2419,7 +2460,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @fn-i    XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fn-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fn-.    @fn-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer fm>
@@ -2427,7 +2468,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @fm-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer f.>
@@ -2435,7 +2476,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @f.-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer gi>
@@ -2443,7 +2484,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @gi-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer gp>
@@ -2451,7 +2492,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @gp-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer gh>
@@ -2459,7 +2500,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @gh-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer gj>
@@ -2467,7 +2508,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @gj-i    XX       @gj-p	XX
     XX       XX       XX       XX       XX       XX       XX       @gj-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer a,>
@@ -2475,7 +2516,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       @a,-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer zd>
@@ -2483,7 +2524,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       @zd-s    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer zn>
@@ -2491,7 +2532,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @zn-i    XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xd>
@@ -2499,7 +2540,7 @@
     XX       XX       XX       XX       XX       XX       XX       @xd-y    @xd-u    @xd-i    @xd-o    @xd-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xd-h    @xd-j    @xd-k    @xd-l    @xd-;    XX
     XX       XX       XX       XX       XX       XX       XX       @xd-n    @xd-m    @xd-,    @xd-.    @xd-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xf>
@@ -2507,7 +2548,7 @@
     XX       XX       XX       XX       XX       XX       XX       @xf-y    @xf-u    @xf-i    @xf-o    @xf-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xf-h    @xf-j    @xf-k    @xf-l    @xf-;    XX
     XX       XX       XX       XX       XX       XX       XX       @xf-n    @xf-m    @xf-,    @xf-.    @xf-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xc>
@@ -2515,7 +2556,7 @@
     XX       XX       XX       XX       XX       XX       XX       @xc-y    @xc-u    @xc-i    @xc-o    @xc-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xc-h    @xc-j    @xc-k    @xc-l    @xc-;    XX
     XX       XX       XX       XX       XX       XX       XX       @xc-n    @xc-m    @xc-,    @xc-.    @xc-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xv>
@@ -2523,7 +2564,7 @@
     XX       XX       XX       XX       XX       XX       XX       @xv-y    @xv-u    @xv-i    @xv-o    @xv-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xv-h    @xv-j    @xv-k    @xv-l    @xv-;    XX
     XX       XX       XX       XX       XX       XX       XX       @xv-n    @xv-m    @xv-,    @xv-.    @xv-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xi>
@@ -2531,7 +2572,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xi-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xi-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xp>
@@ -2539,7 +2580,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xp-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xp-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xh>
@@ -2547,7 +2588,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xh-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @xh-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xj>
@@ -2555,7 +2596,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @xj-i    XX       @xj-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xj-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xn>
@@ -2563,7 +2604,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @xn-k    XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer xm>
@@ -2571,7 +2612,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @xm-i    XX       @xm-p	XX
     XX       XX       XX       XX       XX       XX       XX       @xm-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cs>
@@ -2579,7 +2620,7 @@
     XX       XX       XX       XX       XX       XX       XX       @cs-y    @cs-u    @cs-i    @cs-o    @cs-p	XX
     XX       XX       XX       XX       XX       XX       XX       @cs-h    @cs-j    @cs-k    @cs-l    @cs-;    XX
     XX       XX       XX       XX       XX       XX       XX       @cs-n    @cs-m    @cs-,    @cs-.    @cs-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cg>
@@ -2587,7 +2628,7 @@
     XX       XX       XX       XX       XX       XX       XX       @cg-y    @cg-u    @cg-i    @cg-o    @cg-p	XX
     XX       XX       XX       XX       XX       XX       XX       @cg-h    @cg-j    @cg-k    @cg-l    @cg-;    XX
     XX       XX       XX       XX       XX       XX       XX       @cg-n    @cg-m    @cg-,    @cg-.    @cg-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cx>
@@ -2595,7 +2636,7 @@
     XX       XX       XX       XX       XX       XX       XX       @cx-y    @cx-u    @cx-i    @cx-o    @cx-p	XX
     XX       XX       XX       XX       XX       XX       XX       @cx-h    @cx-j    @cx-k    @cx-l    @cx-;    XX
     XX       XX       XX       XX       XX       XX       XX       @cx-n    @cx-m    @cx-,    @cx-.    @cx-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cv>
@@ -2603,7 +2644,7 @@
     XX       XX       XX       XX       XX       XX       XX       @cv-y    @cv-u    @cv-i    @cv-o    @cv-p	XX
     XX       XX       XX       XX       XX       XX       XX       @cv-h    @cv-j    @cv-k    @cv-l    @cv-;    XX
     XX       XX       XX       XX       XX       XX       XX       @cv-n    @cv-m    @cv-,    @cv-.    @cv-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cb>
@@ -2611,7 +2652,7 @@
     XX       XX       XX       XX       XX       XX       XX       @cb-y    @cb-u    @cb-i    @cb-o    @cb-p	XX
     XX       XX       XX       XX       XX       XX       XX       @cb-h    @cb-j    @cb-k    @cb-l    @cb-;    XX
     XX       XX       XX       XX       XX       XX       XX       @cb-n    @cb-m    @cb-,    @cb-.    @cb-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer cn>
@@ -2619,7 +2660,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @cn-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer va>
@@ -2627,7 +2668,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @va-i    XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @va-k    XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer vs>
@@ -2635,7 +2676,7 @@
     XX       XX       XX       XX       XX       XX       XX       @vs-y    @vs-u    @vs-i    @vs-o    @vs-p	XX
     XX       XX       XX       XX       XX       XX       XX       @vs-h    @vs-j    @vs-k    @vs-l    @vs-;    XX
     XX       XX       XX       XX       XX       XX       XX       @vs-n    @vs-m    @vs-,    @vs-.    @vs-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer vd>
@@ -2643,7 +2684,7 @@
     XX       XX       XX       XX       XX       XX       XX       @vd-y    @vd-u    @vd-i    @vd-o    @vd-p	XX
     XX       XX       XX       XX       XX       XX       XX       @vd-h    @vd-j    @vd-k    @vd-l    @vd-;    XX
     XX       XX       XX       XX       XX       XX       XX       @vd-n    @vd-m    @vd-,    @vd-.    @vd-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer vx>
@@ -2651,7 +2692,7 @@
     XX       XX       XX       XX       XX       XX       XX       @vx-y    @vx-u    @vx-i    @vx-o    @vx-p	XX
     XX       XX       XX       XX       XX       XX       XX       @vx-h    @vx-j    @vx-k    @vx-l    @vx-;    XX
     XX       XX       XX       XX       XX       XX       XX       @vx-n    @vx-m    @vx-,    @vx-.    @vx-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer vc>
@@ -2659,7 +2700,7 @@
     XX       XX       XX       XX       XX       XX       XX       @vc-y    @vc-u    @vc-i    @vc-o    @vc-p	XX
     XX       XX       XX       XX       XX       XX       XX       @vc-h    @vc-j    @vc-k    @vc-l    @vc-;    XX
     XX       XX       XX       XX       XX       XX       XX       @vc-n    @vc-m    @vc-,    @vc-.    @vc-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer bl>
@@ -2667,7 +2708,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @bl-a    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer us>
@@ -2675,7 +2716,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @us-o    XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ud>
@@ -2683,7 +2724,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @ud-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer uf>
@@ -2691,7 +2732,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @uf-o    XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer iw>
@@ -2699,7 +2740,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @iw-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ia>
@@ -2707,7 +2748,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       @ia-v    XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ir>
@@ -2715,7 +2756,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ir-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ig>
@@ -2723,7 +2764,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ig-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ix>
@@ -2731,7 +2772,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ix-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ix-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ib>
@@ -2739,7 +2780,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @ib-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ip>
@@ -2747,7 +2788,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ij>
@@ -2755,7 +2796,7 @@
     XX       XX       @ij-w    XX       @ij-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       @ij-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @ij-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer im>
@@ -2763,7 +2804,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @im-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer or>
@@ -2771,7 +2812,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @or-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer of>
@@ -2779,7 +2820,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @of-;    XX
     XX       XX       XX       XX       XX       XX       XX       @of-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer oj>
@@ -2787,7 +2828,7 @@
     XX       XX       XX       XX       @oj-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer o;>
@@ -2795,7 +2836,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @o;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pw>
@@ -2803,7 +2844,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @pw-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pe>
@@ -2811,7 +2852,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @pe-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @pe-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pr>
@@ -2819,7 +2860,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @pr-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pf>
@@ -2827,7 +2868,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @pf-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pg>
@@ -2835,7 +2876,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @pg-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer px>
@@ -2843,7 +2884,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @px-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @px-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pj>
@@ -2851,7 +2892,7 @@
     XX       XX       @pj-w    @pj-e    @pj-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       @pj-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @pj-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer p;>
@@ -2859,7 +2900,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @p;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer pm>
@@ -2867,7 +2908,7 @@
     XX       XX       XX       @pm-e    XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @pm-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hw>
@@ -2875,7 +2916,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @hw-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hr>
@@ -2883,7 +2924,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @hr-a    XX       XX       XX       XX       XX       XX       @hr-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hf>
@@ -2891,7 +2932,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @hf-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hg>
@@ -2899,7 +2940,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @hg-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hx>
@@ -2907,7 +2948,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @hx-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @hx-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hj>
@@ -2915,7 +2956,7 @@
     XX       XX       @hj-w    XX       @hj-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @hj-f    @hj-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @hj-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer hm>
@@ -2923,7 +2964,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @hm-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jw>
@@ -2931,7 +2972,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @jw-i    XX       @jw-p	XX
     XX       XX       XX       XX       XX       XX       XX       @jw-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @jw-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer je>
@@ -2939,7 +2980,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @je-p	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @je-k    XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jr>
@@ -2947,7 +2988,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @jr-i    @jr-o    @jr-p	XX
     XX       XX       XX       XX       XX       XX       XX       @jr-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jd>
@@ -2955,7 +2996,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @jd-l    XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jf>
@@ -2963,7 +3004,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       @jf-h    XX       XX       XX       @jf-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jg>
@@ -2971,7 +3012,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @jg-i    XX       @jg-p	XX
     XX       XX       XX       XX       XX       XX       XX       @jg-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jx>
@@ -2979,7 +3020,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @jx-i    XX       @jx-p	XX
     XX       XX       XX       XX       XX       XX       XX       @jx-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ji>
@@ -2987,7 +3028,7 @@
     XX       XX       @ji-w    XX       @ji-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       @ji-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @ji-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jo>
@@ -2995,7 +3036,7 @@
     XX       XX       XX       XX       @jo-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jp>
@@ -3003,7 +3044,7 @@
     XX       XX       @jp-w    @jp-e    @jp-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       @jp-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @jp-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jh>
@@ -3011,7 +3052,7 @@
     XX       XX       @jh-w    XX       @jh-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @jh-f    @jh-g    XX       XX       XX       XX       XX       XX       XX
     XX       XX       @jh-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jk>
@@ -3019,7 +3060,7 @@
     XX       XX       XX       @jk-e    XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer jl>
@@ -3027,7 +3068,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       @jl-d    XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer j;>
@@ -3035,7 +3076,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @j;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer j.>
@@ -3043,7 +3084,7 @@
     XX       XX       @j.-w    @j.-e    @j.-r    XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       @j.-s    @j.-d    @j.-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @j.-x    @j.-c    @j.-v    XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kw>
@@ -3051,7 +3092,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @kw-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ke>
@@ -3059,7 +3100,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ke-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kd>
@@ -3067,7 +3108,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @kd-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kf>
@@ -3075,7 +3116,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @kf-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kg>
@@ -3083,7 +3124,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       @kg-d    XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kc>
@@ -3091,7 +3132,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @kc-.    XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kj>
@@ -3099,7 +3140,7 @@
     XX       XX       XX       @kj-e    XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer kl>
@@ -3107,7 +3148,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       @kl-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer k;>
@@ -3115,7 +3156,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @k;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer k.>
@@ -3123,7 +3164,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       @k.-v    XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lr>
@@ -3131,7 +3172,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       @lr-m    XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ls>
@@ -3139,7 +3180,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @ls-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ld>
@@ -3147,7 +3188,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @ld-j    XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lf>
@@ -3155,7 +3196,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @lf-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lg>
@@ -3163,7 +3204,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       @lg-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lc>
@@ -3171,7 +3212,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       @lc-u    XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lh>
@@ -3179,15 +3220,39 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @lh-a    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
+)
+
+(deflayer lo>
+             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
+    XX       XX       XX       XX       @lo-f    XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
+)
+
+(deflayer lp>
+             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
+    XX       XX       XX       XX       @lp-f    XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer lj>
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       @lj-d    XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       @lj-d    @lj-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
+)
+
+(deflayer lk>
+             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
+    XX       XX       XX       XX       @lk-f    XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer l;>
@@ -3195,7 +3260,15 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @l;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
+)
+
+(deflayer ln>
+             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
+    XX       XX       XX       XX       @ln-f    XX       XX       XX       XX       XX       XX       XX       XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ;f>
@@ -3203,23 +3276,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @;f-o    @;f-p	XX
     XX       XX       XX       XX       XX       XX       XX       XX       @;f-j    @;f-k    @;f-l    XX       XX
     XX       XX       XX       XX       XX       XX       XX       @;f-n    XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;o>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;o-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;p>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;p-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ;h>
@@ -3227,39 +3284,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @;h-a    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;j>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;j-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;k>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;k-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;l>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;l-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
-)
-
-(deflayer ;n>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       @;n-f    XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer nd>
@@ -3267,7 +3292,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       @nd-a    XX       XX       XX       XX       XX       XX       XX       XX       @nd-l    XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer nf>
@@ -3275,7 +3300,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @nf-i    XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @nf-;    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @nf-.    @nf-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer ng>
@@ -3283,7 +3308,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       @ng-d    XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer nb>
@@ -3291,7 +3316,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @nb-/
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer n;>
@@ -3299,7 +3324,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       @n;-f    XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer me>
@@ -3307,7 +3332,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @me-p	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer mx>
@@ -3315,7 +3340,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @mx-i    XX       @mx-p	XX
     XX       XX       XX       XX       XX       XX       XX       @mx-h    XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer mi>
@@ -3323,7 +3348,7 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @mi-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer mp>
@@ -3331,7 +3356,7 @@
     XX       XX       XX       @mp-e    XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @mp-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
 
 (deflayer mh>
@@ -3339,13 +3364,21 @@
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @mh-x    XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @s&s                       XX
+    XX                                                    @spc&sft                   XX
 )
+
+;;(deflayer el1
+;;             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
+;;    XX       @2spc    @z`'     @`/      @Z{}     @z{}     XX       XX       XX       XX       XX       XX	XX
+;;    XX       @2.      @PRTS    @''?     @Z[]     @`0      XX       XX       XX       XX       XX       XX       XX
+;;    XX       @2-      @`PRTS   @!       @z[]     @z<>     XX       XX       XX       XX       XX       XX
+;;    XX                                                    XX                         XX
+;;)
 
 (deflayer el1
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       @2spc    @z`'     @|       @Z{}     @`/      XX       XX       XX       XX       XX       XX	XX
-    XX       @2.      @PRTS    @''?     @Z[]     @`0      XX       XX       XX       XX       XX       XX       XX
-    XX       @2-      @`PRTS   @!       @z[]     @z<>     XX       XX       XX       XX       XX       XX
+    XX       @2spc    @1spc    @`/      @`=      @`0      XX       XX       XX       XX       XX       XX	XX
+    XX       @2.      @Z{}     @''?     @Z[]     @PRTS    XX       XX       XX       XX       XX       XX       XX
+    XX       @2-      @z`'     @!       @z[]     @`PRTS   XX       XX       XX       XX       XX       XX
     XX                                                    XX                         XX
 )
