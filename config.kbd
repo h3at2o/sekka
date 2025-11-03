@@ -78,36 +78,36 @@
     prts #(lsft \( \) P5 left)
 
 ;;  全角数字･記号 prefix(tap="-", hold="]")
-    `   #(ralt - `)
-    1   #(ralt - 1)
-    2   #(ralt - 2)
-    3   #(ralt - 3)
-    4   #(ralt - 4)
-    5   #(ralt - 5)
-    6   #(ralt - 6)
-    7   #(ralt - 7)
-    8   #(ralt - 8)
-    9   #(ralt - 9)
-    0   #(ralt - 0)
-    -   #(ralt - -)
-    =   #(ralt - =)
-    [   #(ralt - [)
-    ]   #(ralt - ])
-    \\  #(ralt - \\)
-    spc #(ralt - spc)
+    `   #(ralt ' `)
+    1   #(ralt ' 1)
+    2   #(ralt ' 2)
+    3   #(ralt ' 3)
+    4   #(ralt ' 4)
+    5   #(ralt ' 5)
+    6   #(ralt ' 6)
+    7   #(ralt ' 7)
+    8   #(ralt ' 8)
+    9   #(ralt ' 9)
+    0   #(ralt ' 0)
+    -   #(ralt ' -)
+    =   #(ralt ' =)
+    [   #(ralt ' [)
+    ]   #(ralt ' ])
+    \\  #(ralt ' \\)
+    spc #(ralt ' spc)
 
-    ~   #(ralt \_ ~)
-    !   #(ralt \_ !)
-    @   #(ralt \_ @)
-    #   #(ralt \_ #)
-    $   #(ralt \_ $)
-    %   #(ralt \_ %)
-    ^   #(ralt \_ ^)
-    &   #(ralt \_ &)
-    *   #(ralt \_ *)
-    \_  #(ralt \_ \_)
-    +   #(ralt \_ +)
-    |   #(ralt \_ |)
+    ~   #(ralt " ~)
+    !   #(ralt " !)
+    @   #(ralt " @)
+    #   #(ralt " #)
+    $   #(ralt " $)
+    %   #(ralt " %)
+    ^   #(ralt " ^)
+    &   #(ralt " &)
+    *   #(ralt " *)
+    \_  #(ralt " \_)
+    +   #(ralt " +)
+    |   #(ralt " |)
 
 ;;  シフトかな prefix(tap="=")
     Q   #(ralt = q XX)
@@ -182,8 +182,7 @@
     ''{   #(ralt " \( XX)
     ''}   #(ralt " \) XX)
 
-    1spc  #(ralt - spc)
-    2spc  #(ralt - spc ralt - spc)
+    1spc  #(ralt ' spc)
     2.    #(ralt ` . ralt ` .)
     2-    #(ralt ` - ralt ` -)
 
@@ -194,7 +193,6 @@
     Z[]   #(lsft ralt ` [ ralt ` ] P5 left)
     `PRTS #(lsft ralt ` \( ralt ` \) P5 left)
     Z{}   #(lsft ralt ` { ralt ` } P5 left)
-    z<>   #(lsft ralt ` < ralt ` > P5 left)
     `/    #(ralt ` /)
     `=    #(ralt ` =)
     `0    #(ralt ` 0)
@@ -264,6 +262,7 @@
     ox  (around ralt #(] o - x XX))
     oc  (around ralt #(] o - c XX))
     ov  (around ralt #(] o - v XX))
+    oi  #(ralt - o ralt - i XX)
     oh  (around ralt #(] o - h XX))
     oj> (tap-next-release (around ralt #(] o - j XX)) (layer-toggle oj>))
     ok  (around ralt #(] o - k XX))
@@ -351,7 +350,7 @@
     ko  (around ralt #(] k - o XX))
     kh  (around ralt #(] k - h XX))
     kj> (tap-next-release (around ralt #(] k - j XX)) (layer-toggle kj>))
-    kl> (tap-next-release (around ralt #(] k - l XX)) (layer-toggle kl>))
+    kl  (around ralt #(] k - l XX))
     k;> (tap-next-release (around ralt #(] k - ; XX)) (layer-toggle k;>))
     kn  (around ralt #(] k - n XX))
     km  (around ralt #(] k - m XX))
@@ -420,8 +419,8 @@
     nl  (around ralt #(] n - l XX))
     nk  (around ralt #(] n - k XX))
     n;> (tap-next-release (around ralt #(] n - ; XX)) (layer-toggle n;>))
-    n.  (around ralt #(] n - . XX))
     n,  (around ralt #(] n - , XX))
+    n.  (tap-next-release #(ralt - n ralt - . XX) #(ralt ] n - . XX))
     n/  (around ralt #(] n - / XX))
 
     mw  (around ralt #(] m - w XX))
@@ -435,9 +434,10 @@
     mx> (tap-next-release (around ralt #(] m - x XX)) (layer-toggle mx>))
     mc  (around ralt #(] m - c XX))
     mv  (around ralt #(] m - v XX))
-    mi> (layer-toggle mi>)
+    mi> (tap-next-release (around ralt #(] m - i XX)) (layer-toggle mi>))
     mp> (tap-next-release (around ralt #(] m - p XX)) (layer-toggle mp>))
     mh> (tap-next-release (around ralt #(] m - h XX)) (layer-toggle mh>))
+    mk  #(ralt - m ralt - k XX)
     ml  (around ralt #(] m - l XX))
     m.  (around ralt #(] m - . XX))
 
@@ -457,6 +457,7 @@
     .i  (around ralt #(] . - i XX))
     .h  (around ralt #(] . - h XX))
     .n  (around ralt #(] . - n XX))
+    ./  #(ralt - . ralt - / XX)
 
     /w  (around ralt #(] / - w XX))
     /e  (around ralt #(] / - e XX))
@@ -537,7 +538,7 @@
     ei  (around ralt #(] e - i XX))
     ep> (tap-next-release (around ralt #(] e - p XX)) (layer-toggle ep>))
     eh  (around ralt #(] e - h XX))
-    ej> (tap-next-release (around ralt #(] e - j XX)) (layer-toggle ej>))
+    ej> (tap-next (around ralt #(] e - j XX)) (layer-toggle ej>))
     ek> (tap-next-release (around ralt #(] e - k XX)) (layer-toggle ek>))
     em> (layer-toggle em>)
     e.  (around ralt #(] e - . XX))
@@ -615,6 +616,7 @@
     f.> (tap-next-release (around ralt #(] f - . XX)) (layer-toggle f.>))
     f/  (around ralt #(] f - / XX))
 
+    ge  #(ralt - g ralt - e XX)
     gi> (tap-next-release (around ralt #(] g - i XX)) (layer-toggle gi>))
     go  (around ralt #(] g - o XX))
     gp> (tap-next-release (around ralt #(] g - p XX)) (layer-toggle gp>))
@@ -668,6 +670,7 @@
     vc> (layer-toggle vc>)
     vp  (around ralt #(] v - p XX))
     vj  (around ralt #(] v - j XX))
+    vl  (around ralt #(] v - l XX))
     v;  (around ralt #(] v - ; XX))
     vn  (around ralt #(] v - n XX))
     v.  (around ralt #(] v - . XX))
@@ -820,8 +823,9 @@
 
     ep-j (around ralt (around ] #(e p - j XX)))
 
-    ej-k (around ralt (around ] #(e j - k XX)))
+    ej-o (around ralt (around ] #(e j - o XX)))
     ej-p (around ralt (around ] #(e j - p XX)))
+    ej-k (around ralt (around ] #(e j - k XX)))
 
     ek-j (around ralt (around ] #(e k - j XX)))
 
@@ -1633,8 +1637,6 @@
 
     kj-e (around ralt (around ] #(k j - e XX)))
 
-    kl-h (around ralt (around ] #(k l - h XX)))
-
     k;-f (around ralt (around ] #(k ; - f XX)))
 
     k.-v (around ralt (around ] #(k . - v XX)))
@@ -1873,7 +1875,7 @@
 
 (deflayer kana-g
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       @gi>     @go      @gp>	XX
+    XX       XX       XX       @ge      XX       XX       XX       XX       XX       @gi>     @go      @gp>	XX
     XX       XX       XX       XX       @roma    XX       @5right  @gh>     @gj>     XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX                                                    @spc&sft                   XX
@@ -1906,7 +1908,7 @@
 (deflayer kana-v
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @vp	XX
-    XX       @va>     @vs>     @vd>     XX       XX       XX       XX       @vj      XX       XX       @v;      XX
+    XX       @va>     @vs>     @vd>     XX       XX       XX       XX       @vj      XX       @vl      @v;      XX
     XX       XX       @vx>     @vc>     XX       XX       XX       @vn      XX       XX       @v.      XX
     XX                                                    @spc&sft                   XX
 )
@@ -1937,7 +1939,7 @@
 
 (deflayer kana-o
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       @oq      @ow      @oe      @or>     XX       XX       XX       XX       XX       XX       XX	XX
+    XX       @oq      @ow      @oe      @or>     XX       XX       XX       XX       @oi      XX       XX	XX
     XX       XX       @os      @od      @of>     @og      XX       @oh      @oj>     @ok      @ol      @o;>     XX
     XX       XX       @ox      @oc      @ov      XX       XX       @on      @om      XX       XX       XX
     XX                                                    @spc&sft                   XX
@@ -1978,7 +1980,7 @@
 (deflayer kana-k
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       @kq      @kw>     @ke>     @kr      XX       XX       XX       @ku      XX       @ko      XX	XX
-    XX       @ka      @ks      @kd>     @kf>     @kg>     XX       @kh      @kj>     XX       @kl>     @k;>     XX
+    XX       @ka      @ks      @kd>     @kf>     @kg>     XX       @kh      @kj>     XX       @kl      @k;>     XX
     XX       XX       @kx      @kc>     @kv      XX       XX       @kn      @km      XX       @k.>     XX
     XX                                                    @spc&sft                   XX
 )
@@ -2010,7 +2012,7 @@
 (deflayer kana-m
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       @mw      @me>     @mr      XX       XX       XX       XX       @mi>     XX       @mp>	XX
-    XX       XX       @ms      @md      @mf      @mg      XX       @mh>     XX       XX       @ml      XX       XX
+    XX       XX       @ms      @md      @mf      @mg      XX       @mh>     XX       @mk      @ml      XX       XX
     XX       @mz      @mx>     @mc      @mv      XX       XX       XX       XX       XX       @m.      XX
     XX                                                    @spc&sft                   XX
 )
@@ -2019,7 +2021,7 @@
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       @.q      @.w      @.e      @.r      XX       XX       XX       XX       @.i      XX       XX	XX
     XX       XX       @.s      @.d      @.f      @.g      XX       @.h      XX       XX       XX       XX       XX
-    XX       XX       @.x      @.c      @.v      XX       XX       @.n      XX       XX       XX       XX
+    XX       XX       @.x      @.c      @.v      XX       XX       @.n      XX       XX       XX       @./
     XX                                                    @spc&sft                   XX
 )
 
@@ -2137,7 +2139,7 @@
 
 (deflayer ej>
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @ej-p    XX
+    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       @ej-o    @ej-p    XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       @ej-k    XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX                                                    @spc&sft                   XX
@@ -3143,14 +3145,6 @@
     XX                                                    @spc&sft                   XX
 )
 
-(deflayer kl>
-             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
-    XX       XX       XX       XX       XX       XX       XX       @kl-h    XX       XX       XX       XX       XX
-    XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX                                                    @spc&sft                   XX
-)
-
 (deflayer k;>
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
     XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX       XX	XX
@@ -3367,18 +3361,10 @@
     XX                                                    @spc&sft                   XX
 )
 
-;;(deflayer el1
-;;             XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-;;    XX       @2spc    @z`'     @`/      @Z{}     @z{}     XX       XX       XX       XX       XX       XX	XX
-;;    XX       @2.      @PRTS    @''?     @Z[]     @`0      XX       XX       XX       XX       XX       XX       XX
-;;    XX       @2-      @`PRTS   @!       @z[]     @z<>     XX       XX       XX       XX       XX       XX
-;;    XX                                                    XX                         XX
-;;)
-
 (deflayer el1
              XX       XX       XX       XX       XX       XX       XX       XX       XX       XX
-    XX       @2spc    @1spc    @`/      @`=      @`0      XX       XX       XX       XX       XX       XX	XX
-    XX       @2.      @Z{}     @''?     @Z[]     @PRTS    XX       XX       XX       XX       XX       XX       XX
-    XX       @2-      @z`'     @!       @z[]     @`PRTS   XX       XX       XX       XX       XX       XX
+    XX       @1spc    @=       @`/      @z[]     @`0      XX       XX       XX       XX       XX       XX	XX
+    XX       @2.      @`=      @''?     @Z[]     @PRTS    XX       XX       XX       XX       XX       XX       XX
+    XX       @2-      @z`'     @!       @Z{}     @`PRTS   XX       XX       XX       XX       XX       XX
     XX                                                    XX                         XX
 )
