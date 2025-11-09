@@ -1,3 +1,13 @@
+<Multi_key> <bracketright> <comma> <minus> <w> : "7"
+<Multi_key> <bracketright> <comma> <minus> <e> : "8"
+<Multi_key> <bracketright> <comma> <minus> <r> : "9"
+<Multi_key> <bracketright> <comma> <minus> <s> : "4"
+<Multi_key> <bracketright> <comma> <minus> <d> : "5"
+<Multi_key> <bracketright> <comma> <minus> <f> : "6"
+<Multi_key> <bracketright> <comma> <minus> <x> : "1"
+<Multi_key> <bracketright> <comma> <minus> <c> : "2"
+<Multi_key> <bracketright> <comma> <minus> <v> : "3"
+
 <Multi_key> <apostrophe> <grave> : "｀"
 <Multi_key> <apostrophe> <1> : "１"
 <Multi_key> <apostrophe> <2> : "２"
